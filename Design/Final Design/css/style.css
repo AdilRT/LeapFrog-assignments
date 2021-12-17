@@ -1,0 +1,646 @@
+/* 
+***Colors***
+background: #2F327D; blue
+background: #F48C06;orange
+background: #65DAFF;cyan
+
+font-family: 'Poppins', sans-serif;
+
+border:2px solid red;
+ */
+
+/* universal */
+.orange {
+  color: #f48c06;
+}
+.white {
+  color: #ffffff;
+}
+.darkblue {
+  color: #2f327d;
+}
+. a {
+  text-decoration: none;
+}
+.font-large {
+  font-size: 3.375rem;
+}
+.font-med {
+  font-size: 2rem;
+}
+.font-small {
+  font-size: 0.9rem;
+}
+.first-letter {
+  font-size: 4rem;
+}
+/* for hover dropdown */
+/********************* hover effect */
+/* Dropdown Button */
+.dropbtn {
+  background-color: #fff2e1;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  height: 20px;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #65daff;
+  min-width: 160px;
+  z-index: 1;
+  right: 15px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+}
+/* ****************************** */
+
+/* ********************************************************************************************************* */
+/************************ HEADER*************************/
+
+header {
+  background: #fff2e1;
+  background-image: url(../images/people/yellow-tshirt.png);
+  background-size: cover;
+
+  /* z-index: -1; */
+}
+.top-nav {
+  border: 2px solid red;
+}
+
+.top-nav-left {
+  border: 2px solid red;
+  float: left;
+  width: 80%;
+}
+.top-nav-right {
+  border: 2px solid red;
+  /* float: right; */
+  clear: both;
+}
+.hamburger-icon {
+  float: right;
+  border: 2px solid black;
+  width: 15%;
+  /*     height:auto; */
+}
+.dropbtn img {
+  height: 20px;
+  min-width: 20px;
+}
+.header-main {
+  clear: both;
+  border: 2px solid black;
+}
+
+.header-main-left p {
+  border: 2px solid blue;
+}
+.top-nav-right {
+  display: none;
+}
+
+/************************ HEADER-MAIN*************************/
+
+.join-free {
+}
+
+.join-free-li {
+  display: inline-block;
+}
+/* .join-free-button{
+  position: absolute;
+  }
+  
+.watch{
+  position: absolute;
+} */
+.play {
+  width: 70px;
+  height: 70px;
+}
+.header-main-left {
+  padding: 150px 20px 10px 20px;
+}
+/* .header-main-right::after{
+  content: "";
+  display: block;
+  clear: both;
+} */
+
+.three-bars-div {
+  display: none;
+}
+.three-divs {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  width: 45%;
+  border: 2px solid blue;
+  margin: 10px auto;
+
+  padding: 28px 25px;
+}
+/* 
+.calendar-icon-div{
+
+background: rgba(255, 255, 255, 0.8);
+border-radius:20px;
+width:32%;
+border:2px solid red; 
+margin:10px auto;
+
+padding: 28px 25px;
+}*/
+.UE-div {
+}
+/*
+.invite-icon-div{
+
+background: rgba(255, 255, 255, 0.8);
+border-radius:20px;
+width:32%;
+border:2px solid red; 
+margin:10px auto; 
+
+padding: 28px 25px;
+ } */
+
+/************************************* inside of 3-divs */
+.icon-div-left {
+  width: 25%;
+  display: inline-block;
+}
+.icon-div-right {
+  width: 65%;
+  display: inline-block;
+}
+.icon-div-right h1 {
+  font-size: 1.2rem;
+  font-family: Nunito Sans; /* import thiss*/
+}
+.icon-div-right span {
+  font-size: 0.9rem;
+  font-family: Nunito Sans;
+}
+.invite-icon-div-left {
+  background-color: #f48c06;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  text-align: center;
+}
+.invite-icon-div-left img {
+  margin-top: 10px;
+}
+.join-now {
+  display: block;
+}
+
+/* *************************************** COMPANY SECTION */
+.company-logo {
+  padding: 10px;
+  /* justify-content: baseline; */
+}
+.trusted-by {
+  width: 80%;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.logos {
+  display: inline-block;
+  width: 16.67%;
+  margin: 5px;
+}
+
+/* ************************************* CLOUD SERVICES */
+/* div1 */
+.cloud-software-div1 {
+  margin-top: 20px;
+}
+.cloud-software-div1 h1 {
+  text-align: center;
+  /*   font-family */
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.cloud-software-div1 span {
+  display: block;
+  text-align: center;
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: #696984;
+}
+/* div2 */
+.services {
+  font-weight: 700;
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #ffffff;
+  border-radius: 20px;
+}
+.services img {
+  width: 100px;
+}
+.services h1 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  /* text-align: center; */
+  margin-bottom: 20px;
+}
+.services p {
+  line-height: 150%;
+  color: #696984;
+  font-weight: 400;
+}
+
+.cloud-software-service-1 {
+  border: 2px solid red;
+}
+.cloud-software-service-2 {
+  border: 2px solid rgb(191, 179, 15);
+}
+.cloud-software-service-3 {
+  border: 2px solid purple;
+}
+
+/* what is Skilline */
+.what-is {
+  padding: 20px;
+}
+
+.what-is-text p {
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 150%;
+  /* or 43px */
+  text-align: center;
+  letter-spacing: 0.02em;
+  width: 85%;
+  margin: 0 auto;
+}
+.what-is-text h1 {
+  color: #f48c06;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 44px;
+  line-height: 180%;
+  text-align: center;
+}
+.what-is-text h1 span {
+  color: #2f327d;
+}
+.what-is-images1 {
+  /*   float: left; */
+  background-image: url(../images/people/what-is-img1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  /*??? */
+  margin: 15px auto;
+  border: 2px solid blue;
+}
+.what-is-images2 {
+  /*   float: right; */
+  background-image: url(../images/people/what-is-img2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  /*   height: 400px; */
+  margin: 15px auto;
+  border: 2px solid red;
+}
+
+.what-is-images1 div,
+.what-is-images2 div {
+  border: 2px solid purple;
+  width: 80%;
+
+  max-width: 400px;
+  margin: 100px auto;
+  text-align: center;
+}
+.what-is-images1 div h1,
+.what-is-images2 div h1 {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 48px;
+  /* identical to box height */
+  text-align: center;
+  color: #ffffff;
+}
+.what-is-images1 div button {
+  color: white;
+  border-color: white;
+}
+.default-button {
+  padding: 10px;
+  border-radius: 80px;
+  font-size: 15px;
+  background-color: transparent;
+  font-size: 0.9rem;
+  border: 1px solid #ffffff;
+}
+
+.what-is-images2 div button {
+  padding: 10px;
+  border-radius: 80px;
+  font-size: 15px;
+  background-color: #23bdeee5;
+  color: white;
+
+  border: 1px solid #ffffff;
+}
+
+/* .what-is-images::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+ */
+
+/* Skilline Can Do
+  */
+.skilline-do {
+  position: relative;
+  border: 2px solid black;
+  width: 90%;
+  margin: 0 auto;
+}
+.small-orange-circle {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+}
+.big-orange-circle {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 70px;
+}
+
+.skilline-do-left h2 {
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 140%;
+  /* or 58px */
+  color: #2f327d;
+}
+.skilline-do-left p {
+  margin: 5px 0;
+  color: #696984;
+  line-height: 25px;
+}
+
+/* right div */
+.skilline-do-right {
+  position: relative;
+  padding: 20px;
+}
+.blue-box {
+  width: 20%;
+  height: 20%;
+  background-color: #23bdee;
+  border-radius: 20px;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  z-index: -1;
+}
+
+.orange-box {
+  width: 30%;
+  height: 30%;
+  background-color: #f3ac50;
+  border-radius: 20px;
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  z-index: -1;
+}
+
+/* *****************OUR FEATURES */
+.our-features {
+  width: 90%;
+  margin: 10px auto;
+  border: 2px solid blue;
+}
+.our-feature-desc {
+  margin: 10px 0 30px 0;
+}
+
+.our-feature-desc h1 {
+  font-size: 40px;
+}
+.our-feature-desc p {
+  font-size: 20px;
+  margin: 5px 0;
+  line-height: 25px;
+}
+
+.our-features-left {
+  position: relative;
+}
+.our-features-right h1 {
+  line-height: 25px;
+}
+
+.our-features-right-details li {
+  line-height: 25px;
+}
+.our-features-right-details li p {
+  display: inline-block;
+  width: 70%;
+}
+.our-features-right-details li img {
+  display: inline-block;
+  width: 15%;
+}
+
+/* *************************TOOLS*********** */
+.tools,
+.assessments,
+.class-management,
+.discussion {
+  margin: 25px auto;
+  width: 90%;
+  border: 2px solid red;
+}
+.tool-left {
+  line-height: 25px;
+}
+.tool-left h1 {
+  line-height: 40px;
+}
+.tool-left p {
+  margin: 10px auto;
+}
+.see-more-div {
+  width: 95%;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.orange-button {
+  border-color: #f48c06;
+}
+/* *************************INTEGRATION*********** */
+.integration {
+  border: 2px solid red;
+  width: 90%;
+  margin: 20px auto;
+}
+.integration-logos {
+  margin: 15px 0;
+}
+
+.integration-logos-row1,
+.integration-logos-row2 {
+  width: 48%;
+  display: inline-block;
+  text-align: center;
+}
+.integration-logos-row1 img,
+.integration-logos-row2 img {
+  width: 40%;
+  margin-right: 15px;
+}
+.integration-heading {
+  font-family: "Nunito Sans", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 0.8rem;
+  line-height: 27px;
+  letter-spacing: 0.2em;
+  color: #525596;
+  text-align: center;
+}
+
+.integration-desc h1 {
+  color: #2f327d;
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 160%;
+}
+.integration-desc p {
+  margin: 10px 0;
+  line-height: 25px;
+}
+
+/* *************************testimonial*********** */
+.testimonial {
+  border: 2px solid red;
+  width: 90%;
+  margin: 0 auto;
+}
+.testimonial-left h1 {
+  font-family: Nunito Sans;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 82px;
+  /* identical to box height */
+  color: #2f327d;
+}
+.testimonial-left p{
+  
+  font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+
+line-height: 25px;
+/* or 42px */
+
+letter-spacing: 0.02em;
+
+color: #696984;
+
+  
+}
+.testimonial-right{
+  text-align: center;
+  position: relative;
+}
+.reviewer-pic{
+  width:80%;
+  
+}
+.side-arrow{
+  width: 30%;
+  position: absolute;
+  top: 25%;
+  right:-4%;
+  
+}
+.testimonial-review{
+  background-color: white;
+  border-radius: 20px;
+  border-left: 14px solid #F67766;
+  box-shadow: 2px 4px 60px rgba(41, 44, 124, 0.1);
+}
+
+.testimonial-review{
+  font-family: Nunito Sans;
+font-style: normal;
+font-weight: normal;
+font-size: 0.9rem;
+line-height: 25px;
+/* or 40px */
+letter-spacing: 0.02em;
+color: #5F5F7E;
+width: 90%;
+padding: 10px;
+position: absolute;
+bottom:-20px;
+right: -20px;
+box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+
+
+}
+.reviewer-name{
+float: left;
+font-size: 0.7rem;
+}
+.stars{
+float:right;
+font-size: 0.7rem;
+}
+.stars img{
+  width: 70px;
+}
