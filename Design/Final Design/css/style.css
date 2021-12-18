@@ -19,7 +19,7 @@ border:2px solid red;
 .darkblue {
   color: #2f327d;
 }
-. a {
+.a {
   text-decoration: none;
 }
 .font-large {
@@ -91,23 +91,34 @@ border:2px solid red;
 header {
   background: #fff2e1;
   background-image: url(../images/people/yellow-tshirt.png);
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border-radius: 0 0 80px 80px;
 
   /* z-index: -1; */
 }
 .top-nav {
   border: 2px solid red;
 }
+.top-nav::after{
+    content: "";
+  display: block;
+  clear: both;
+}
+
 
 .top-nav-left {
   border: 2px solid red;
   float: left;
   width: 80%;
+  position: relative;
+  max-width: 500px;
 }
 .top-nav-right {
   border: 2px solid red;
   /* float: right; */
-  clear: both;
+/*   clear: both; */
 }
 .hamburger-icon {
   float: right;
@@ -121,37 +132,71 @@ header {
 }
 .header-main {
   clear: both;
-  border: 2px solid black;
+  /*   border: 2px solid black; */
+  /* border-radius: 0 0 20px 20px ; */
 }
 
 .header-main-left p {
   border: 2px solid blue;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  max-width: 500px;
+  line-height: 25px;
 }
+
 .top-nav-right {
   display: none;
 }
 
 /************************ HEADER-MAIN*************************/
-
-.join-free {
+.skilline-logo {
+  width: 50%;
+  position: relative;
+  right: 15%;
 }
+.skilline-def {
+  font-size: 1.2rem;
+  color: #2f327d;
+  font-weight: 400;
+}
+/* .join-free{
+  align-items: center;
+  justify-content: center;
+} */
 
+.join-free ul {
+  margin-top: 550px;
+  background: rgb(255 255 255 / 38%);
+  border-radius: 80px;
+  /* position:relative; */
+  /* vertical-align: top; */
+}
 .join-free-li {
   display: inline-block;
+  width: 31%;
+  text-align: center;
 }
 /* .join-free-button{
-  position: absolute;
-  }
-  
-.watch{
+
+  } */
+
+/* .watch{
   position: absolute;
 } */
 .play {
-  width: 70px;
-  height: 70px;
+  width: 120px;
+
+}
+
+.join-button button {
+  padding: 15px;
+  border-radius: 20px;
+  background-color: #f48c06;
+  color: white;
+  border: none;
 }
 .header-main-left {
-  padding: 150px 20px 10px 20px;
+  padding: 20px 20px 10px 20px;
 }
 /* .header-main-right::after{
   content: "";
@@ -163,13 +208,14 @@ header {
   display: none;
 }
 .three-divs {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   width: 45%;
-  border: 2px solid blue;
+  /*   border: 2px solid blue; */
   margin: 10px auto;
-
   padding: 28px 25px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: none;
 }
 /* 
 .calendar-icon-div{
@@ -260,18 +306,24 @@ padding: 28px 25px;
   display: block;
   text-align: center;
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: #696984;
 }
 /* div2 */
 .services {
   font-weight: 700;
   width: 70%;
-  margin: 0 auto;
+  margin: 35px auto;
   text-align: center;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: #ffffff;
   border-radius: 20px;
+}
+.services a {
+  text-decoration: none;
+}
+.services a:hover {
+  text-decoration: underline;
 }
 .services img {
   width: 100px;
@@ -290,13 +342,13 @@ padding: 28px 25px;
 }
 
 .cloud-software-service-1 {
-  border: 2px solid red;
+  /*   border: 2px solid red; */
 }
 .cloud-software-service-2 {
-  border: 2px solid rgb(191, 179, 15);
+  /*   border: 2px solid rgb(191, 179, 15); */
 }
 .cloud-software-service-3 {
-  border: 2px solid purple;
+  /*   border: 2px solid purple; */
 }
 
 /* what is Skilline */
@@ -350,7 +402,6 @@ padding: 28px 25px;
 .what-is-images2 div {
   border: 2px solid purple;
   width: 80%;
-
   max-width: 400px;
   margin: 100px auto;
   text-align: center;
@@ -375,6 +426,7 @@ padding: 28px 25px;
   background-color: transparent;
   font-size: 0.9rem;
   border: 1px solid #ffffff;
+  font-family: Poppins;
 }
 
 .what-is-images2 div button {
@@ -385,6 +437,7 @@ padding: 28px 25px;
   color: white;
 
   border: 1px solid #ffffff;
+  font-family: Poppins;
 }
 
 /* .what-is-images::after{
@@ -402,16 +455,22 @@ padding: 28px 25px;
   width: 90%;
   margin: 0 auto;
 }
+
 .small-orange-circle {
   position: absolute;
-  top: 1px;
-  left: 1px;
+  top: 10px;
+  left: -15px;
+  z-index: -1;
 }
 .big-orange-circle {
   position: absolute;
-  top: 1px;
-  right: 1px;
+  top: -23px;
+  right: -5px;
   width: 70px;
+  z-index: -1;
+}
+.skilline-do-left {
+  margin-bottom: 30px;
 }
 
 .skilline-do-left h2 {
@@ -431,7 +490,9 @@ padding: 28px 25px;
 .skilline-do-right {
   position: relative;
   padding: 20px;
+  text-align: center;
 }
+
 .blue-box {
   width: 20%;
   height: 20%;
@@ -466,11 +527,13 @@ padding: 28px 25px;
 
 .our-feature-desc h1 {
   font-size: 40px;
+  margin-bottom: 15px;
 }
 .our-feature-desc p {
   font-size: 20px;
   margin: 5px 0;
   line-height: 25px;
+  color: #696984;
 }
 
 .our-features-left {
@@ -509,12 +572,12 @@ padding: 28px 25px;
 }
 .tool-left p {
   margin: 10px auto;
+  color: #696984;
 }
 .see-more-div {
   width: 95%;
-  margin: 0 auto;
+  margin: 20px auto;
   text-align: center;
-  margin-bottom: 15px;
 }
 
 .orange-button {
@@ -527,7 +590,7 @@ padding: 28px 25px;
   margin: 20px auto;
 }
 .integration-logos {
-  margin: 15px 0;
+  margin: 55px 0;
 }
 
 .integration-logos-row1,
@@ -557,17 +620,21 @@ padding: 28px 25px;
   font-weight: bold;
   font-size: 1.5rem;
   line-height: 160%;
+  margin-top: 15px;
 }
 .integration-desc p {
   margin: 10px 0;
   line-height: 25px;
+  color: #696984;
 }
 
 /* *************************testimonial*********** */
 .testimonial {
   border: 2px solid red;
   width: 90%;
-  margin: 0 auto;
+  margin-bottom: 120px;
+  margin-right: auto;
+  margin-left: auto;
 }
 .testimonial-left h1 {
   font-family: Nunito Sans;
@@ -577,70 +644,340 @@ padding: 28px 25px;
   /* identical to box height */
   color: #2f327d;
 }
-.testimonial-left p{
-  
+.testimonial-left p {
   font-family: Poppins;
-font-style: normal;
-font-weight: normal;
+  font-style: normal;
+  font-weight: normal;
 
-line-height: 25px;
-/* or 42px */
+  line-height: 25px;
+  /* or 42px */
 
-letter-spacing: 0.02em;
+  letter-spacing: 0.02em;
 
-color: #696984;
-
-  
+  color: #696984;
 }
-.testimonial-right{
+.testimonial-right {
   text-align: center;
   position: relative;
 }
-.reviewer-pic{
-  width:80%;
-  
+.reviewer-pic {
+  width: 80%;
 }
-.side-arrow{
+.side-arrow {
   width: 30%;
   position: absolute;
   top: 25%;
-  right:-4%;
-  
+  right: -4%;
 }
-.testimonial-review{
+.testimonial-review {
   background-color: white;
   border-radius: 20px;
-  border-left: 14px solid #F67766;
+  border-left: 14px solid #f67766;
   box-shadow: 2px 4px 60px rgba(41, 44, 124, 0.1);
 }
 
-.testimonial-review{
+.testimonial-review {
   font-family: Nunito Sans;
-font-style: normal;
-font-weight: normal;
-font-size: 0.9rem;
-line-height: 25px;
-/* or 40px */
-letter-spacing: 0.02em;
-color: #5F5F7E;
-width: 90%;
-padding: 10px;
-position: absolute;
-bottom:-20px;
-right: -20px;
-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 25px;
+  /* or 40px */
+  letter-spacing: 0.02em;
+  color: #5f5f7e;
+  width: 90%;
+  padding: 10px;
+  position: absolute;
+  bottom: -10%;
+  right: -2%;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.reviewer-name {
+  float: left;
+  font-size: 0.9rem;
+}
+.stars {
+  float: right;
+  font-size: 0.7rem;
+}
+.stars img {
+  width: 80%;
+}
 
+/* *************************Latest News*********** */
 
+.news {
+  width: 95%;
+  margin: 0 auto;
+}
+.news-header {
+  margin: 0 12px;
+}
+.news-header h1 {
+  color: #2f327d;
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 160%;
+}
+.news-header p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 25px;
+  /* or 42px */
+  letter-spacing: 0.02em;
+  color: #696984;
+}
+
+.news-button {
+  background-color: #f4c467;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  padding: 10px;
+  display: block;
+  width: 3rem;
+}
+.news-left {
+  margin: 31px auto;
+  /* text-align:center; */
+}
+.news-left,.news-right-divs{
+  border-radius:20px
+}
+.news-left:hover,.news-right-divs:hover {
+   background-color: #ddd8
+}
+
+.news-left h2 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 180%;
+  /* or 47px */
+
+  color: #252641;
+}
+.news-left p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 180%;
+  /* or 36px */
+  letter-spacing: 0.02em;
+  color: #696984;
 
 }
-.reviewer-name{
-float: left;
-font-size: 0.7rem;
+
+.read-more {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 180%;
+  /* identical to box height, or 36px */
+  letter-spacing: 0.02em;
+  text-decoration-line: underline;
+  color: #696984;
 }
-.stars{
-float:right;
-font-size: 0.7rem;
+
+/* SIDE NEWS */
+.news-right-divs {
+  margin: 50px auto;
 }
-.stars img{
-  width: 70px;
+.news-image img {
+  width: 55%;
+}
+.news-image img:hover{
+  opacity:0.75;
+}
+.news-details h2 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 180%;
+  /* or 47px */
+
+  color: #252641;
+}
+.news-details h2:hover {
+  color: #f48c06;
+}
+.news-details a:hover {
+  text-decoration-color: #f48c06;
+}
+
+.news-details p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 180%;
+  /* or 36px */
+  letter-spacing: 0.02em;
+}
+
+/* *************************FOOTER*********** */
+footer {
+  background-color: #252641;
+  text-align: center;
+  color: white;
+}
+
+.footer-logo {
+  padding: 10px;
+}
+.subscribe-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 39px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #b2b3cf;
+  margin-bottom: 50px;
+}
+footer form {
+  margin: 10px;
+}
+
+footer form input {
+  padding: 10px;
+  border-radius: 20px;
+  background: transparent;
+  border: 1px solid white;
+  font-family: Poppins;
+  width: 200px;
+}
+footer form button {
+  padding: 10px;
+  border-radius: 20px;
+  font-family: Poppins;
+  background: linear-gradient(105.5deg, #545ae7 19.57%, #393fcf 78.85%);
+  color: white;
+}
+.footer-links {
+  margin-bottom: 15px;
+}
+
+.footer-links span a {
+  color: white;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .skilline-logo {
+    width: 50%;
+    position: relative;
+    right: 10%;
+  }
+  .header-main-left p {
+    font-size: 1.5rem;
+    max-width: 800px;
+    line-height: 30px;
+  }
+  .play {
+    width:80px;
+  
+    
+  }
+
+  /* .join-free-button{
+  font-size: 1.5rem;
+} */
+
+  /* fonts rem */
+
+  .reviewer-name,
+  .reivew-number {
+    font-size: 1.1rem;
+  }
+  .testimonial-review {
+    font-size: 1.2rem;
+  }
+
+  .our-features-right-details li p,
+  .integration-desc p,
+  .testimonial-left p,
+  .tool-left p,
+  .our-feature-desc,
+  .news-header p,.news-left p,.news-details p {
+    font-size: 1.35rem;
+    line-height: 30px;
+  }
+  .watch,
+  .join-free-button,
+  .services p,
+  .skilline-do-left p,
+  .our-feature-desc p,
+  .our-features-right h1 {
+    font-size: 1.5rem;
+    line-height: 30px;
+  }
+  .cloud-software-div1 span,
+  .integration-heading,
+  .news-header h1 {
+    font-size: 2rem;
+  }
+  .cloud-software-div1 h1,
+  .services h1,
+  .tool-left h1 {
+    font-size: 2.5rem;
+  }
+
+  .our-feature-desc h1 {
+    font-size: 3rem;
+  }
+
+  /***********************************************/
+  .services img {
+    width: 250px;
+  }
+  .what-is-images1 div h1,
+  .what-is-images2 div h1 {
+    font-size: 4rem;
+    margin-bottom: 40px;
+    font-weight: 400;
+    line-height: 60px;
+  }
+  .what-is-images1 div,
+  .what-is-images2 div {
+    padding: 50px;
+  }
+  .our-features-right-details li img {
+    width: 20%;
+  }
+
+  .default-button {
+    padding: 10px;
+    font-size: 1.252rem;
+  }
+
+  .news-button {
+    width: 4rem;
+    font-size: 1.5rem;
+    margin-top: 15px;
+  }
+  footer form input{
+    width: 500px;
+  }
+  /*  */
+}
+
+
+@media screen and (min-width: 992px) {
+
+  .top-nav-right{
+    display: block;
+    float:right;
+  }
+  .hamburger-icon ,.dropdown{
+    display: none;
+  }
+
+
+/*  */
 }
