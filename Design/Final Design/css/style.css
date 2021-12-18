@@ -34,6 +34,9 @@ border:2px solid red;
 .first-letter {
   font-size: 4rem;
 }
+.heading {
+  font-size: 22px;
+}
 /* for hover dropdown */
 /********************* hover effect */
 /* Dropdown Button */
@@ -99,30 +102,29 @@ header {
   /* z-index: -1; */
 }
 .top-nav {
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
-.top-nav::after{
-    content: "";
+.top-nav::after {
+  content: "";
   display: block;
   clear: both;
 }
 
-
 .top-nav-left {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   float: left;
   width: 80%;
   position: relative;
   max-width: 500px;
 }
 .top-nav-right {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   /* float: right; */
-/*   clear: both; */
+  /*   clear: both; */
 }
 .hamburger-icon {
   float: right;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   width: 15%;
   /*     height:auto; */
 }
@@ -137,11 +139,12 @@ header {
 }
 
 .header-main-left p {
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   background: rgba(255, 255, 255, 0.5);
   border-radius: 5px;
   max-width: 500px;
   line-height: 25px;
+  font-size: 12px;
 }
 
 .top-nav-right {
@@ -172,20 +175,19 @@ header {
   /* vertical-align: top; */
 }
 .join-free-li {
-  display: inline-block;
   width: 31%;
   text-align: center;
+  float: left;
 }
 /* .join-free-button{
 
   } */
 
-/* .watch{
-  position: absolute;
-} */
+.watch {
+  font-size: 12px;
+}
 .play {
-  width: 120px;
-
+  width: 80px;
 }
 
 .join-button button {
@@ -198,11 +200,11 @@ header {
 .header-main-left {
   padding: 20px 20px 10px 20px;
 }
-/* .header-main-right::after{
+.header-main-right::after {
   content: "";
   display: block;
   clear: both;
-} */
+}
 
 .three-bars-div {
   display: none;
@@ -381,26 +383,26 @@ padding: 28px 25px;
   /*   float: left; */
   background-image: url(../images/people/what-is-img1.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   width: 100%;
   /*??? */
   margin: 15px auto;
-  border: 2px solid blue;
+/*   border: 2px solid blue; */
 }
 .what-is-images2 {
   /*   float: right; */
   background-image: url(../images/people/what-is-img2.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   width: 100%;
   /*   height: 400px; */
   margin: 15px auto;
-  border: 2px solid red;
+/*   border: 2px solid red; */
 }
 
 .what-is-images1 div,
 .what-is-images2 div {
-  border: 2px solid purple;
+/*   border: 2px solid purple; */
   width: 80%;
   max-width: 400px;
   margin: 100px auto;
@@ -451,7 +453,7 @@ padding: 28px 25px;
   */
 .skilline-do {
   position: relative;
-  border: 2px solid black;
+/*   border: 2px solid black; */
   width: 90%;
   margin: 0 auto;
 }
@@ -519,7 +521,7 @@ padding: 28px 25px;
 .our-features {
   width: 90%;
   margin: 10px auto;
-  border: 2px solid blue;
+/*   border: 2px solid blue; */
 }
 .our-feature-desc {
   margin: 10px 0 30px 0;
@@ -562,7 +564,7 @@ padding: 28px 25px;
 .discussion {
   margin: 25px auto;
   width: 90%;
-  border: 2px solid red;
+/*   border: 2px solid red; */
 }
 .tool-left {
   line-height: 25px;
@@ -585,7 +587,7 @@ padding: 28px 25px;
 }
 /* *************************INTEGRATION*********** */
 .integration {
-  border: 2px solid red;
+/*   border: 2px solid red; */
   width: 90%;
   margin: 20px auto;
 }
@@ -630,7 +632,7 @@ padding: 28px 25px;
 
 /* *************************testimonial*********** */
 .testimonial {
-  border: 2px solid red;
+/*   border: 2px solid red; */
   width: 90%;
   margin-bottom: 120px;
   margin-right: auto;
@@ -741,11 +743,13 @@ padding: 28px 25px;
   margin: 31px auto;
   /* text-align:center; */
 }
-.news-left,.news-right-divs{
-  border-radius:20px
+.news-left,
+.news-right-divs {
+  border-radius: 20px;
 }
-.news-left:hover,.news-right-divs:hover {
-   background-color: #ddd8
+.news-left:hover,
+.news-right-divs:hover {
+  background-color: #ddd8;
 }
 
 .news-left h2 {
@@ -767,7 +771,6 @@ padding: 28px 25px;
   /* or 36px */
   letter-spacing: 0.02em;
   color: #696984;
-
 }
 
 .read-more {
@@ -789,8 +792,8 @@ padding: 28px 25px;
 .news-image img {
   width: 55%;
 }
-.news-image img:hover{
-  opacity:0.75;
+.news-image img:hover {
+  opacity: 0.75;
 }
 .news-details h2 {
   font-family: Poppins;
@@ -880,9 +883,7 @@ footer form button {
     line-height: 30px;
   }
   .play {
-    width:80px;
-  
-    
+    width: 80px;
   }
 
   /* .join-free-button{
@@ -904,7 +905,9 @@ footer form button {
   .testimonial-left p,
   .tool-left p,
   .our-feature-desc,
-  .news-header p,.news-left p,.news-details p {
+  .news-header p,
+  .news-left p,
+  .news-details p {
     font-size: 1.35rem;
     line-height: 30px;
   }
@@ -961,23 +964,351 @@ footer form button {
     font-size: 1.5rem;
     margin-top: 15px;
   }
-  footer form input{
+  footer form input {
     width: 500px;
   }
   /*  */
 }
 
-
+/* ***************************** 992 ************************/
 @media screen and (min-width: 992px) {
-
-  .top-nav-right{
-    display: block;
-    float:right;
+  /* unviersla */
+  .background-orange {
+    background-color: #f48c06;
   }
-  .hamburger-icon ,.dropdown{
+  .background-white {
+    background-color: white;
+  }
+
+  /*    */
+  .top-nav-left {
+    width: 25%;
+    margin-top: 71px;
+    margin-left: 80px;
+  }
+  .hamburger-icon,
+  .dropdown {
     display: none;
   }
+  .top-nav-right {
+    width: 60%;
+    display: block;
+    float: right;
+    text-align: right;
+    margin-top: 71px;
+    margin-right: 12px;
+  }
+  .top-nav-right ul li {
+    list-style: none;
+    display: inline-block;
+    padding-right: 20px;
+  }
+  .top-nav-right ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 22px;
+    font-size: 20px;
+  }
+  .top-nav-right ul li a:hover {
+    color: grey;
+  }
+  .top-nav-right ul li a span {
+    border-radius: 20px;
+    padding: 5px;
+  }
+  .header-main-left {
+    padding-top: 500px;
+  }
+  .testimonial-review {
+    font-size: 1.5rem;
+    line-height: 48px;
+  }
+  .reviewer-name,
+  .reivew-number {
+    font-size: 1.3rem;
+  }
+  .font-large {
+    font-size: 10rem;
+  }
+  .heading {
+    font-size: 5rem;
+  }
+  .header-main-left p {
+    font-size: 2.4rem;
+    line-height: 48px;
+  }
 
-
-/*  */
+  /*  */
 }
+
+/* ***************************** 1200 ************************/
+
+@media screen and (min-width: 1200px) {
+.float-right{
+  float: right;
+/*   border: 2px solid red; */
+  width: 45%;
+}
+.float-left{
+  float: left;
+/*   border: 2px solid blue; */
+  width: 45%;
+}
+
+
+
+
+
+  header {
+    background-image: none;
+    border-radius: 0 0 25% 25%;
+    height: 1118px;
+  }
+  .header-main {
+    padding: 0 140px;
+    margin-top: 70px;
+  }
+  .header-main-left {
+/*     border: 2px solid red; */
+    padding-top: 0;
+    width: 47%;
+    float: left;
+  }
+  .header-main-right {
+/*     border: 2px solid red; */
+    width: 48%;
+    background-image: url(../images/people/yellow-tshirt.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    float: right;
+  }
+
+  .three-bars-div {
+    display: block;
+  }
+  .three-divs {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+
+    /*   border: 2px solid blue; */
+    margin: 10px auto;
+    padding: 28px 25px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2),
+      0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: block;
+  }
+
+  .join-free::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .join-free ul {
+    margin-top: 5px;
+  }
+  .header-main:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .heading-title {
+    font-weight: bold;
+    font-size: 54px;
+    line-height: 81px;
+  }
+
+  .heading {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 54px;
+    line-height: 81px;
+
+    color: #2f327d;
+  }
+  .header-main-left p {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 160%;
+    color: #464646;
+  }
+  .join-button button {
+    padding: 22px 30px;
+    border-radius: 80px;
+    font-size: 24px;
+  }
+
+  .calendar-icon-div {
+    position: relative;
+  }
+  .UE-div {
+    position: relative;
+  }
+  .invite-icon-div {
+    position: relative;
+  }
+  .company-logo {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .logos {
+    display: inline-block;
+    width: 15.67%;
+    margin: 5px;
+  }
+
+  /* cloud service */
+  .cloud-software-div2:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .services {
+    float: left;
+    width: 29.33%;
+    height: 430px;
+    margin: 0 31px;
+  }
+  .cloud-software-service-1,
+  .cloud-software-service-2,
+  .cloud-software-service-3 {
+    position: relative;
+  }
+  .cloud-software-service-1 img,
+  .cloud-software-service-2 img,
+  .cloud-software-service-3 img {
+    position: absolute;
+    top: -28%;
+    right: 28%;
+  }
+  .cloud-software-div2 {
+    width: 76.56%;
+    margin: 80px auto;
+  }
+  .what-is-images {
+    width: 75%;
+    margin: 0 auto;
+  }
+  .what-is-images1 {
+    width: 45%;
+    float: left;
+  }
+  .what-is-images2 {
+    width: 45%;
+    float: right;
+  }
+
+  .what-is-images::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .skilline-do-left {
+    float: left;
+/*     border: 2px solid blue; */
+  }
+  .skilline-do-right {
+    float: right;
+/*     border: 2px solid blue; */
+  }
+
+  .skilline-do::after,
+  .our-features::after,
+  .tools,
+  .assessments,
+  .class-management,
+  .discussion
+
+{
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .our-features-left{
+    float: left;
+  }
+  .our-features-right
+{
+    float: right;
+  }
+.see-more-div{
+  clear: both;
+}
+
+.integration,.testimonials,footer{
+  content: "";
+  display: block;
+  clear: both;
+}
+  /*  */
+}
+.news{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* styling */
+
+.top-nav-right{
+  margin-right:126px;
+  font-size: 22px;
+}
+.top-nav-right ul li a{
+  font-size: 22px;
+}
+
+.trusted-by{
+  font-size: 28px;
+}
+/* fonts rem */
+
+  .reviewer-name,
+  .reivew-number {
+    font-size: 1.1rem;
+  }
+  .testimonial-review {
+    font-size: 1.2rem;
+  }
+
+  .our-features-right-details li p,
+  .integration-desc p,
+  .testimonial-left p,
+  .tool-left p,
+  .our-feature-desc,
+  .news-header p,
+  .news-left p,
+  .news-details p {
+    font-size: 1.35rem;
+    line-height: 30px;
+  }
+  .watch,
+  .join-free-button,
+  .services p,
+  .skilline-do-left p,
+  .our-feature-desc p,
+  .our-features-right h1 {
+    font-size: 1.5rem;
+    line-height: 30px;
+  }
+  .cloud-software-div1 span,
+  .integration-heading,
+  .news-header h1 {
+    font-size: 2rem;
+  }
+  .cloud-software-div1 h1,
+  .services h1,
+  .tool-left h1 {
+    font-size: 2.5rem;
+  }
+
+  .our-feature-desc h1 {
+    font-size: 3rem;
+  }

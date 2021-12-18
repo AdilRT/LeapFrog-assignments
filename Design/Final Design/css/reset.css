@@ -140,7 +140,7 @@ table {
 .clearfix {
     clear: both;
     content: "";
-    display: table;
+    display: block;
 }
 
 img {
