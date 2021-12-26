@@ -1,206 +1,153 @@
 class Carousel {
-  constructor(containerName) {
+    constructor(containerSelector, input) {
+
+       
+        this.containerName = containerSelector;
+        this.container = document.querySelector(containerSelector);
+        this.wrapper = this.container.querySelector('.carousel-image-wrapper');
+        this.width = window.getComputedStyle(this.container).getPropertyValue('width');
+        this.height = window.getComputedStyle(this.container).getPropertyValue('height');
+        this.transitionTime = input.transitionTime;
+        this.delayTime = input.delayTime;
     
-    //grab elements
-    this.container = document.querySelector(containerName);
-    this.wrapper = this.container.querySelector(".carousel-image-wrapper");
+        this.index = 0;
+        this.images = this.wrapper.getElementsByTagName('img');
+        this.imageCount = this.wrapper.children.length;
+        this.rightButton;
+        this.leftButton;
+        this.radios;
+        this.radio = [];
+        this.configContainerLayout();
+        this.configWrapperLayout();
+        this.configNavigationButtons();
+        this.configIndicator();
+        this.styleIndicator();
+        this.configAutoSlide();
 
-    this.width = window
-      .getComputedStyle(this.container)
-      .getPropertyValue("width");
-    this.height = window
-      .getComputedStyle(this.container)
-      .getPropertyValue("height");
-
-    //some more variables
-    this.imageWidth = 500;
-    this.imageCount = this.wrapper.children.length;
-    this.currentIndex = 0;
-    this.flag = true;
-
-    //call setup functions
-    this.configContainerLayout();
-    this.configWrapperLayout();
-    this.configNavigationButtons();
-    this.configIndicator();
-  }
-
-  //FUNCTIONS
-  configContainerLayout() {
-    //relative,height,width,
-    this.container.style.width = this.width;
-    this.container.style.height = this.height;
-    this.container.style.position = "relative";
-  }
-  configWrapperLayout() {
-    //width=no_images*image_width,
-    this.wrapper.style.width = `${
-      this.wrapper.children.length * this.imageWidth
-    }px`;
-    this.wrapper.style.height = this.height;
-    this.wrapper.style.position = "relative";
-  }
-
-  configNavigationButtons() {
-    function styleButton(btn) {
-      btn.style.position = "absolute";
-      btn.style.top = "50%";
-    }
-    // const handleClick = (event)=>{
-    //     // console.log(event.target.id);
-    //     var wrapper = document.getElementsByClassName("carousel-image-wrapper");
-    //    if(event.target.id==='nextbtn'){
-
-    //    }
-
-    //    else{
-
-    //    }
-    // }
-
-    //next button
-    this.nextButton = document.createElement("button");
-    this.nextButton.innerHTML = "next";
-    this.nextButton.id = "nextbtn";
-    styleButton(this.nextButton);
-    this.nextButton.style.right = 0;
-
-    ///clicks
-    let interval;
-    let pix = 0;
-    const handleNextFunc= ()=>{
-      if(!this.flag) return 
-      this.flag=false;
-
-      this.currentIndex++;
-      interval = setInterval(() => {
-        //if last iamge is reached
-        if (this.currentIndex >= this.wrapper.children.length) {
-          // this.currentIndex=0;
-          pix--;
-          this.wrapper.style.left = `-${pix}px`;
-          if (pix <= 0) {
-            
-            clearInterval(interval);
-            this.flag=true;
-            this.currentIndex=0;
-           
-          }
-        } else {
-          pix++;
-          this.wrapper.style.left = `-${pix}px`;
-
-          if (pix >= this.currentIndex * this.imageWidth) {
-            clearInterval(interval);
-            this.flag=true;
-            pix = this.currentIndex * this.imageWidth;
-          }
-        }
-        
-      },1);
     }
 
-    this.nextButton.addEventListener("click",handleNextFunc);
-    
-    setInterval(() => handleNextFunc(), 3000);
-
-      this.container.appendChild(this.nextButton);
-      
-
-    //
-
-    //prev button
-    this.prevButton = document.createElement("button");
-    this.prevButton.innerHTML = "prev";
-    this.prevButton.id = "prevbtn";
-    styleButton(this.prevButton);
-    ///clicks
-    this.prevButton.addEventListener("click", () => {
-      if(!this.flag) return 
-      this.flag=false;
-
-
-      this.currentIndex--;
-      interval = setInterval(() => {
-        if (this.currentIndex < 0) {
-          pix++;
-          // this.currentIndex = this.imageCount -1;
-          this.wrapper.style.left = `-${pix}px`;
-          if(pix>=(this.imageCount-1) * parseInt(this.width) ){
-            clearInterval(interval);
-            this.flag=true;
-            this.currentIndex=this.imageCount-1;
-          }
-        }
-        else{
-          pix--;
-          this.wrapper.style.left = `-${pix}px`;
-  
-          if (pix <= this.currentIndex * this.imageWidth) {
-            clearInterval(interval);
-            this.flag=true;
-            pix = this.currentIndex * (this.imageWidth - 1);
-          }
-        }
-
-
-      }, 1);
-    });
-
-    // };
-    this.container.appendChild(this.prevButton);
-  }
-  configIndicator() {
-    this.indicators = document.createElement("div");
-    this.indicators.className = "indicators";
-    this.container.appendChild(this.indicators);
-
-    // style indicator
-    this.indicators.style.position = "absolute";
-    this.indicators.style.left = "50%";
-    this.indicators.style.bottom = "10px";
-    this.indicators.style.display = "inline-block";
-    this.indicators.style.transform = "translateX(-50%)";
-
-    for (var i = 0; i < this.imageCount; i++) {
-      var dots = document.createElement("span");
-      dots.style.display = "block";
-      dots.style.width = "15px";
-      dots.style.height = "15px";
-      dots.style.background = "#fff";
-      dots.style.display = "inline-block";
-      dots.style.margin = "0 2px";
-      dots.style.borderRadius = "15px";
-      dots.style.cursor = "pointer";
-      dots.className = "dot";
-      dots.setAttribute("data-id", i); // dot index value
-
-      this.indicators.appendChild(dots);
+    configContainerLayout = () => {
+        this.container.style.overflow = 'hidden';
+        this.container.style.position = 'relative';
     }
 
-    this.container.querySelectorAll(".indicators > span").forEach((item) => {
-      item.addEventListener('click', () => {
-        if(!this.flag) return 
-      this.flag=false;
+    configWrapperLayout = () => {
+        this.wrapper.style.minWidth = "5000vw"; 
+        this.wrapper.style.height = this.height;
+        this.wrapper.style.position = 'absolute';
+        for (let i=0; i<this.images.length; i++) {
+            this.images[i].style.width = this.width;
+            this.images[i].style.height = this.height;
+            this.images[i].style.float = 'left';
+        }
+    }
 
-        this.currentIndex = item.getAttribute('data-id')
-        let pt2 = -1*  this.currentIndex * parseInt(this.width);
-        let pix = parseInt(this.wrapper.style.left || '0')
-        let timer = setInterval(() => {
-          if(pix > pt2) pix--
-          else pix++
+    configNavigationButtons = () => {
+        const styleButton = (button) => {
+            button.style.position = 'absolute';
+            button.style.top = parseFloat(this.height)/2 - 32 + 'px'; 
+            button.style.fontSize = '50px';
+            button.style.color = 'white';
+            button.style.border = 'none';
+            button.style.backgroundColor = 'rgba(0,0,0,0)'; 
+            button.addEventListener('mouseover', () => {
+                button.style.cursor = 'pointer';
+            });
+            button.addEventListener('mouseout', () => {
+                button.style.cursor = 'none';
+            });
+        }
 
-          this.wrapper.style.left = pix + 'px'
+        // right button
+        this.rightButton = document.createElement('button');
+        this.rightButton.innerHTML = '>>';
+        this.rightButton.style.right = 1 + 'px';
+        this.rightButton.addEventListener('click', () => this.next());
+        styleButton(this.rightButton);
+        this.container.appendChild(this.rightButton);
 
-          if(pix === parseInt(pt2 || '0')) {
-            clearInterval(timer);
-            this.flag =true;
-          }
-        }, 0.1);
-      })
-    });
-  }
+        // left button
+        this.leftButton = document.createElement('button');
+        this.leftButton.innerHTML = '<<';
+        this.leftButton.style.left =1 + 'px';
+        this.leftButton.addEventListener('click', () => this.previous());
+        styleButton(this.leftButton);
+        this.container.appendChild(this.leftButton);
+    }
+
+    configAutoSlide = () => {
+        this.autoSlideInterval = setInterval(() => {
+            if (this.index < this.images.length - 1)
+                this.index++;
+            else
+                this.index = 0;
+            this.move();
+        }, (this.delayTime + this.transitionTime) * 1000);
+    }
+
+    move = () => {
+        this.wrapper.animate([{ left: - this.index * parseFloat(this.width) + 'px'}], 
+        { duration: this.transitionTime*1000,iterations: 1,fill: 'forwards'});
+        this.radio[this.index].checked = true;
+
+        //reset 
+        clearInterval(this.autoSlideInterval);
+        this.configAutoSlide();
+    }
+    next = function() {if (this.index < this.images.length - 1) {this.index++;
+           this.move();
+       }
+       else {
+           this.index = 0;
+           this.move();
+       }
+   }
+    previous = function(){if (this.index > 0) {
+        this.index--;
+        this.move();
+    }
+    else {
+        this.index = this.images.length-1;
+        this.move();
+    }
 }
 
-//creating object
-const carousel = new Carousel(".carousel-container");
+    styleIndicator = function() {
+        this.radios.style.position = 'absolute';
+        this.radios.style.left = (parseFloat(this.width)/2) - (this.images.length*15/2) + 'px'; 
+        this.radios.style.bottom = '0px';
+    }
+
+    configIndicator = function() {
+        this.radios = document.createElement('div');
+        this.styleIndicator();
+
+        for (let i=0; i<this.images.length; i++) {
+            const radioBtn = document.createElement('input');
+            radioBtn.type = 'radio';
+            radioBtn.name = 'radio' + this.containerName;
+            radioBtn.style.margin = '0px 3px';
+            radioBtn.value = i; 
+            radioBtn.addEventListener('mouseover', () => radioBtn.style.cursor = 'pointer');
+
+            radioBtn.addEventListener('click', () => {
+                let prevIndex = this.index;
+                this.index = parseInt(radioBtn.value);
+
+                if (prevIndex == this.index)
+                    return; 
+                else {
+                    this.move();
+                }
+            });
+            this.radio.push(radioBtn);
+            this.radios.appendChild(radioBtn);        }
+        this.radio[0].checked = true;
+        this.container.appendChild(this.radios);
+    } 
+    
+
+}
+
+const carousel1 = new Carousel('.container-1', {transitionTime: 0.8, delayTime: 5});
+const carousel2 = new Carousel('.container-2', {transitionTime: 2, delayTime: 5});

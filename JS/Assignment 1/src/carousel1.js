@@ -44,22 +44,20 @@ class Carousel {
     function styleButton(btn) {
       btn.style.position = "absolute";
       btn.style.top = "50%";
+      btn.style.fontSize = '50px';
+      btn.style.color = 'white';
+      btn.style.border = 'none';
+      btn.style.backgroundColor = 'rgba(0,0,0,0)'; 
+      btn.addEventListener('mouseover', () => {
+        btn.style.cursor = 'pointer';
+    });
+    btn.addEventListener('mouseout', () => {
+      btn.style.cursor = 'none';
+    });
     }
-    // const handleClick = (event)=>{
-    //     // console.log(event.target.id);
-    //     var wrapper = document.getElementsByClassName("carousel-image-wrapper");
-    //    if(event.target.id==='nextbtn'){
-
-    //    }
-
-    //    else{
-
-    //    }
-    // }
-
     //next button
     this.nextButton = document.createElement("button");
-    this.nextButton.innerHTML = "next";
+    this.nextButton.innerHTML = ">>";
     this.nextButton.id = "nextbtn";
     styleButton(this.nextButton);
     this.nextButton.style.right = 0;
@@ -101,7 +99,7 @@ class Carousel {
 
     //prev button
     this.prevButton = document.createElement("button");
-    this.prevButton.innerHTML = "prev";
+    this.prevButton.innerHTML = "<<";
     this.prevButton.id = "prevbtn";
     styleButton(this.prevButton);
     ///clicks
@@ -145,6 +143,7 @@ class Carousel {
     this.indicators.style.bottom = "10px";
     this.indicators.style.display = "inline-block";
     this.indicators.style.transform = "translateX(-50%)";
+    
 
     for (var i = 0; i < this.imageCount; i++) {
       var dots = document.createElement("span");
@@ -157,27 +156,32 @@ class Carousel {
       dots.style.borderRadius = "15px";
       dots.style.cursor = "pointer";
       dots.className = "dot";
+     
       dots.setAttribute("data-id", i); // dot index value
-
       this.indicators.appendChild(dots);
     }
 
+   
+
     this.container.querySelectorAll(".indicators > span").forEach((item) => {
       item.addEventListener('click', () => {
-        this.currentIndex = item.getAttribute('data-id')
+        item.style.backgroundColor = "red";
+        this.currentIndex = item.getAttribute('data-id');
         let pt2 = -1*  this.currentIndex * parseInt(this.width);
-        let pix = parseInt(this.wrapper.style.left || '0')
-        let timer = setInterval(() => {
-          if(pix > pt2) pix--
-          else pix++
+        let pix = parseInt(this.wrapper.style.left || '0');
+        // item.style.backgroundColor = "#fff";
 
-          this.wrapper.style.left = pix + 'px'
+        let timer = setInterval(() => {
+          if(pix > pt2) pix--;
+          else pix++;
+          this.wrapper.style.left = pix + 'px';
 
           if(pix === parseInt(pt2 || '0')) {
-            clearInterval(timer)
+            clearInterval(timer);
           }
         }, 0.1);
       })
+      
     });
   }
 }

@@ -7,14 +7,9 @@
 .carousel-container {
   width: 500px;
   height: 500px;
-  /* overflow: hidden; */
+  overflow: hidden;
 
 
-}
-
-.carousel-image-wrapper {
-  /* width: 2500px; */
-  
 }
 
 .clearfix:after{
