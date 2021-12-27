@@ -2,7 +2,7 @@ ants = [];
 
 function initialize(antsCount) {
   for (let i = 0; i < antsCount; i++) {
-    let radius = RandomNumber(0, 20);
+    let radius = RandomNumber(5, 20);
     let x = RandomNumber(radius, canvas.width - radius);
     let y = RandomNumber(radius, canvas.height - radius);
     let dx = RandomNumber(0, 2);
@@ -32,28 +32,24 @@ function initialize(antsCount) {
 
     //
     const destroy = (ant) => {
-      const updatedAnts = ants.filter((items, index) => ant !== index);
-      ants = updatedAnts;
+      const aliveAnts = ants.filter((items, index) => ant !== index);
+      ants = aliveAnts;
     };
 
     canvas.addEventListener("click", (event) => {
       let x = event.x;
       let y = event.y;
-
       x -= canvas.offsetLeft;
       y -= canvas.offsetTop;
-
       for (let i = 0; i < ants.length; i++) {
         if (getDistance(x, y, ants[i].x, ants[i].y) <= ants[i].radius ** 2) {
           let audio = new Audio('audio/bruh.mp3');
           audio.play();
           destroy(i);
-
         }
       }
     });
   }
-
   //end:init
 }
 // ANIMATION LOOP
@@ -65,5 +61,5 @@ function animate() {
 }
 
 //calls
-initialize(35);
+initialize(25);
 animate();
