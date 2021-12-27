@@ -4,16 +4,20 @@ const ctx = canvas.getContext("2d");
 canvas.height = 500;
 canvas.width = 500;
 
-class Ball {
-  constructor(x, y, radius, dx, dy, color) {
+class Ant {
+  constructor(x, y, radius, dx, dy, img) {
     this.x = x;
     this.y = y;
     this.radius = radius;
     this.dx = dx;
     this.dy = dy;
-    this.color = color;
+    this.img=img;
+    // this.color = color;
     this.mass =1 ;
   }
+
+
+  
 
   detectWallCollision = () => {
     if (this.x + this.radius > canvas.width || this.x - this.radius <= 0) {
@@ -27,18 +31,18 @@ class Ball {
 
   };
 
-  resolveCollision = (otherBall) => {
-    const xVelocityDiff = this.dx - otherBall.dx;
-    const yVelocityDiff = this.dy - otherBall.dy;
+  resolveCollision = (otherAnt) => {
+    const xVelocityDiff = this.dx - otherAnt.dx;
+    const yVelocityDiff = this.dy - otherAnt.dy;
 
-    let xDist = otherBall.x - this.x;
-    let yDist = otherBall.y - this.y;
+    let xDist = otherAnt.x - this.x;
+    let yDist = otherAnt.y - this.y;
 
 
 
       if(xVelocityDiff * xDist + yVelocityDiff * yDist >=0){
         // const u1 = {x:this.dx,y:this.dy};
-        // const u2 = {x:otherBall.dx,y:otherBall.dy};
+        // const u2 = {x:otherAnt.dx,y:otherAnt.dy};
         // const m1 = this.mass;
         // const m2 = this.mass;
 
@@ -47,15 +51,15 @@ class Ball {
 
         // this.dx = v1.x;
         // this.dy = v1.y;
-        // otherBall.dx = v2.x;
-        // otherBall.dy = v2.y;
+        // otherAnt.dx = v2.x;
+        // otherAnt.dy = v2.y;
           
     let collisionVector = { 
-        x: this.x - otherBall.x,
-        y: this.y - otherBall.y 
+        x: this.x - otherAnt.x,
+        y: this.y - otherAnt.y 
       };
       let distance = Math.sqrt(
-        getDistance(this.x, this.y, otherBall.x, otherBall.y)
+        getDistance(this.x, this.y, otherAnt.x, otherAnt.y)
       );
   
       // Unit vector 
@@ -65,47 +69,46 @@ class Ball {
       };
   
       let relativeVelocity = {
-        x: this.dx - otherBall.dx,
-        y: this.dy - otherBall.dy,
+        x: this.dx - otherAnt.dx,
+        y: this.dy - otherAnt.dy,
       };
       //calc speed
       let speed =
         relativeVelocity.x * unitVector.x + relativeVelocity.y * unitVector.y;
   
-      let impulse = (2 * speed) / (this.mass + otherBall.mass);
+      let impulse = (2 * speed) / (this.mass + otherAnt.mass);
   
-      this.dx -= impulse * otherBall.mass * unitVector.x;
-      this.dy -= speed * otherBall.mass * unitVector.y;
-      otherBall.dx += speed * this.mass * unitVector.x;
-      otherBall.dy += speed * this.mass * unitVector.y;
+      this.dx -= impulse * otherAnt.mass * unitVector.x;
+      this.dy -= speed * otherAnt.mass * unitVector.y;
+      otherAnt.dx += speed * this.mass * unitVector.x;
+      otherAnt.dy += speed * this.mass * unitVector.y;
 
       }
     
 
   }
   detectBallCollision = () => {
-    this.detectWallCollision();
+    
 
-    for (let i = 0; i < balls.length; i++) {
+    for (let i = 0; i < ants.length; i++) {
         //checking with itself
-      if (this === balls[i]) continue;
+      if (this === ants[i]) continue;
 
-      if (getDistance(this.x, this.y, balls[i].x, balls[i].y) <=
-        (this.radius + balls[i].radius) ** 2) {
-        this.resolveCollision(balls[i]);
+      if (getDistance(this.x, this.y, ants[i].x, ants[i].y) <=
+        (this.radius + ants[i].radius) ** 2) {
+        this.resolveCollision(ants[i]);
        
       }
     }
   };
   draw = () => {
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
-    ctx.fill();
+    ctx.drawImage(this.img, this.x - this.radius, this.y - this.radius);
     ctx.closePath();
   };
   move = () => {
     this.detectBallCollision();
+    this.detectWallCollision();
     this.x += this.dx;
     this.y += this.dy;
     this.draw();
