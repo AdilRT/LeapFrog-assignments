@@ -61,7 +61,7 @@ class Obstacle{
     constructor(){
         this.x = getRandomPosition(possibleObstaclePosition);
         this.y = 0;
-        this.speed = 4;
+        this.speed = speed;
     }
 
     drawObstacle(){
@@ -71,17 +71,21 @@ class Obstacle{
         obstacle.onload =()=>{
             let moveObstacle = () =>{
                 ctx.drawImage(obstacle,this.x,this.y,playerCarWidth,playerCarHeight);
-                this.y += 10;
-                // console.log(y);
+                this.y += speed;
     
             if(this.y>=canvas.height){
                 this.y=-800;
                 this.x = getRandomPosition(possibleObstaclePosition);
                 score+=1;
-                // _('.score').innerText = score;
-
+                if (speed < 50) {
+                    speed += 1;
+                    this.speed = speed / 2;
+                  }
+                // _('.score').innerText = score; 
             } 
+
             
+ 
             this.detectCollision();
             if (gamePaused) return;
             //recursively call moveRoad hence infinite loop
@@ -131,8 +135,8 @@ const displayScore=(score)=>{
     // ctx.globalCompositeOperation='source-over';
 }
 
-
-//gameover:state management
+//increase speed
+let increaseSpeed = function(){}
 
 
 

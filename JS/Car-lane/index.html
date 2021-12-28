@@ -1,36 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Car Lane</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="viewport">
-        <!-- START -->
-        <div class="start-screen">
-            <h1 id="start">Start</h1>        
+      <!-- START -->
+      <div class="start-screen">
+        <div class="inner">
+          <h1>Car Racing Game</h1>
+          <div class="instructions">
+            <h3>Instructions</h3>
+
+            <p>Use left and right arrow keys to change the lanes</p>
+          </div>
+
+          <div class="high-score">
+            <h3>High Score: <span>0</span></h3>
+          </div>
+          <button id="start">Start</button>
         </div>
-        <!-- CANVAS -->
-        <canvas id="canvas1"></canvas>
-        <!-- GAMEOVER -->
-        <div class="game-over-screen">
-            <div class="score">
-                <h1>0</h1>
-            </div>
-            <div >
-                <h1 id="replay">Replay?</h1>
-            </div>
+      </div>
+      <!-- CANVAS -->
+      <canvas id="canvas1"></canvas>
+      <!-- GAMEOVER -->
+      <div class="game-over-screen">
+        <div>
+          <h1>Game Over</h1>
+          <div class="current-score">
+            <p>You could not beat the previous high score.</p>
+            <p>Your score is <strong>15</strong>.</p>
+          </div>
+          <div class="new-highscore">
+            <p>Congratulations New high score</p>
+            <p>Now new high score is <strong>15</strong>.</p>
+          </div>
+          <!-- <button id="replay">Replay??</button> -->
         </div>
+
+        <div class="score">
+        </div>
+      </div>
     </div>
-
-
 
     <script src="src/utils.js"></script>
     <script src="src/game.js"></script>
     <script src="src/script.js"></script>
-    
-</body>
+  </body>
 </html>
