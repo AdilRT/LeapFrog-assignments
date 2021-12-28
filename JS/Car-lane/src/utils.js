@@ -8,3 +8,7 @@ function getRandomPosition(arr) {
       if (randomNum !== 0) return randomNum;
     }
   }
+
+  function _(selector) {
+    return document.querySelector(selector);
+  }
