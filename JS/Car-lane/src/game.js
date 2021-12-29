@@ -119,9 +119,10 @@ class Obstacle{
         }
     }
     isShot = () => {
-        if (this.x + 70 === bulletPositionX && bulletPositionY - this.y <= 179) {
-          bulletPositionX = playerCarPositionX + 70;
-          bulletPositionY = canvas.height - (179 + 30);
+        if (this.x + 40 === bulletPositionX && bulletPositionY - this.y <= 150) {
+          bulletPositionX = playerCarPositionX + 40;
+          bulletPositionY = canvas.height - playerCarHeight;
+
           isShooting = false;
     
           this.y = -(canvas.height - this.y) - 400;
@@ -151,8 +152,9 @@ document.addEventListener("keydown",(event)=>{
       if (event.code === 'Space' && canShoot) {
         tick = 0;
         isShooting = true;
-        bulletPositionX = playerCarPositionX + 70;
-        bulletPositionY = canvas.height - (179 + 30);
+        bulletPositionX = playerCarPositionX + 40;
+        bulletPositionY = canvas.height - playerCarHeight;
+
         drawBullet();
         canShoot = false;
         // console.log(tick);
@@ -183,8 +185,9 @@ function drawBullet() {
         
         //if missed target
         if (bulletPositionY === -bullet.height) {
-          bulletPositionX = playerCarPositionX + 70;
-          bulletPositionY = canvas.height - (179 + 30);
+          bulletPositionX = playerCarPositionX + 40;
+          bulletPositionY = canvas.height - playerCarHeight;
+
           isShooting = false;
           canShoot = false;
         }
