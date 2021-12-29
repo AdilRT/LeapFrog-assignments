@@ -183,8 +183,8 @@ function drawBullet() {
         
         //if missed target
         if (bulletPositionY === -bullet.height) {
-          // bulletPositionX = playerCarPositionX + 70;
-          // bulletPositionY = canvas.height - (179 + 30);
+          bulletPositionX = playerCarPositionX + 70;
+          bulletPositionY = canvas.height - (179 + 30);
           isShooting = false;
           canShoot = false;
         }
