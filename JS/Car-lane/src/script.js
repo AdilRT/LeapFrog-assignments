@@ -5,8 +5,10 @@ function init() {
   drawLane();
   drawPlayer();
 
-  const obstacle1 = new Obstacle();
+  const obstacle1 = new Obstacle(-1000);
+  const obstacle2 = new Obstacle(-500);
   obstacle1.drawObstacle();
+  obstacle2.drawObstacle();
 }
 //states
 
@@ -36,4 +38,5 @@ _("#start").addEventListener("click", () => {
   // _('.game-over-screen').style.display = 'none';
   init();
 });
+
 

@@ -13,6 +13,8 @@ let playerCarPositionY= canvas.height - playerCarHeight;
 let possibleObstaclePosition = [45,215,385];
 let score =0;
 let gamePaused = true;
+let tick = 0;
+let canShoot = false;
 
 
 //draw lane
@@ -26,9 +28,16 @@ function drawLane(){
             ctx.drawImage(road,0,y-canvas.height,canvas.width,canvas.height*2);
             y += speed;
         if(y>=canvas.height) y=0;
+        tick++;
+        if (tick === 300) {
+            tick = 0;
+            canShoot = true;    
+
+          }
+          if (gamePaused) return;
         //recursively call moveRoad hence infinite loop
         requestAnimationFrame(moveRoad);//handles transition isntead of setInterval
-        drawPlayer();
+        // drawPlayer();
         }
         moveRoad();
         
@@ -39,7 +48,7 @@ function drawLane(){
 //draw player
 
 function drawPlayer () {
-    const player = new Image();
+    let player = new Image();
     player.src = 'images/player.png';
 
     player.onload=()=>{
@@ -58,15 +67,15 @@ function drawPlayer () {
 //draw obstacle
 
 class Obstacle{
-    constructor(){
+    constructor(y){
         this.x = getRandomPosition(possibleObstaclePosition);
-        this.y = 0;
+        this.y = y;
         this.speed = speed;
     }
 
     drawObstacle(){
-        const obstacle = new Image();
-        obstacle.src = 'images/player.png';
+        var obstacle = new Image();
+        obstacle.src = 'images/enemy.png';
 
         obstacle.onload =()=>{
             let moveObstacle = () =>{
@@ -77,7 +86,7 @@ class Obstacle{
                 this.y=-800;
                 this.x = getRandomPosition(possibleObstaclePosition);
                 score+=1;
-                if (speed < 50) {
+                if (speed <5100) {
                     speed += 1;
                     this.speed = speed / 2;
                   }
@@ -86,7 +95,9 @@ class Obstacle{
 
             
  
-            this.detectCollision();
+            this.detectCollision(obstacle);
+        if (isShooting) this.isShot();
+
             if (gamePaused) return;
             //recursively call moveRoad hence infinite loop
             requestAnimationFrame(moveObstacle);
@@ -95,13 +106,28 @@ class Obstacle{
             moveObstacle();
         }
     }
-    detectCollision = ()=>{
+    detectCollision = (obstacle)=>{
         if(this.x === playerCarPositionX && (playerCarPositionY-this.y)<10){
+          let audio = new Audio('audio/car-crash.mp3');
+          audio.play(); 
+ 
             gameOver();   
             gamePaused =true;
-            console.log('boom');
+            tick = 0;
+            canShoot = false;
+            return;
         }
     }
+    isShot = () => {
+        if (this.x + 70 === bulletPositionX && bulletPositionY - this.y <= 179) {
+          bulletPositionX = playerCarPositionX + 70;
+          bulletPositionY = canvas.height - (179 + 30);
+          isShooting = false;
+    
+          this.y = -(canvas.height - this.y) - 400;
+          this.x = getRandomPosition(possibleObstaclePosition);
+        }
+      };
 
 
 }
@@ -122,21 +148,56 @@ document.addEventListener("keydown",(event)=>{
         index++;
         if (index > laneCount - 1) index = laneCount - 1;
       }
+      if (event.code === 'Space' && canShoot) {
+        tick = 0;
+        isShooting = true;
+        bulletPositionX = playerCarPositionX + 70;
+        bulletPositionY = canvas.height - (179 + 30);
+        drawBullet();
+        canShoot = false;
+        console.log(tick);
+
+      }
       const laneMapValue = laneMap[index];
 
     playerCarPositionX= laneMapValue;
 
 })
-//score
-const displayScore=(score)=>{
-    ctx.font = "30px Arial";
-    ctx.fillText(score, 10, 50);
-    // requestAnimationFrame(displayScore)
-    // ctx.globalCompositeOperation='source-over';
-}
 
-//increase speed
-let increaseSpeed = function(){}
+// draw bullets
+
+let isShooting = false;
+let bulletPositionX = playerCarPositionX;
+let bulletPositionY = canvas.height - playerCarHeight;
+
+
+
+function drawBullet() {
+    const bullet = new Image();
+    bullet.src = 'images/bullet.png';
+  
+    bullet.onload = () => {
+      function Bullet() {
+        ctx.drawImage(bullet, bulletPositionX, bulletPositionY);
+        if (!isShooting) return;
+        
+        //if missed target
+        if (bulletPositionY === -bullet.height) {
+          // bulletPositionX = playerCarPositionX + 70;
+          // bulletPositionY = canvas.height - (179 + 30);
+          isShooting = false;
+          canShoot = false;
+        }
+
+        bulletPositionY = bulletPositionY - 5;
+  
+        requestAnimationFrame(Bullet);
+      }
+  
+      Bullet();
+    };
+  }
+
 
 
 
