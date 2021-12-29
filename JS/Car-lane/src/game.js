@@ -155,7 +155,7 @@ document.addEventListener("keydown",(event)=>{
         bulletPositionY = canvas.height - (179 + 30);
         drawBullet();
         canShoot = false;
-        console.log(tick);
+        // console.log(tick);
 
       }
       const laneMapValue = laneMap[index];
