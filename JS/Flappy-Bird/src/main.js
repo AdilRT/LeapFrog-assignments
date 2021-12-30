@@ -69,9 +69,7 @@ function animate() {
     ctx.fillText(score.value, canvas.width / 2, 70);
   }
   detectCollision();
-  if (detectCollision() == true) {
-    cancelAnimationFrame(animate); //freeze
-  }
+  if (detectCollision() == true) return;
   if (willAnimate) {
     requestAnimationFrame(animate); //render animation loop by recursion
   }
