@@ -1,16 +1,14 @@
 //canvas setup
-const canvas = document.getElementById('canvas1');
-const ctx = canvas.getContext('2d'); //to use built in canvas methods   
-canvas.width = 500;
-canvas.height = 600;
+const canvas = document.getElementById("canvas1");
+const ctx = canvas.getContext("2d"); //to use built in canvas methods
+canvas.width = CANVAS_WIDTH;
+canvas.height = CANVAS_HEIGHT;
 
-const crash= new Image();
-crash.src = 'images/crash1.png';
+const crash = new Image();
+crash.src = "images/crash1.png";
 
 const background = new Image();
-background.src = 'images/background.jpg';
+background.src = "images/background.jpg";
 
 const flappySprite = new Image();
-flappySprite.src = 'images/flappy-bird-sprite-sheet-2.png';
-
-
+flappySprite.src = "images/flappy-bird-sprite-sheet-2.png";

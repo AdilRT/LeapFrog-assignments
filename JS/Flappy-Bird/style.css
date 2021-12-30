@@ -1,11 +1,11 @@
-@import url(//db.onlinewebfonts.com/c/364d81f3f71bc524d2235f8b406e732b?family=Flappy+Bird);
 
-#canvas1{
-    width: 600px;
-    height: 650px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    border: 2px solid red;
+#canvas1 {
+  width: 600px;
+  height: 650px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid black;
+  border-radius: 20px;
 }
