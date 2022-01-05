@@ -12,51 +12,25 @@ class BlueWhale extends Enemy {
       // this.speed = Math.random()*0.1+0.1;
     }
     draw = () => {
-      ctx.fillStyle = "black";
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.closePath();
+      // ctx.fillStyle = "black";
+      // ctx.beginPath();
+      // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      // ctx.fill();
+      // ctx.closePath();
       //ROTATE
       ctx.save(); 
       ctx.translate(this.x, this.y);
       ctx.rotate(this.angle);
       // drawing player fish
       if (mouse.x < this.x) {
-        let position =
-          Math.floor(gameFrame / 20) %
-          BlueWhaleAnimation["left"].loc.length;
-        let frameX = position * this.spriteWidth;
-        let frameY = BlueWhaleAnimation["left"].loc[position].y;
-        ctx.drawImage(
-          this.image,
-          frameX,
-          frameY,
-          this.spriteWidth,
-          this.spriteHeight,
-          0,
-          0,
-          this.spriteWidth,
-          this.spriteHeight
-        );
+
+      decidePlayerState(this.image, "left",BlueWhaleAnimation,this.spriteWidth,this.spriteHeight,-65,-60);
+
       } 
-      else {
-        let position =
-          Math.floor(gameFrame / staggerFrame) %
-          BlueWhaleAnimation["right"].loc.length;
-        let frameX = position * this.spriteWidth;
-        let frameY = BlueWhaleAnimation["right"].loc[position].y;
-        ctx.drawImage(
-          this.image_flipped,
-          frameX,
-          frameY,
-          this.spriteWidth,
-          this.spriteHeight,
-          0,
-          0,
-          this.spriteWidth,
-          this.spriteHeight
-        );
+      else if(mouse.x> this.x) {
+
+      decidePlayerState(this.image_flipped, "right",BlueWhaleAnimation,this.spriteWidth,this.spriteHeight,-65,-60);
+
       }
       ctx.restore();
     };

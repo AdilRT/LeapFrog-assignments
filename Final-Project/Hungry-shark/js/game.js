@@ -11,7 +11,7 @@ let canvasPosition = canvas.getBoundingClientRect();
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   handleBackground();
-  handleBubbles();
+  // handleBubbles();
   handlePlayer();
   handleEnemies();
   //show score

@@ -1,7 +1,7 @@
 //3:create Player
 class Player {
   constructor() {
-    this.x = canvas.width/2;
+    this.x = canvas.width / 2;
     this.y = canvas.height / 2;
     this.radius = 60;
     this.angle = 0; //use it rotate the character//always face where you move
@@ -9,6 +9,7 @@ class Player {
     this.frameX = 0;
     this.frameY = 0;
     this.frame = 0;
+    this.collision = false;
     // this.spriteWidth = 194; //633/10;//spritesheet/noofimage in 1 row
     // this.spriteHeight = 95; //183/6
   }
@@ -37,61 +38,62 @@ class Player {
     //   ctx.lineTo(mouse.x, mouse.y);
     //   ctx.stroke();
     // }
-    //draw player
-        // ctx.fillStyle = "red";
-        // ctx.beginPath();
-        // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        // ctx.fill();
-        // ctx.closePath();
+
+    //DRAW PLAYER HITBOX
+    // ctx.fillStyle = "red";
+    // ctx.beginPath();
+    // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    // ctx.fill();
+    // ctx.closePath();
 
     //figuring postion of each sprite
 
-                                                                            //ROTATING the Shark
+    //ROTATING the Shark
     ctx.save(); //saing current canvas settings
     ctx.translate(this.x, this.y);
     ctx.rotate(this.angle);
     // drawing player fish
-    if (mouse.x < this.x) {
-      let position =
-        Math.floor(gameFrame / staggerFrame) %
-        spriteAnimation['left'].loc.length;
-      let frameX = position * PlayerspriteWidth;
-      let frameY = spriteAnimation['left'].loc[position].y;
-      ctx.drawImage(
-        playerImage,
-        frameX,
-        frameY,
-        PlayerspriteWidth,
-        PlayerspriteHeight,
-        0-60,
-        0-50,
-        PlayerspriteWidth,
-        PlayerspriteHeight
-      );
-    } else {
-        let position =
-        Math.floor(gameFrame / staggerFrame) %
-        spriteAnimation['right-to-left'].loc.length;
-      let frameX = position * PlayerspriteWidth;
-      let frameY = spriteAnimation['right-to-left'].loc[position].y;
-      ctx.drawImage(
-        playerImageFlipped,
-        frameX,
-        frameY,
-        PlayerspriteWidth,
-        PlayerspriteHeight,
-        0-60,
-        0-50,
-        PlayerspriteWidth,
-        PlayerspriteHeight
-      );
-      
+    if (mouse.x <= this.x && !this.collision) {
+      decidePlayerState(playerImage, "left",spriteAnimation,PlayerspriteWidth,PlayerspriteHeight,-60,-50);
+
+    } 
+    else if (mouse.x > this.x && !this.collision) {
+      decidePlayerState(playerImageFlipped, "right-to-left",spriteAnimation,PlayerspriteWidth,PlayerspriteHeight,-60,-50);
     }
+    else if (mouse.x <= this.x && this.collision) {
+      decidePlayerState(playerImageBite, "left-bite",SharkBiteAnimation,SharkBiteSpriteWidth,SharkBiteSpriteHeight,-60,-50);
+      // this.collision = false;
+    }
+    else if (mouse.x > this.x && this.collision) {
+      decidePlayerState(playerImageBiteFlipped, "right-bite",SharkBiteAnimation,SharkBiteSpriteWidth,SharkBiteSpriteHeight,-60,-50);
+      // this.collision = false;
+
+    }
+
     //restores all translate nad rotate calls back to the state when save was called
     ctx.restore(); //this ways only player will get translated and rotated and other elelments remains the same
   };
 
   //end of Player class
+}
+//decidePlayerState
+function decidePlayerState(img, playerState,animation,spriteWidth,spriteHeight,imgWidth,imgHeight) {
+  let position =
+    Math.floor(gameFrame / staggerFrame) %
+    animation[playerState].loc.length;
+  let frameX = position * spriteWidth;
+  let frameY = animation[playerState].loc[position].y;
+  ctx.drawImage(
+    img,
+    frameX,
+    frameY,
+    spriteWidth,
+    spriteHeight,
+    imgWidth,
+    imgHeight,
+    spriteWidth,
+    spriteHeight
+  );
 }
 
 //playerHandler

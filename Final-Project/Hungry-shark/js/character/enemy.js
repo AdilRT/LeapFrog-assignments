@@ -46,8 +46,6 @@ class Enemy {
   // };
 }
 
-
-
 //HANDLER
 const enemyArray = [];
 function handleEnemies() {
@@ -84,7 +82,8 @@ function handleEnemies() {
     else if (enemyArray[i].distance < enemyArray[i].radius + player.radius) {
       console.log("collided");
       if (enemyArray[i].counted == false) {
-            sharkBite.play();
+        player.collision = true;
+        sharkBite.play();
         score++;
         enemyArray[i].counted = true;
         enemyArray.splice(i, 1);

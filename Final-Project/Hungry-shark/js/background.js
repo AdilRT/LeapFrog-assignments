@@ -20,4 +20,5 @@ function handleBackground(){
     if(BG.x2 < -BG.width) BG.x2 = BG.width;
     ctx.drawImage(background,BG.x1,BG.y,BG.width,BG.height);
     ctx.drawImage(background,BG.x2,BG.y,BG.width,BG.height);
+
 }
