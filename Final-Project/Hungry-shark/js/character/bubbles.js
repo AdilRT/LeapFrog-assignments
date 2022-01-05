@@ -1,7 +1,7 @@
 //4:handle bubbles & score
 //BUBBLE IMAGE
 const bubbleImage = new Image();
-// bubbleImage.src = 'images/bubbles/bubble_pop_under_water_01.png';
+bubbleImage.src = 'images/bubbles/bubble_pop_under_water_01.png';
 
 class Bubble {
     constructor() {
@@ -22,12 +22,12 @@ class Bubble {
     }
   
     draw() {
-      ctx.fillStyle = "blue";
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.closePath();
-      ctx.stroke();
+      // ctx.fillStyle = "blue";
+      // ctx.beginPath();
+      // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      // ctx.fill();
+      // ctx.closePath();
+      // ctx.stroke();
       ctx.drawImage(bubbleImage,this.x-15,this.y-15,this.radius*2,this.radius*2.5);
     }
     //endofBubbles
@@ -56,10 +56,14 @@ const bubblesArray = [];
                 //checking collision
         else if (bubblesArray[i].distance < bubblesArray[i].radius + player.radius) {
             console.log("collided");
+            bubblePop.play();
             if (bubblesArray[i].counted == false) {
               // if(bubblesArray[i].sound == 'sound1'){
-              //     bubblePop1.play();
+              // bubblePop1.play();
               // }
+            
+
+
               score++;
               bubblesArray[i].counted = true;
               bubblesArray.splice(i, 1);

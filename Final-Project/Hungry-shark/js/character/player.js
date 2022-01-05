@@ -30,25 +30,23 @@ class Player {
    */
   draw = () => {
     //draw player path
-    if (mouse.click) {
-      ctx.lineWidth = 0.2;
-      ctx.beginPath();
-      ctx.moveTo(this.x, this.y);
-      ctx.lineTo(mouse.x, mouse.y);
-      ctx.stroke();
-    }
+    // if (mouse.click) {
+    //   ctx.lineWidth = 0.2;
+    //   ctx.beginPath();
+    //   ctx.moveTo(this.x, this.y);
+    //   ctx.lineTo(mouse.x, mouse.y);
+    //   ctx.stroke();
+    // }
     //draw player
-    ctx.fillStyle = "red";
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.arc(-50,this.y , this.radius, 0, Math.PI * 2);
-    // ctx.rect(this.x, this.y, this.width, this.height);
-    ctx.fill();
-    ctx.closePath();
+        // ctx.fillStyle = "red";
+        // ctx.beginPath();
+        // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        // ctx.fill();
+        // ctx.closePath();
 
     //figuring postion of each sprite
 
-    //ROTATING the Shark
+                                                                            //ROTATING the Shark
     ctx.save(); //saing current canvas settings
     ctx.translate(this.x, this.y);
     ctx.rotate(this.angle);
@@ -56,9 +54,9 @@ class Player {
     if (mouse.x < this.x) {
       let position =
         Math.floor(gameFrame / staggerFrame) %
-        spriteAnimation[playerState].loc.length;
+        spriteAnimation['left'].loc.length;
       let frameX = position * PlayerspriteWidth;
-      let frameY = spriteAnimation[playerState].loc[position].y;
+      let frameY = spriteAnimation['left'].loc[position].y;
       ctx.drawImage(
         playerImage,
         frameX,

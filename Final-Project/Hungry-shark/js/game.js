@@ -1,10 +1,9 @@
 
-// Globals
+// Globals vars
 let score = 0;
 let gameFrame = 0; //eg.spawn new bubles every 100 frames
 ctx.font = "50px Georgia";
 let gameSpeed = 1;
-//2:Mouse Interactivity:
 let canvasPosition = canvas.getBoundingClientRect();
 
 //5:put all the above inside animation loop
@@ -12,7 +11,7 @@ let canvasPosition = canvas.getBoundingClientRect();
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   handleBackground();
-  // handleBubbles();
+  handleBubbles();
   handlePlayer();
   handleEnemies();
   //show score
@@ -22,8 +21,12 @@ function animate() {
   gameFrame++;
   requestAnimationFrame(animate);
 }
+
+//calls
+const preloader = new PreLoader();
 animate();
 
+//for responsive clicks
 window.addEventListener("resize", function () {
   canvasPosition = canvas.getBoundingClientRect();
 });
