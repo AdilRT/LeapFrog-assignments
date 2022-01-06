@@ -11,19 +11,19 @@ let canvasPosition = canvas.getBoundingClientRect();
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   handleBackground();
-  // handleBubbles();
+  handleBubbles();
   handlePlayer();
   handleEnemies();
-  //show score
-  ctx.fillStyle = "black";
-  ctx.fillText("score:" + score, 10, 50);
-  //
+
   gameFrame++;
-  requestAnimationFrame(animate);
+  if(!gameOver){
+    requestAnimationFrame(animate);
+  }
 }
 
 //calls
 const preloader = new PreLoader();
+// if(start)
 animate();
 
 //for responsive clicks

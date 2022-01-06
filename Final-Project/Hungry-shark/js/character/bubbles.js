@@ -11,7 +11,7 @@ class Bubble {
       this.speed = Math.random() * 5 + 1;
       this.distance;
       this.counted = false;
-      this.sound = Math.random() <= 0.5 ? "sound1" : "sound2";
+      // this.sound = Math.random() <= 0.5 ? "sound1" : "sound2";
     }
   
     update() {
@@ -61,13 +61,10 @@ const bubblesArray = [];
               // if(bubblesArray[i].sound == 'sound1'){
               // bubblePop1.play();
               // }
-            
-
-
               score++;
               bubblesArray[i].counted = true;
               bubblesArray.splice(i, 1);
-              i--
+              i--;
             }
           }
         

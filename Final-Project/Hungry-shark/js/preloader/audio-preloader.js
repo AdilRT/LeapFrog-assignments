@@ -11,7 +11,9 @@ function AudioLoader(){
           audio.src = this.audios[i];
           audio.addEventListener("canplay", () => {
             this.loadedAudios++;
-
+            // if (this.loadedAudios == this.audios.length) {
+            //   startPage();
+            // }
           });
         }
       }

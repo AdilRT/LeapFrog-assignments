@@ -12,6 +12,9 @@ class Player {
     this.collision = false;
     // this.spriteWidth = 194; //633/10;//spritesheet/noofimage in 1 row
     // this.spriteHeight = 95; //183/6
+    this.health = 100;
+    this.maxHealth = this.health;
+
   }
   //update Player position ot the cursor
   update = () => {
@@ -25,6 +28,8 @@ class Player {
     if (mouse.y != this.y) {
       this.y -= dy / 30;
     }
+
+    
   };
   /**
    * DRAW
@@ -45,8 +50,8 @@ class Player {
     // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
     // ctx.fill();
     // ctx.closePath();
-
-    //figuring postion of each sprite
+    ctx.font = "20px Orbitron";
+    ctx.fillText(Math.floor(this.health), this.x, this.y);
 
     //ROTATING the Shark
     ctx.save(); //saing current canvas settings
@@ -54,20 +59,59 @@ class Player {
     ctx.rotate(this.angle);
     // drawing player fish
     if (mouse.x <= this.x && !this.collision) {
-      decidePlayerState(playerImage, "left",spriteAnimation,PlayerspriteWidth,PlayerspriteHeight,-60,-50);
-
-    } 
-    else if (mouse.x > this.x && !this.collision) {
-      decidePlayerState(playerImageFlipped, "right-to-left",spriteAnimation,PlayerspriteWidth,PlayerspriteHeight,-60,-50);
-    }
-    else if (mouse.x <= this.x && this.collision) {
-      decidePlayerState(playerImageBite, "left-bite",SharkBiteAnimation,SharkBiteSpriteWidth,SharkBiteSpriteHeight,-60,-50);
+      drawCharacter(
+        playerImage,
+        "left",
+        spriteAnimation,
+        PlayerspriteWidth,
+        PlayerspriteHeight,
+        -60,
+        -50,
+        PlayerspriteWidth,
+        PlayerspriteHeight,
+        10
+      );
+    } else if (mouse.x > this.x && !this.collision) {
+      drawCharacter(
+        playerImageFlipped,
+        "right-to-left",
+        spriteAnimation,
+        PlayerspriteWidth,
+        PlayerspriteHeight,
+        -60,
+        -50,
+        PlayerspriteWidth,
+        PlayerspriteHeight,
+        10
+      );
+    } else if (mouse.x <= this.x && this.collision) {
+      drawCharacter(
+        playerImageBite,
+        "left-bite",
+        SharkBiteAnimation,
+        SharkBiteSpriteWidth,
+        SharkBiteSpriteHeight,
+        -60,
+        -50,
+        SharkBiteSpriteWidth,
+        SharkBiteSpriteHeight,
+        10
+      );
       // this.collision = false;
-    }
-    else if (mouse.x > this.x && this.collision) {
-      decidePlayerState(playerImageBiteFlipped, "right-bite",SharkBiteAnimation,SharkBiteSpriteWidth,SharkBiteSpriteHeight,-60,-50);
+    } else if (mouse.x > this.x && this.collision) {
+      drawCharacter(
+        playerImageBiteFlipped,
+        "right-bite",
+        SharkBiteAnimation,
+        SharkBiteSpriteWidth,
+        SharkBiteSpriteHeight,
+        -60,
+        -50,
+        SharkBiteSpriteWidth,
+        SharkBiteSpriteHeight,
+        10
+      );
       // this.collision = false;
-
     }
 
     //restores all translate nad rotate calls back to the state when save was called
@@ -76,11 +120,21 @@ class Player {
 
   //end of Player class
 }
-//decidePlayerState
-function decidePlayerState(img, playerState,animation,spriteWidth,spriteHeight,imgWidth,imgHeight) {
+//drawCharacter
+function drawCharacter(
+  img,
+  playerState,
+  animation,
+  spriteWidth,
+  spriteHeight,
+  imgPosX,
+  imgPosY,
+  imgWidth,
+  imgHeight,
+  staggerFrame
+) {
   let position =
-    Math.floor(gameFrame / staggerFrame) %
-    animation[playerState].loc.length;
+    Math.floor(gameFrame / staggerFrame) % animation[playerState].loc.length;
   let frameX = position * spriteWidth;
   let frameY = animation[playerState].loc[position].y;
   ctx.drawImage(
@@ -89,15 +143,19 @@ function decidePlayerState(img, playerState,animation,spriteWidth,spriteHeight,i
     frameY,
     spriteWidth,
     spriteHeight,
+    imgPosX,
+    imgPosY,
     imgWidth,
-    imgHeight,
-    spriteWidth,
-    spriteHeight
+    imgHeight
   );
 }
 
 //playerHandler
 function handlePlayer() {
+  if(player.health<=0 ) {
+    gameOver=true;
+    overPage();
+  }
   player.update();
   player.draw();
 }

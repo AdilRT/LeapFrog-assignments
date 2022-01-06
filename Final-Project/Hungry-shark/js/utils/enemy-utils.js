@@ -1,8 +1,7 @@
 //PALYER ANIMATION
 
 //BLUE WHALE
-const BlueWhaleSpriteWidth =771/4;//1940/10;
-const BlueWhaleSpriteHeight = 198/2;//562/6
+
 let BlueWhaleAnimation = [];
 let BlueWhaleStates = [
     {
@@ -19,8 +18,7 @@ spriteHandler(BlueWhaleStates,BlueWhaleSpriteWidth,BlueWhaleSpriteHeight,BlueWha
 
 
 //SPIKY FISH
-const SpikyFishSpriteWidth =304/6;//1940/10;
-const SpikyFishSpriteHeight = 182/3;//562/6
+
 let SpikyFishAnimation = [];
 let SpikyFishStates = [
     {
@@ -39,6 +37,62 @@ let SpikyFishStates = [
 ]
 spriteHandler(SpikyFishStates,SpikyFishSpriteWidth,SpikyFishSpriteHeight,SpikyFishAnimation);
 
+//JELLY FISH
 
+let JellyFishAnimation = [];
+let JellyFishStates = [
+    {
+        name:'blue',
+        frames:6,
+    },
+    {
+        name:'purple',
+        frames:6,
+    },
+    {
+        name:'pink',
+        frames:6,
+    },
+    {
+        name:'darkblue',
+        frames:6,
+    },    {
+        name:'green',
+        frames:6,
+    },
+    
+]
+spriteHandler(JellyFishStates,JellyFishSpriteWidth,JellyFishSpriteHeight,JellyFishAnimation);
 
+//BROWN FISH
 
+// let gameFrame = 0;
+let BrownFishAnimation = [];
+let BrownFishStates = [
+    {
+        name:'left-to-right',
+        frames:13,
+    },
+    {
+        name:'right-to-left',
+        frames:13,
+    },
+    {
+        name:'left',
+        frames:10,
+    },
+    {
+        name:'right',
+        frames:10,
+    },
+    {
+        name:'left-eat',
+        frames:3,
+    },
+    {
+        name:'right-eat',
+        frames:3,
+    }
+]
+
+spriteHandler(BrownFishStates,BrownFishSpriteWidth,BrownFishSpriteHeight,BrownFishAnimation);

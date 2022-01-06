@@ -13,9 +13,9 @@ function PreLoader(){
             img.src = this.images[i];
             img.onload = () => {
               this.loadedImages++;
-              if (this.loadedImages == this.images.length - 1) {
-                this.audioLoader.loadAudioFiles();
-              }
+              // if (this.loadedImages == this.images.length - 1) {
+              //   // this.audioLoader.loadAudioFiles();
+              // }
             }
         }
 
