@@ -48,7 +48,7 @@ class Enemy {
 }
 
 //HANDLER:draw and update
-const enemyArray = [];
+let enemyArray = [];
 function handleEnemies() {
   if (gameFrame % 100 == 0) {
     const randomEnemy =

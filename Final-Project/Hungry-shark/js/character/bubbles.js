@@ -1,7 +1,6 @@
 //4:handle bubbles & score
 //BUBBLE IMAGE
-const bubbleImage = new Image();
-bubbleImage.src = 'images/bubbles/bubble_pop_under_water_01.png';
+
 
 class Bubble {
     constructor() {

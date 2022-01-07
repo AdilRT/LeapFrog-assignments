@@ -12,7 +12,7 @@ class Player {
     this.collision = false;
     // this.spriteWidth = 194; //633/10;//spritesheet/noofimage in 1 row
     // this.spriteHeight = 95; //183/6
-    this.health = 100;
+    this.health = 2;
     this.maxHealth = this.health;
 
   }
@@ -27,8 +27,8 @@ class Player {
     }
     if (mouse.y != this.y) {
       this.y -= dy / 30;
+      handlePath();
     }
-
     
   };
   /**

@@ -57,3 +57,19 @@ display: none;
     /* background: linear-gradient(to bottom,lightblue,darkblue,black); */
     font-family: 'Orbitron', sans-serif;
 }
+
+button {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%,0);
+    background: lightblue;
+    color: white;
+    padding: 20px 50px;
+    border-radius: 10px;
+    z-index: 100;
+    cursor: pointer;
+    border:none;
+    outline: none;
+
+}

@@ -13,7 +13,7 @@ function animate() {
   handleBackground();
   handleBubbles();
   handlePlayer();
-  handleEnemies();
+  // handleEnemies();
 
   gameFrame++;
   if(!gameOver){
@@ -23,8 +23,14 @@ function animate() {
 
 //calls
 const preloader = new PreLoader();
-// if(start)
-animate();
+preloader.loadAll();
+
+startBtn.addEventListener('click',function(e){
+  startBtn.style.display='none';
+  restartBtn.style.display='none';
+
+  animate();
+})
 
 //for responsive clicks
 window.addEventListener("resize", function () {

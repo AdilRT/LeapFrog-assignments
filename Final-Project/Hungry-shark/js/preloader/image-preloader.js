@@ -3,7 +3,7 @@ function PreLoader(){
     this.loadedImages = 0;
     this.images = [
         'images/bg/waves.png',
-        'images/bubbles/bubble_pop_under_water_01',
+        'images/bubbles/bubble_pop_under_water_01.png',
     ];
   this.audioLoader = new AudioLoader();
 
@@ -13,9 +13,10 @@ function PreLoader(){
             img.src = this.images[i];
             img.onload = () => {
               this.loadedImages++;
-              // if (this.loadedImages == this.images.length - 1) {
-              //   // this.audioLoader.loadAudioFiles();
-              // }
+              if (this.loadedImages == this.images.length - 1) {
+                console.log('reached pre-loader');
+                this.audioLoader.loadAudioFiles();
+              }
             }
         }
 
