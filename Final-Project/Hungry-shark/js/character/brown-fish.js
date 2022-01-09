@@ -7,10 +7,14 @@ class BrownFish extends Enemy {
       this.y = Math.random() * (canvas.height / 3);
       this.radius = 50;
       this.image.src = "images/enemies-damage/brown-fish.png";
-      this.image_flipped.src = "images/enemies-damage/brown-fish.png";
+      this.image_flipped.src = "images/enemies-damage/brown-fish-flipped.png";
       // this.vx = 5;
       // this.speed = Math.random()*0.1+0.1;
+      this.health = 100;
+      this.maxHealth = this.health;
+
     }
+
 
     draw = () => {
       ctx.fillStyle = "black";
@@ -18,6 +22,11 @@ class BrownFish extends Enemy {
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       ctx.fill();
       ctx.closePath();
+
+      //SHOWING HEALTH
+      ctx.font = '20px Orbitron';
+      ctx.fillStyle = "gold";
+      ctx.fillText(Math.floor(this.health),this.x,this.y-50);  
       //ROTATE
       ctx.save(); 
       ctx.translate(this.x, this.y);
@@ -29,6 +38,7 @@ class BrownFish extends Enemy {
       else if(mouse.x> this.x) {
       drawCharacter(this.image_flipped, "right",BrownFishAnimation,this.spriteWidth,this.spriteHeight,-65,-60,this.spriteWidth*2,this.spriteHeight*2,10);
       }
+     
       ctx.restore();
     };
   

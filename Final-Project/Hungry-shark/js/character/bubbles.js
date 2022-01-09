@@ -11,13 +11,17 @@ class Bubble {
       this.distance;
       this.counted = false;
       // this.sound = Math.random() <= 0.5 ? "sound1" : "sound2";
+      this.angle = 0;
     }
   
     update() {
-      this.y -= this.speed;
       const dx = this.x - player.x;
       const dy = this.y - player.y;
       this.distance = Math.sqrt(dx ** 2 + dy ** 2);
+      // this.x = Math.sin(this.angle * Math.PI/180)
+      // this.y = 10* Math.cos(this.angle * Math.PI/180)
+      // this.angle +=0.2;
+      this.y -= this.speed;
     }
   
     draw() {
@@ -38,7 +42,7 @@ class Bubble {
 const bubblesArray = [];
   // HANDLER
   function handleBubbles() {
-    if (gameFrame % 500 == 0) {
+    if (gameFrame % 20 == 0) {
       bubblesArray.push(new Bubble());
       // console.log('bubsarr',bubblesArray.length);
     }
@@ -54,7 +58,7 @@ const bubblesArray = [];
         //to avoid adding scores of the bubbles poped after the top edge//this was causing due to two splice in in one loop
                 //checking collision
         else if (bubblesArray[i].distance < bubblesArray[i].radius + player.radius) {
-            console.log("collided");
+            // console.log("collided"); 
             bubblePop.play();
             if (bubblesArray[i].counted == false) {
               // if(bubblesArray[i].sound == 'sound1'){

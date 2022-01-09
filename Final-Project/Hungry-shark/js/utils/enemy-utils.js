@@ -1,7 +1,6 @@
-//PALYER ANIMATION
+//PLAYER ANIMATION
 
 //BLUE WHALE
-
 let BlueWhaleAnimation = [];
 let BlueWhaleStates = [
     {
@@ -18,7 +17,6 @@ spriteHandler(BlueWhaleStates,BlueWhaleSpriteWidth,BlueWhaleSpriteHeight,BlueWha
 
 
 //SPIKY FISH
-
 let SpikyFishAnimation = [];
 let SpikyFishStates = [
     {
@@ -96,3 +94,89 @@ let BrownFishStates = [
 ]
 
 spriteHandler(BrownFishStates,BrownFishSpriteWidth,BrownFishSpriteHeight,BrownFishAnimation);
+
+
+//CRAB
+
+let CrabAnimation = [];
+let CrabStates = [
+    {
+        name:'left',
+        frames:2,
+    },
+    {
+        name:'right',
+        frames:2,
+    },
+]
+spriteHandler(CrabStates,CrabSpriteWidth,CrabSpriteHeight,CrabAnimation);
+
+
+//PIRANHA
+let PiranhaAnimationLeft = [];
+let PiranhaStatesLeft = [
+    {
+        name:'left',
+        frames:7,
+    },
+]
+spriteHandler(PiranhaStatesLeft,PiranhaLeftSpriteWidth,PiranhaLeftSpriteHeight,PiranhaAnimationLeft);
+
+let PiranhaAnimationBite = [];
+let PiranhaStatesBite = [
+    {
+        name:'bite',
+        frames:6,
+    },
+]
+spriteHandler(PiranhaStatesBite,PiranhaBiteSpriteWidth,PiranhaBiteSpriteHeight,PiranhaAnimationBite);
+
+
+let PiranhaAnimationTurn = [];
+let PiranhaStatesTurn = [
+    {
+        name:'turn-around',
+        frames:8,
+    },
+]
+spriteHandler(PiranhaStatesTurn,PiranhaTurnSpriteWidth,PiranhaTurnSpriteHeight,PiranhaAnimationTurn);
+
+
+let PiranhaAnimationHurt = [];
+let PiranhaStatesHurt = [
+    {
+        name:'hurt',
+        frames:8,
+    },
+]
+spriteHandler(PiranhaStatesHurt,PiranhaHurtSpriteWidth,PiranhaHurtSpriteHeight,PiranhaAnimationHurt);
+
+let PiranhaAnimationDie = [];
+let PiranhaStatesDie = [
+    {
+        name:'dying',
+        frames:5,
+    },
+]
+spriteHandler(PiranhaStatesDie,PiranhaDieSpriteWidth,PiranhaDieSpriteHeight,PiranhaAnimationDie);
+
+
+// let PiranhaAnimationHurt = [];
+// let PiranhaStatesHurt = [
+//     {
+//         name:'hurt',
+//         frames:8,
+//     },
+// ]
+// spriteHandler(PiranhaStatesHurt,PiranhaHurtSpriteWidth,PiranhaHurtSpriteHeight,PiranhaAnimationHurt);
+
+// BOSS
+let BossAnimation = [];
+let BossStates = [
+    {
+        name:'right',
+        frames:3,
+    },
+]
+spriteHandler(BossStates,BossSpriteWidth,BossSpriteHeight,BossAnimation);
+

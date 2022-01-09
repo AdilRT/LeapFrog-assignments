@@ -1,10 +1,5 @@
 
-// Globals vars
-let score = 0;
-let gameFrame = 0; //eg.spawn new bubles every 100 frames
-ctx.font = "50px Georgia";
-let gameSpeed = 1;
-let canvasPosition = canvas.getBoundingClientRect();
+
 
 //5:put all the above inside animation loop
 // ANIMATE
@@ -12,14 +7,17 @@ function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   handleBackground();
   handleBubbles();
+  handleAccessories();
   handlePlayer();
-  // handleEnemies();
-
+  handleEnemies();
+  // handleFood();
   gameFrame++;
   if(!gameOver){
     requestAnimationFrame(animate);
   }
 }
+
+
 
 //calls
 const preloader = new PreLoader();
@@ -28,6 +26,7 @@ preloader.loadAll();
 startBtn.addEventListener('click',function(e){
   startBtn.style.display='none';
   restartBtn.style.display='none';
+  // cave.style.display='none';
 
   animate();
 })

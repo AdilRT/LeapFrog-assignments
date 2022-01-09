@@ -5,12 +5,13 @@ class Path {
         this.x = player.x;
         this.y = player.y;
         this.size = Math.random()*7+3;
+        this.speedX = gameSpeed;
         this.speedY = RandomNumber(-1,1);
         this.color = 'red';
     }
 
     update(){
-        // this.x-=gameSpeed;
+        this.x-=this.speedX;
         this.y+= this.speedY;
     }
 
@@ -19,7 +20,7 @@ class Path {
         ctx.beginPath();
         // ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
         
-        ctx.drawImage(bubbleImage,this.x-15,this.y-15,20,20);
+        ctx.drawImage(bubbleImage,this.x-15,this.y-15,10,10);
 
         ctx.fill();
     }

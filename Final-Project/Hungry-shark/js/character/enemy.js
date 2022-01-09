@@ -1,4 +1,5 @@
-enemyTypes = ["BlueWhale", "spiky",'JellyFish','BrownFish'];
+enemyTypes = ['BlueWhale', "Spiky",'JellyFish','Crab','Piranha'];
+//brownfish,green shark,diff sizes crabs
 
 class Enemy {
   constructor() {
@@ -30,12 +31,12 @@ class Enemy {
     }
     if(this.roam){
       //roam around
-      this.x += this.vx;
+      if(this.x<player.x) this.x -= this.vx;
+      else if(this.x>player.x)this.x += this.vx;
       // this.y += this.vx;
-      if(this.x >= canvas.width || this.y >canvas.height){
+      if(this.x >= canvas.width||this.x< - canvas.width/2 || this.y >canvas.height){
         this.roam = false;
       }
-
     }
   };
   // draw = () => {
@@ -50,24 +51,33 @@ class Enemy {
 //HANDLER:draw and update
 let enemyArray = [];
 function handleEnemies() {
-  if (gameFrame % 100 == 0) {
-    const randomEnemy =
-      this.enemyTypes[Math.floor(Math.random() * enemyTypes.length)];
-    if (randomEnemy == "BlueWhale") enemyArray.push(new BlueWhale());
+  const randomEnemy = this.enemyTypes[Math.floor(Math.random() * enemyTypes.length)];
+
+  // spawn freq
+  if (gameFrame % 50 == 0) {
     if(randomEnemy=='JellyFish')enemyArray.push(new JellyFish());
     // if(randomEnemy=='BrownFish')enemyArray.push(new BrownFish());
+    if (randomEnemy == "Crab") enemyArray.push(new Crab());
     enemyArray.sort(function (a, b) {
       return a.y - b.y;
     });
+  }
+  //spawn moderate
+  if (gameFrame % 500 == 0) {
+    if (randomEnemy == "BlueWhale") enemyArray.push(new BlueWhale());
+    if (randomEnemy == "Spiky") enemyArray.push(new SpikyFish());
+
   }
   // spawn rarely
-  if (gameFrame % 150 == 0) {
+  if (gameFrame % 1000 == 0) {
     const randomEnemy = this.enemyTypes[Math.floor(Math.random() * enemyTypes.length)];
-    if (randomEnemy == "Spiky") enemyArray.push(new SpikyFish());
+    if (randomEnemy == "Piranha") enemyArray.push(new Piranha());
+
     enemyArray.sort(function (a, b) {
       return a.y - b.y;
     });
   }
+    
 
   for (let i = 0; i < enemyArray.length; i++) {
     enemyArray[i].update();
@@ -82,22 +92,20 @@ function handleEnemies() {
     //   checking collision
     else if (enemyArray[i].distance < enemyArray[i].radius + player.radius) {
       player.collision = true;
-      // console.log("collided");
+      // console.log('collided');
+      // console.log('player health',player.health);
+      // console.log('enemy health',i,enemyArray[i].health);
       sharkBite.play();
-      player.health-=0.2;
-      enemyArray[i].health -=10;
+      player.health-= enemyArray[i].damage;
+      enemyArray[i].health -= player.damage  ;
       // enemyArray[i].x=player.x+500;
       enemyArray[i].roam = true;
 
       if (enemyArray[i].counted == false) {
         score++;
         enemyArray[i].counted = true;
-
       }
         i--;
       }
-
-
- 
   }
 }

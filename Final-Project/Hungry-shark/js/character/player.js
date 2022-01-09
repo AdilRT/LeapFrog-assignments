@@ -12,8 +12,9 @@ class Player {
     this.collision = false;
     // this.spriteWidth = 194; //633/10;//spritesheet/noofimage in 1 row
     // this.spriteHeight = 95; //183/6
-    this.health = 2;
+    this.health = PLAYER_HEALTH;
     this.maxHealth = this.health;
+    this.damage = 1;
 
   }
   //update Player position ot the cursor
@@ -50,8 +51,7 @@ class Player {
     // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
     // ctx.fill();
     // ctx.closePath();
-    ctx.font = "20px Orbitron";
-    ctx.fillText(Math.floor(this.health), this.x, this.y);
+
 
     //ROTATING the Shark
     ctx.save(); //saing current canvas settings
@@ -158,6 +158,16 @@ function handlePlayer() {
   }
   player.update();
   player.draw();
+  checkScore();
+  if(bossMode == false){
+    if(RectCircleCollision()){
+      parallex = true;
+      bossMode = true;
+      bossPage();
+      console.log("after collision",parallex);
+    }
+  }
+  
 }
 
 const mouse = {

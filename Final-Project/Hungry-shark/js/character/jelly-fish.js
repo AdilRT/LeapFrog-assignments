@@ -5,19 +5,26 @@ class JellyFish extends Enemy {
       this.spriteHeight = JellyFishSpriteHeight;
       this.x = RandomNumber(0,canvas.width)
       // this.y = RandomNumber(canvas.height,canvas.height +50);
-      this.y = canvas.height;
+      this.y = Math.random() * canvas.height+100;
       this.radius = 65;
       this.image.src = "images/enemies-damage/jelly-fish.png";
       this.image_flipped.src = "images/enemies-damage/jelly-fish-flipped.png";
       this.vy = 1;
       this.distance;
       // this.speed = Math.random()*0.1+0.1;
+      this.health = 100;
+      this.maxHealth = this.health;
+      this.damage = 0.5;
     }
     update=()=> {
         this.y -= this.vy;
-            const dx = this.x - player.x;
+          const dx = this.x - player.x;
           const dy = this.y - player.y;
           this.distance = Math.sqrt(dx ** 2 + dy ** 2);
+
+          // this.x = Math.sin(this.angle * Math.PI/180)
+          // this.y = Math.cos(this.angle * Math.PI/180)
+          // this.angle +=0.2;
       }
 
     draw = () => {
