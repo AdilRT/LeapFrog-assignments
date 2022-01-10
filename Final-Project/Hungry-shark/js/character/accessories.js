@@ -1,4 +1,3 @@
-pillsTypes = ['health','power'];
 
 class Accessories{
     constructor(img,type){
@@ -31,33 +30,36 @@ class Accessories{
 pillsArray = [];
 // HANDLER
 function handleAccessories(){
-  if (gameFrame % 500 == 0) {
-    pillsArray.push(new Accessories("images/gems/green_pill.png",'healType'));
-    pillsArray.push(new Accessories("images/gems/power.png",'powerType'));
-  }
-  for (let i = 0; i < pillsArray.length; i++) {
-      pillsArray[i].update();
-      pillsArray[i].draw();
-
-
-    //fix this
-    if (pillsArray[i].y>canvas.height - pillsArray[i].radius) {
-      pillsArray.splice(i, 1);
-      i--; //destroying objects
+  if(bossMode == true){
+    if (gameFrame % 500 == 0) {
+      pillsArray.push(new Accessories("images/gems/green_pill.png",'healType'));
+      pillsArray.push(new Accessories("images/gems/power.png",'powerType'));
     }
-    //   checking collision
-    else if (pillsArray[i].distance < pillsArray[i].radius + player.radius) {
-    //   player.collision = true;
-      // console.log('collided');
-      sharkBite.play();
-      if (pillsArray[i].counted == false) {
-          if(pillsArray[i].type == 'healType') player.health=200;
-          if(pillsArray[i].type == 'powerType') player.damage=2;
-        pillsArray[i].counted = true;
+    for (let i = 0; i < pillsArray.length; i++) {
+        pillsArray[i].update();
+        pillsArray[i].draw();
+  
+  
+      //fix this
+      if (pillsArray[i].y>canvas.height - pillsArray[i].radius) {
         pillsArray.splice(i, 1);
-    }
-    i--;
+        i--; //destroying objects
       }
+      //   checking collision
+      else if (pillsArray[i].distance < pillsArray[i].radius + player.radius) {
+      //   player.collision = true;
+        // console.log('collided');
+        sharkBite.play();
+        if (pillsArray[i].counted == false) {
+            if(pillsArray[i].type == 'healType') player.health=200;
+            if(pillsArray[i].type == 'powerType') player.damage=2;
+          pillsArray[i].counted = true;
+          pillsArray.splice(i, 1);
+      }
+      i--;
+        }
+    }
   }
+
 }
 

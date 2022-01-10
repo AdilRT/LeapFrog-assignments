@@ -99,8 +99,8 @@ function overPage() {
 // BOSS PAGE
 function bossPage(){
   // ctx.drawImage(bg_startPage, 0, 0, canvas.clientWidth, canvas.height);
-  // enemyArray = [];
-  // foodArray = []; 
+  enemyArray = [];
+  foodArray = []; 
   boss.update();
   boss.draw(); 
 }
