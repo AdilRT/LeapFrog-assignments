@@ -1,5 +1,6 @@
 enemyTypes = ['BlueWhale', "Spiky",'JellyFish','Crab','Piranha'];
 //brownfish,green shark,diff sizes crabs
+let damageDoneOnce = false;
 
 class Enemy {
   constructor() {
@@ -63,9 +64,9 @@ function handleEnemies() {
     });
   }
   //spawn moderate
-  if (gameFrame % 500 == 0) {
+  if (gameFrame % 50 == 0) {
     if (randomEnemy == "BlueWhale") enemyArray.push(new BlueWhale());
-    if (randomEnemy == "Spiky") enemyArray.push(new SpikyFish());
+    // if (randomEnemy == "Spiky") enemyArray.push(new SpikyFish());
 
   }
   // spawn rarely
@@ -95,9 +96,18 @@ function handleEnemies() {
       // console.log('collided');
       // console.log('player health',player.health);
       // console.log('enemy health',i,enemyArray[i].health);
+      console.log('player health',player.health);
       sharkBite.play();
-      player.health-= enemyArray[i].damage;
-      enemyArray[i].health -= player.damage  ;
+      if(damageDoneOnce == false) {
+        console.log(123123);
+        player.health-= enemyArray[i].damage;
+        damageDoneOnce = true;
+        setTimeout(()=>{
+          damageDoneOnce =false ;
+        },5000)
+      }
+   
+      enemyArray[i].health -= player.damage;
       // enemyArray[i].x=player.x+500;
       enemyArray[i].roam = true;
 
