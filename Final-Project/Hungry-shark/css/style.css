@@ -60,11 +60,11 @@ display: none;
 
 button {
     position: absolute;
-    bottom: 10px;
+    bottom: 45%;
     left: 50%;
     transform: translate(-50%,0);
     background: lightblue;
-    color: white;
+    color: black;
     padding: 20px 50px;
     border-radius: 10px;
     z-index: 100;
@@ -73,6 +73,22 @@ button {
     outline: none;
 
 }
+select{
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%,0);
+    background: lightblue;
+    color: black;
+    padding: 20px 50px;
+    border-radius: 10px;
+    z-index: 100;
+    cursor: pointer;
+    border:none;
+    outline: none;
+
+}
+
 
 #cave{
     position: absolute;

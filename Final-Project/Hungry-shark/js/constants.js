@@ -8,6 +8,8 @@ canvas.height = 837;
 //get DOM elements
 const startBtn = document.getElementById("startBtn");
 const restartBtn = document.getElementById("restartBtn");
+const select = document.getElementById("list");
+
 // const cave = document.getElementById("cave");
 
 //   SOUND

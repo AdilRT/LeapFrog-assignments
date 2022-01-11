@@ -45,11 +45,14 @@ function handleGameStatus() {
 
 //START PAGE
 function startPage() {
+  changeFunction(list);
   // console.log("reached startpage");
   ctx.fillStyle = "black";
   ctx.font = "100px Orbitron";
   ctx.drawImage(bg_startPage, 0, 0, canvas.clientWidth, canvas.height);
   ctx.drawImage(logo, canvas.width / 3, 10, 500, 300);
+  
+  //display
   startBtn.style.display = "block";
   restartBtn.style.display = "none";
   cave.style.display = 'none';
@@ -138,4 +141,11 @@ function RectCircleCollision(){
 
   if (distX > (caveWidth/2 + player.radius)|| distY > (caveHeight/2 + player.radius)) { return false; }
   if (distX <= (caveWidth/2)||distY <= (caveHeight/2) ) { return true;} 
+}
+
+function changeFunction(selectedValue){
+  let x= selectedValue.value;
+  // let selectedValue = document.getElementById('list').value;
+  // console.log(x);
+  return x;
 }
