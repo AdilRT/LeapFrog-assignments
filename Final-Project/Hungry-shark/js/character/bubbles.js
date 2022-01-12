@@ -1,11 +1,7 @@
-//4:handle bubbles & score
-//BUBBLE IMAGE
-
-
 class Bubble {
     constructor() {
-      this.x = Math.random() * canvas.width;
-      this.y = canvas.height + 100;
+      this.x = Math.random() * can_world.width;
+      this.y = can_world.height + 10;
       this.radius = 10;
       this.speed = Math.random() * 5 + 1;
       this.distance;
@@ -15,8 +11,8 @@ class Bubble {
     }
   
     update() {
-      const dx = this.x - player.x;
-      const dy = this.y - player.y;
+      const dx = this.x - player.pos.x;
+      const dy = this.y - player.pos.y;
       this.distance = Math.sqrt(dx ** 2 + dy ** 2);
       // this.x = Math.sin(this.angle * Math.PI/180)
       // this.y = 10* Math.cos(this.angle * Math.PI/180)
@@ -31,7 +27,7 @@ class Bubble {
       // ctx.fill();
       // ctx.closePath();
       // ctx.stroke();
-      ctx.drawImage(bubbleImage,this.x-15,this.y-15,this.radius*2,this.radius*2.5);
+      ctx_world.drawImage(bubbleImage,this.x-15,this.y-15,this.radius*2,this.radius*2.5);
     }
     //endofBubbles
   }
@@ -42,7 +38,7 @@ class Bubble {
 const bubblesArray = [];
   // HANDLER
   function handleBubbles() {
-    if (gameFrame % 20 == 0) {
+    if (gameFrame % 5 == 0) {
       bubblesArray.push(new Bubble());
       // console.log('bubsarr',bubblesArray.length);
     }
@@ -64,7 +60,6 @@ const bubblesArray = [];
               // if(bubblesArray[i].sound == 'sound1'){
               // bubblePop1.play();
               // }
-              score++;
               bubblesArray[i].counted = true;
               bubblesArray.splice(i, 1);
               i--;

@@ -1,9 +1,18 @@
 //1:Canvas Setup
+const can_vPort = document.getElementById('viewport');
+const ctx_vPort = can_vPort.getContext('2d');
 const canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext("2d");
+const can_world = createElement('canvas', {
+    'width': 3840,
+    'height': 3840
+});
+const ctx_world = can_world.getContext('2d'); /* World canvas context */
+
+//FONTS
 ctx.font = "50px Georgia";
-canvas.width = 1685;
-canvas.height = 837;
+canvas.width = 640;
+canvas.height = 640;
 
 //get DOM elements
 const startBtn = document.getElementById("startBtn");
@@ -27,6 +36,7 @@ const logo = new Image;
 logo.src = 'images/bg/logo-1.png';
 const bg_game = new Image();
 bg_game.src = 'images/bg/background1.png';
+// bg_game.src = 'images/bg/cactus.jpg';
 const bubbleImage = new Image();
 bubbleImage.src = 'images/bubbles/bubble_pop_under_water_01.png';
 const cave = new Image();
@@ -42,6 +52,7 @@ power_pill.src = 'images/gems/power.png';
 //AUDIO
 let sharkBite = new Audio('audio/player/shark-bite.mp3');
 let bubblePop = new Audio('audio/bubbles/bubble-pop.wav');
+let underwater = new Audio('audio/bg/underwater.mp3');
 
 
 
@@ -51,11 +62,11 @@ let bubblePop = new Audio('audio/bubbles/bubble-pop.wav');
 const BlueWhaleSpriteWidth =771/4;//1940/10;
 const BlueWhaleSpriteHeight = 198/2;//562/6
 
-const SpikyFishSpriteWidth =304/6;//1940/10;
-const SpikyFishSpriteHeight = 182/3;//562/6
+const SpikyFishSpriteWidth =566/6;//1940/10;
+const SpikyFishSpriteHeight = 363/3;//562/6
 
-const JellyFishSpriteWidth=299.8/6;//1940/10;
-const JellyFishSpriteHeight = 435/5;//562/6
+const JellyFishSpriteWidth=496/6;//1940/10;
+const JellyFishSpriteHeight = 590/5;//562/6
 
 const BrownFishSpriteWidth =1280/10;//1940/10;
 const BrownFishSpriteHeight = 241/6;//562/6

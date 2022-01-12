@@ -180,3 +180,73 @@ let BossStates = [
 ]
 spriteHandler(BossStates,BossSpriteWidth,BossSpriteHeight,BossAnimation);
 
+// enemy sharks
+const BlueSharkSpriteWidth =194;//1940/10;
+const BlueSharkSpriteHeight = 543/6;
+
+
+let BlueSharkState='left';
+const BlueSharkAnimation = [];
+let BlueSharkStates = [
+    {
+        name:'left',
+        frames:10,
+    },
+    {
+        name:'right',
+        frames:10,
+    },
+    {
+        name:'left-eat',
+        frames:3,
+    },
+    {
+        name:'right-eat',
+        frames:3,
+    },
+    {
+        name:'left-to-right',
+        frames:10,
+    },
+    {
+        name:'right-to-left',
+        frames:10,
+    }
+]
+
+spriteHandler(BlueSharkStates,BlueSharkSpriteWidth,BlueSharkSpriteHeight,BlueSharkAnimation);
+
+const GreenSharkSpriteWidth =194;//1940/10;
+const GreenSharkSpriteHeight = 543/6;
+
+
+let GreenSharkState='left';
+const GreenSharkAnimation = [];
+let GreenSharkStates = [
+    {
+        name:'left',
+        frames:10,
+    },
+    {
+        name:'right',
+        frames:10,
+    },
+    {
+        name:'left-eat',
+        frames:3,
+    },
+    {
+        name:'right-eat',
+        frames:3,
+    },
+    {
+        name:'left-to-right',
+        frames:10,
+    },
+    {
+        name:'right-to-left',
+        frames:10,
+    }
+]
+
+spriteHandler(GreenSharkStates,GreenSharkSpriteWidth,GreenSharkSpriteHeight,GreenSharkAnimation);

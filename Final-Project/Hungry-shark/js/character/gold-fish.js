@@ -18,8 +18,8 @@ constructor(Xdifference,Ydifference){
     this.Ydifference = Ydifference;
 }
 
-update = () =>{
-  // 1: 
+update(){
+    super.update();
     this.x-= this.vx;
     this.y+= Math.sin(this.angle);
     this.angle+=0.2;
@@ -28,19 +28,19 @@ update = () =>{
 }
 
 draw = () => {
-    ctx.fillStyle = "black";
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.closePath();
+    ctx_world.fillStyle = "black";
+    ctx_world.beginPath();
+    ctx_world.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx_world.fill();
+    ctx_world.closePath();
 
     //SHOWING HEALTH
-    ctx.font = '20px Orbitron';
-    ctx.fillStyle = "gold";
-    ctx.fillText(Math.floor(this.health),this.x,this.y);  
+    ctx_world.font = '20px Orbitron';
+    ctx_world.fillStyle = "gold";
+    ctx_world.fillText(Math.floor(this.health),this.x,this.y);  
     //ROTATE
-    ctx.save(); 
-    ctx.translate(this.x, this.y);
+    ctx_world.save(); 
+    ctx_world.translate(this.x, this.y);
     // drawing player fish
     // if (mouse.x < this.x) {
     // drawCharacter(this.image, "left",GoldFishAnimation,this.spriteWidth,this.spriteHeight,-65,-60,this.spriteWidth/2,this.spriteHeight/2,10);
@@ -50,7 +50,7 @@ draw = () => {
     // }
     drawCharacter(this.image, "left",GoldFishAnimation,this.spriteWidth,this.spriteHeight,-25,-25,this.spriteWidth/2,this.spriteHeight/2,10);
     
-    ctx.restore();
+    ctx_world.restore();
   };
 
 

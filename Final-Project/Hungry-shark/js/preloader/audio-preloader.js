@@ -4,6 +4,8 @@ function AudioLoader(){
     this.audios = [
       'audio/player/shark-bite.mp3',
       'audio/bubbles/bubble-pop.wav',
+      'audio/bg/underwater.mp3',
+
       ];
 
       this.loadAudioFiles = function (start) {

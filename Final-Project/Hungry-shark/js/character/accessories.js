@@ -1,7 +1,7 @@
 
 class Accessories{
     constructor(img,type){
-        this.x = RandomNumber(0,canvas.width);
+        this.x = RandomNumber(0,can_world.width);
         this.y=0;
         this.radius = 10;
         this.speed = RandomNumber(1,4);
@@ -15,13 +15,13 @@ class Accessories{
     }
 
     update(){
-        const dx = this.x - player.x;
-        const dy = this.y - player.y;
+        const dx = this.x - player.pos.x;
+        const dy = this.y - player.pos.y;
         this.distance = Math.sqrt(dx ** 2 + dy ** 2);
         this.y+=this.speed;
     }
     draw(){
-      ctx.drawImage(this.image,this.x,this.y,this.radius*2.5,this.radius*4);
+      ctx_world.drawImage(this.image,this.x,this.y,this.radius*2.5,this.radius*4);
 
     }
 
@@ -39,9 +39,7 @@ function handleAccessories(){
         pillsArray[i].update();
         pillsArray[i].draw();
   
-  
-      //fix this
-      if (pillsArray[i].y>canvas.height - pillsArray[i].radius) {
+      if (pillsArray[i].y>can_world.height - pillsArray[i].radius) {
         pillsArray.splice(i, 1);
         i--; //destroying objects
       }

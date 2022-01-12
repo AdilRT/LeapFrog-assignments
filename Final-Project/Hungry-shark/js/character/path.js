@@ -2,8 +2,8 @@ let pathArray = [];
 
 class Path {
     constructor(){
-        this.x = player.x;
-        this.y = player.y;
+        this.x = player.pos2.x;
+        this.y = player.pos2.y;
         this.size = Math.random()*7+3;
         this.speedX = gameSpeed;
         this.speedY = RandomNumber(-1,1);

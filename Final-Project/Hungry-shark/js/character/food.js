@@ -3,25 +3,23 @@ foodTypes = ['GoldFish'];
 class Food {
   constructor() {
     // this.x =toss() == true ?RandomNumber(-canvas.width, 0 ):RandomNumber(canvas.width,canvas.width + 100);
-    this.x = canvas.width;  
-    this.y = Math.random() * (canvas.height);
+    this.x = can_world.width;  
+    this.y = Math.random() * (can_world.height);
     this.counted = false;
     this.image = new Image();
     this.image_flipped = new Image();
     this.angle = 0;
-    // this.health = 55;
-    // this.maxHealth = this.health;
     this.roam = false;
   }
 
-  update =()=>{
-    const dx = this.x - player.x;
-    const dy = this.y - player.y;
+  update(){
+    const dx = this.x - player.pos.x;
+    const dy = this.y - player.pos.y;
     this.distance = Math.sqrt(dx ** 2 + dy ** 2);
     let theta = Math.atan2(dy, dx);
     this.angle = theta;
 
-    if(this.x<-100)this.x = canvas.width+300;
+    if(this.x<-100)this.x = can_world.width+300;
 
 
  
@@ -76,22 +74,18 @@ function handleFood(){
     }
     //   checking collision
     else if (foodArray[i].distance < foodArray[i].radius + player.radius) {
+      player.collision=true;
       console.log('çollided');
-      player.collision = true;
-      // console.log('collided');
-      // console.log('player health',player.health);
-      // console.log('enemy health',i,foodArray[i].health);
-      sharkBite.play();
+        sharkBite.play();
       // player.health-= foodArray[i].damage;
       foodArray[i].health -= player.damage  ;
       // foodArray[i].x=player.x+500;
       // foodArray[i].roam = true;
 
       if (foodArray[i].counted == false) {
-        console.log('hello');
         score++;
         foodArray[i].counted = true;
-      foodArray.splice(i, 1);
+        foodArray.splice(i, 1);
 
       }
         i--; 

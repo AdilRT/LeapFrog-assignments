@@ -1,15 +1,16 @@
-class BlueWhale extends Enemy {
+
+class BlueShark extends Enemy {
     constructor() {
       super();
-      this.spriteWidth = BlueWhaleSpriteWidth;
-      this.spriteHeight = BlueWhaleSpriteHeight;
+      this.spriteWidth = BlueSharkSpriteWidth;
+      this.spriteHeight = BlueSharkSpriteHeight;
       // this.x = canvas.width + 500;
       
       this.x =toss() == true ?RandomNumber(-can_world.width, 0 ):RandomNumber(can_world.width,can_world.width + 100);
       this.y = Math.random() * (can_world.height / 3);
-      this.radius = 50;
-      this.image.src = "images/enemies-damage/blue-whale.png";
-      this.image_flipped.src = "images/enemies-damage/blue-whale-flipped.png";
+      this.radius = 100;
+      this.image.src = "images/enemies-damage/blue-shark.png";
+      this.image_flipped.src = "images/enemies-damage/blue-shark-flipped.png";
       this.vx = 5;
       // this.speed = Math.random()*0.1+0.1;
       this.health = 100;
@@ -35,10 +36,10 @@ class BlueWhale extends Enemy {
       ctx_world.rotate(this.angle);
       // drawing player fish
       if (mouse.x < this.x) {
-      drawCharacter(this.image, "left",BlueWhaleAnimation,this.spriteWidth,this.spriteHeight,-65,-60,this.spriteWidth*2,this.spriteHeight*2,10);
+      drawCharacter(this.image, "left",BlueSharkAnimation,this.spriteWidth,this.spriteHeight,-65,-60,this.spriteWidth*2,this.spriteHeight*2,10);
       } 
       else if(mouse.x> this.x) {
-      drawCharacter(this.image_flipped, "right",BlueWhaleAnimation,this.spriteWidth,this.spriteHeight,-65,-60,this.spriteWidth*2,this.spriteHeight*2,10);
+      drawCharacter(this.image_flipped, "right-to-left",BlueSharkAnimation,this.spriteWidth,this.spriteHeight,-65,-60,this.spriteWidth*2,this.spriteHeight*2,10);
       }
       ctx_world.restore();
     };

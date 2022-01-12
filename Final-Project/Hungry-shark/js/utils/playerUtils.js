@@ -9,7 +9,6 @@ const PlayerspriteWidth =194;//1940/10;
 const PlayerspriteHeight = 543/6;//562/6
 
 
-// let gameFrame = 0;
 let playerState='left';
 const staggerFrame = 10;
 const spriteAnimation = [];

@@ -4,8 +4,8 @@ class Piranha extends Enemy {
       // this.spriteWidth = PiranhaSpriteWidth;
       // this.spriteHeight = PiranhaSpriteHeight;
       // this.x =toss() == true ?RandomNumber(-canvas.width, 0 ):RandomNumber(canvas.width,canvas.width + 100);
-      this.x =RandomNumber(-canvas.width/2, 0 )
-      this.y = Math.random() * (canvas.height / 3);
+      this.x =RandomNumber(-can_world.width/2, 0 )
+      this.y = Math.random() * (can_world.height / 3);
       this.radius = 50;
       this.image_left = new Image();
       this.image_left.src = "images/enemies-damage/piranha-left.png";
@@ -34,13 +34,13 @@ class Piranha extends Enemy {
       // ctx.closePath();
 
       //SHOWING HEALTH
-      ctx.font = '20px Orbitron';
-      ctx.fillStyle = "gold";
-      ctx.fillText(Math.floor(this.health),this.x,this.y);  
+      ctx_world.font = '20px Orbitron';
+      ctx_world.fillStyle = "gold";
+      ctx_world.fillText(Math.floor(this.health),this.x,this.y);  
       //ROTATE
-      ctx.save(); 
-      ctx.translate(this.x, this.y);
-      ctx.rotate(this.angle);
+      ctx_world.save(); 
+      ctx_world.translate(this.x, this.y);
+      ctx_world.rotate(this.angle);
       // drawing player fish
       if (mouse.x < this.x) {
       drawCharacter(this.image_left, "left",PiranhaAnimationLeft,PiranhaLeftSpriteWidth,PiranhaLeftSpriteHeight,-65,-60,PiranhaLeftSpriteWidth*2,PiranhaLeftSpriteHeight*2,10);
@@ -48,7 +48,7 @@ class Piranha extends Enemy {
       else if(mouse.x> this.x) {
       drawCharacter(this.image_left_flipped, "left",PiranhaAnimationLeft,PiranhaLeftSpriteWidth,PiranhaLeftSpriteHeight,-65,-60,PiranhaLeftSpriteWidth*2,PiranhaLeftSpriteHeight*2,10);
       }
-      ctx.restore();
+      ctx_world.restore();
     };
   
   

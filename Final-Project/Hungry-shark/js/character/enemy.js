@@ -1,4 +1,5 @@
-enemyTypes = ['BlueWhale', "Spiky",'JellyFish','Crab','Piranha'];
+// enemyTypes = ['BlueWhale', "Spiky",'JellyFish','Crab','Piranha'];
+enemyTypes = ['Spiky','BlueShark','GreenShark'];
 //brownfish,green shark,diff sizes crabs
 let damageDoneOnce = false;
 
@@ -14,28 +15,28 @@ class Enemy {
   }
   update = () => {
     // this.x -= this.vx;
-    const dx = this.x - player.x;
-    const dy = this.y - player.y;
+    const dx = this.x - player.pos.x;
+    const dy = this.y - player.pos.y;
     this.distance = Math.sqrt(dx ** 2 + dy ** 2);
     let theta = Math.atan2(dy, dx);
     this.angle = theta;
 
     if(!this.roam){
-          // go directly to player to attack
-    if (player.x != this.x) {
+          // go directly to player.pos to attack
+    if (player.pos.x != this.x) {
       this.x -= dx / 50; //no worriesof + - dx
     }
-    if (player.y != this.y) {
+    if (player.pos.y != this.y) {
       this.y -= dy / 50;
     }
     // this.roam = true;
     }
     if(this.roam){
       //roam around
-      if(this.x<player.x) this.x -= this.vx;
-      else if(this.x>player.x)this.x += this.vx;
+      if(this.x<player.pos.x) this.x -= this.vx;
+      else if(this.x>player.pos.x)this.x += this.vx;
       // this.y += this.vx;
-      if(this.x >= canvas.width||this.x< - canvas.width/2 || this.y >canvas.height){
+      if(this.x >= can_world.width||this.x< - can_world.width/2 || this.y >can_world.height){
         this.roam = false;
       }
     }
@@ -57,8 +58,10 @@ function handleEnemies() {
   // spawn freq
   if (gameFrame % 50 == 0) {
     if(randomEnemy=='JellyFish')enemyArray.push(new JellyFish());
-    // if(randomEnemy=='BrownFish')enemyArray.push(new BrownFish());
+    if(randomEnemy=='BrownFish')enemyArray.push(new BrownFish());
     if (randomEnemy == "Crab") enemyArray.push(new Crab());
+    if (randomEnemy == "BlueShark") enemyArray.push(new BlueShark());
+    if (randomEnemy == "GreenShark") enemyArray.push(new GreenShark());
     enemyArray.sort(function (a, b) {
       return a.y - b.y;
     });
@@ -66,7 +69,7 @@ function handleEnemies() {
   //spawn moderate
   if (gameFrame % 50 == 0) {
     if (randomEnemy == "BlueWhale") enemyArray.push(new BlueWhale());
-    // if (randomEnemy == "Spiky") enemyArray.push(new SpikyFish());
+    if (randomEnemy == "Spiky") enemyArray.push(new SpikyFish());
 
   }
   // spawn rarely
@@ -93,13 +96,12 @@ function handleEnemies() {
     //   checking collision
     else if (enemyArray[i].distance < enemyArray[i].radius + player.radius) {
       player.collision = true;
-      // console.log('collided');
+      console.log('collided');
       // console.log('player health',player.health);
       // console.log('enemy health',i,enemyArray[i].health);
-      console.log('player health',player.health);
+      // console.log('player health',player.health);
       sharkBite.play();
       if(damageDoneOnce == false) {
-        console.log(123123);
         player.health-= enemyArray[i].damage;
         damageDoneOnce = true;
         setTimeout(()=>{

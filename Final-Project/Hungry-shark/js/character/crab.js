@@ -5,13 +5,14 @@ class Crab extends Enemy {
       this.spriteHeight = CrabSpriteHeight;
       this.width = RandomNumber(this.spriteWidth,this.spriteWidth*1.5)
       this.height = RandomNumber(this.spriteHeight,this.spriteHeight*1.5)
-      this.x = RandomNumber(-10,0)
-      // this.y = RandomNumber(canvas.height,canvas.height +50);
-      this.y = canvas.height;
+      // this.x = can_world.width/2
+      this.x =toss() == true ?0:can_world.width + this.radius;
+// this.y = RandomNumber(can_worldas.height,can_world.height +50);
+      this.y = can_world.height;
       this.radius = 50;
       this.image.src = "images/enemies-damage/crab.png";
       this.image_flipped.src = "images/enemies-damage/crab.png";
-      this.vx = 0.5;
+      this.vx = 1;
       this.distance;
       // this.speed = Math.random()*0.1+0.1;
       this.health = 100;
@@ -19,10 +20,12 @@ class Crab extends Enemy {
       this.damage = 0.5;
     }
     update=()=> {
-        this.x += this.vx;
-            const dx = this.x - player.x;
-          const dy = this.y - player.y;
-          this.distance = Math.sqrt(dx ** 2 + dy ** 2);
+      const dx = this.x - player.pos.x;
+      const dy = this.y - player.pos.y;
+      this.distance = Math.sqrt(dx ** 2 + dy ** 2);
+      // this.x+=this.vx;
+      if(this.x<player.pos.x) this.x += this.vx;
+      else if(this.x>player.pos.x)this.x -= this.vx;
       }
 
     draw = () => {

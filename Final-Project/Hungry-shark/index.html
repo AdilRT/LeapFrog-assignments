@@ -15,7 +15,10 @@
 </head>
 <body>  
     <button id="startBtn">START</button>
-    <canvas id="canvas1"></canvas>
+
+    <canvas id="viewport" width="640px" height="640px"></canvas>
+    <canvas id="canvas1" width="640px" height="640px"></canvas>
+
     <button id="restartBtn">RESTART</button>
     <select name="difficulty" id="list" onchange="changeFunction(this)">
         <option value="easy" selected>EASY</option>
@@ -42,6 +45,7 @@
     <!-- define player before enemies -->
     <script src="js/character/player.js"></script>
     <script src="js/character/path.js"></script>
+    <!-- <script src="js/character/flames.js"></script> -->
     <!-- enemies -->
     <script src="js/character/enemy.js"></script>
     <script src="js/character/blue-whale.js"></script>
@@ -50,6 +54,8 @@
     <script src="js/character/brown-fish.js"></script>
     <script src="js/character/crab.js"></script>
     <script src="js/character/piranha.js"></script>
+    <script src="js/character/blue-shark.js"></script>
+    <script src="js/character/green-shark.js"></script>
     <script src="js/character/boss.js"></script>
     <!-- food -->
     <script src="js/character/food.js"></script>
