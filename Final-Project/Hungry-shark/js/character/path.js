@@ -5,14 +5,16 @@ class Path {
         this.x = player.pos2.x;
         this.y = player.pos2.y;
         this.size = Math.random()*7+3;
-        this.speedX = gameSpeed;
-        this.speedY = RandomNumber(-1,1);
+        this.speedX = RandomNumber(-2,1.5);
+        this.speedY = RandomNumber(-2,1);
         this.color = 'red';
+        this.angle=0;
     }
 
     update(){
         this.x-=this.speedX;
-        this.y+= this.speedY;
+        this.y+= this.speedY;   
+        
     }
 
     draw(){
@@ -27,7 +29,7 @@ class Path {
 }
 
 function handlePath(){
-  if (gameFrame % 50 == 0) {
+  if (gameFrame % 30 == 0) {
       pathArray.unshift(new Path);
   }
     for(i=0;i<pathArray.length;i++){
@@ -35,8 +37,8 @@ function handlePath(){
         pathArray[i].draw();
     }
     //remove path particles 
-    if(pathArray.length>100||this.y<0){
-        for(let i =0;i<20;i++){
+    if(pathArray.length>5||this.y<0){
+        for(let i =0;i<1;i++){
             pathArray.pop(pathArray[i]);
         }
     }

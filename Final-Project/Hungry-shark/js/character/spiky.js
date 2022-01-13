@@ -1,7 +1,7 @@
 
 
 class SpikyFish extends Enemy {
-  constructor() {
+  constructor(easyModeObject) {
     super();
     this.spriteWidth =SpikyFishSpriteWidth;
     this.spriteHeight = SpikyFishSpriteHeight;
@@ -13,9 +13,9 @@ class SpikyFish extends Enemy {
     this.image_flipped.src = "images/enemies-damage/spiky-fish.png";
     this.vx = 1;
     // this.speed = Math.random()*0.1+0.1;
-    this.health = 100;
+    this.health = easyModeObject.Spiky.health;
     this.maxHealth = this.health;
-    this.damage = 0.5;
+    this.damage = easyModeObject.Spiky.damage;
   }
   update = ()=>{
     const dx = this.x - player.pos.x;

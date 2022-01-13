@@ -33,33 +33,50 @@ function toss(){
 function handleGameStatus() {
   //show score
   ctx.fillStyle = "black";
-  ctx.font = "30px Orbitron"; 
-  ctx.fillText("Score: " + score, 10, 30);
+  ctx.font = "30px Odibee Sans"; 
+  ctx.fillText("SCORE: " + score, 10, 30);
   ctx.fillStyle = "green";
-  ctx.fillText("Health: " + Math.floor(player.health), 220, 30);
+  ctx.fillText("HEALTH: " + Math.floor(player.health), 220, 30);
   ctx.fillStyle = "#f542dd";
-  ctx.fillText("Strength: " + Math.floor(player.damage), 450, 30);
+  ctx.fillText("STRENGTH: " + Math.floor(player.damage), 450, 30);
 }
 
 //  GAME PAGES
 
 //START PAGE
 function startPage() {
-  changeFunction(list);
-  // console.log("reached startpage");
+  resetTimer();
   ctx.fillStyle = "black";
   ctx.font = "100px Orbitron";
   ctx.drawImage(bg_startPage, 0, 0, canvas.clientWidth, canvas.height);
-  ctx.drawImage(logo, canvas.width / 3, 10, 500, 300);
-  
+  ctx.drawImage(logo,120, 10, 400, 200);
+  // ctx.drawImage(startBtn,canvas.width/2-50,canvas.height/2)
+  // ctx.drawImage(easyBtn,canvas.width/2-50,canvas.height/2+100)
+  // ctx.drawImage(normalBtn,canvas.width/2-50,canvas.height/2+150)
+  // ctx.drawImage(hardBtn,canvas.width/2-50,canvas.height/2+200)
   //display
   startBtn.style.display = "block";
   restartBtn.style.display = "none";
+  easyBtn.style.display = 'block';
+  normalBtn.style.display = 'block';
+  hardBtn.style.display = 'block';
   cave.style.display = 'none';
-  select.style.display='block';
+  // select.style.display='block';
   gameOver = false;
   reset();
+
+
   // console.log('startPage',parallex);
+  // easyBtn.addEventListener('click',function(e){
+  //   difficulty= 'easy';
+  // })
+
+  // normalBtn.addEventListener('click',function(e){
+  //   difficulty= 'normal';
+  // })
+  // hardBtn.addEventListener('click',function(e){
+  //   difficulty= 'hard';
+  // })
 }
 
 
@@ -68,16 +85,28 @@ let highScore = +localStorage.getItem("highScore") || 0;
 // GAMEOVER PAGE
 function overPage() {
   if (gameOver) {
+  resetTimer();
+
+    ctx.drawImage(bg_startPage, 0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "gold";
+    console.log('gameover reached');
+    ctx.font = "30px Orbitron";
+    ctx.fillText("Time Alive",240, 50);
+ 
+
+    
+    ctx.font = "60px Orbitron";
+    ctx.fillText("GAME OVER", 100, 200);
     if (score > highScore) {
       highScore = score;
       localStorage.setItem("highScore", score);
-      ctx.fillText("Congrats! New Highscore", 300, 300);
+      ctx.font = "30px Orbitron";
+      ctx.fillText("Congrats! New Highscore: " + highScore, 240, 550);
+
+    }else{
+    ctx.font = "30px Orbitron";
+      ctx.fillText("Score: " + score, 240, 550);
     }
-    ctx.fillStyle = "gold";
-    ctx.font = "100px Orbitron";
-    ctx.fillText("GAME OVER", 500, 200);
-    ctx.font = "50px Orbitron";
-    ctx.fillText("high-score: " + highScore, 900, 50);
     parallex = false;
     bossMode = false;
     BG2 = {
@@ -151,12 +180,6 @@ function RectCircleCollision(){
   if (distX <= (caveWidth/2)||distY <= (caveHeight/2) ) { return true;} 
 }
 
-function changeFunction(selectedValue){
-  let x= selectedValue.value;
-  // let selectedValue = document.getElementById('list').value;
-  // console.log(x);
-  return x;
-}
 
 function createElement(ele, attrObj) {
   /* Create the new Element */
@@ -202,4 +225,30 @@ function drawCharacter(
     imgWidth,
     imgHeight
   );
+}
+
+
+
+// function changeFunction(selectedValue){
+//   let x= selectedValue.value;
+//   // let selectedValue = document.getElementById('list').value;
+//   return x;
+// }
+
+
+function showTimer() {
+  seconds = (gameFrame / DAY.full) * SECONDS_IN_DAY;
+  hours = Math.floor(seconds * SECONDS_TO_HOURS);
+  seconds = seconds - hours / SECONDS_TO_HOURS;
+  minutes = Math.floor(seconds * SECONDS_TO_MINS);
+  seconds = Math.floor(seconds - minutes / SECONDS_TO_MINS);
+  ctx.fillStyle = "black"
+  ctx.font = '20px Orbitron'
+  ctx.fillText(hours + ' : ' + minutes, 300, 70);
+}
+
+function resetTimer(){
+  minutes =0;
+  hours=0;
+  seconds= 0;
 }

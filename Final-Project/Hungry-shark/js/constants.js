@@ -15,10 +15,39 @@ canvas.width = 640;
 canvas.height = 640;
 
 //get DOM elements
-const startBtn = document.getElementById("startBtn");
-const restartBtn = document.getElementById("restartBtn");
-const select = document.getElementById("list");
+// const startBtn = document.getElementById("startBtn");
+// const restartBtn = document.getElementById("restartBtn");
+// const easyBtn = document.getElementById("easyBtn");
+// const normalBtn = document.getElementById("normalBtn");
+// const hardBtn = document.getElementById("hardBtn");
 
+let startBtn = document.createElement('button');
+startBtn.setAttribute('id', 'startBtn');
+// startBtn.style.fontSize = '40px';
+startBtn.innerHTML = 'Play';
+document.body.appendChild(startBtn);
+
+let easyBtn = document.createElement('button');
+easyBtn.setAttribute('id', 'easyBtn');
+easyBtn.setAttribute('class', 'active');
+easyBtn.innerHTML = 'Easy';
+document.body.appendChild(easyBtn);
+
+let normalBtn = document.createElement('button');
+normalBtn.setAttribute('id', 'normalBtn');
+normalBtn.innerHTML = 'Normal';
+document.body.appendChild(normalBtn);
+
+let hardBtn = document.createElement('button');
+hardBtn.setAttribute('id', 'hardBtn');
+hardBtn.innerHTML = 'Hard';
+document.body.appendChild(hardBtn);
+
+let restartBtn = document.createElement('button');
+restartBtn.setAttribute('id', 'restartBtn');
+restartBtn.innerHTML = 'Restart';
+document.body.appendChild(restartBtn);
+// const select = document.getElementById("list");
 // const cave = document.getElementById("cave");
 
 //   SOUND
@@ -48,6 +77,27 @@ const health_pill = new Image();
 health_pill.src = 'images/gems/green_pill.png';
 let power_pill = new Image();
 power_pill.src = 'images/gems/power.png';
+// const startBtn = new Image();
+// startBtn.src = 'images/buttons/play.png';
+// const easyBtn = new Image();
+// easyBtn.src = 'images/buttons/easy.png';
+// const normalBtn = new Image();
+// normalBtn.src = 'images/buttons/normal.png';
+// const hardBtn = new Image();
+// hardBtn.src = 'images/buttons/hard.png';
+const fireSign = new Image();
+fireSign.src = 'images/boss/fire.png';
+const blood1 = new Image();
+blood1.src = 'images/blood-ss.png';
+const playerImage = new Image();
+playerImage.src = 'images/player/shark-ss-transparent.png'; 
+const playerImageFlipped = new Image();
+playerImageFlipped.src = 'images/player/flipped.png'; 
+const playerImageBite = new Image();
+playerImageBite.src = 'images/player/shark-biting.png'; 
+const playerImageBiteFlipped = new Image();
+playerImageBiteFlipped.src = 'images/player/shark-biting-flipped.png'; 
+
 
 //AUDIO
 let sharkBite = new Audio('audio/player/shark-bite.mp3');
@@ -98,9 +148,26 @@ const PiranhaDieSpriteHeight = 68
 const GoldFishSpriteWidth = 762/6;
 const GoldFishSpriteHeight = 100;
 
+const RedFishSpriteWidth = 1992/4;
+const RedFishSpriteHeight = 981/3;
+
 // BOSS
 const BossSpriteWidth = 384/3
 const BossSpriteHeight = 112    
+
+// GEMS
+const GemsSpriteWidth = 290/4;
+const GemsSpriteHeight = 800/5;
+
+const Shells1SpriteWidth = 133/2;
+const Shells1SpriteHeight = 117/2;
+
+const Shells2SpriteWidth = 106/2;
+const Shells2SpriteHeight = 102;
+
+const BloodSpriteWidth = 489/3;
+const BloodSpriteHeight = 129;
+
 
 // Globals vars
 let score = 0;
@@ -112,10 +179,40 @@ let canvasPosition = canvas.getBoundingClientRect();
 let bossMode = false;
 let parallex = false;
 let gameOver = false;
+let difficulty = 'easy';
+let timer = 0;
+let bossActive = true;
+
+let btns = [easyBtn,normalBtn,hardBtn];
+for (let i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+  let current = document.getElementsByClassName("active");
+  current[0].className = current[0].className.replace("active", "");
+  this.className += "active";
+  if(btns[i]==easyBtn)difficulty= 'easy';
+  else if(btns[i]==normalBtn)difficulty= 'normal';
+  else if(btns[i]==hardBtn)difficulty= 'hard';
+
+  });
+}
+
 
 
 //CONSTANTS
-const PLAYER_HEALTH = 30;
+const PLAYER_HEALTH = 100;
+
+
+const DAY = {
+    full: 80000
+  };
+  
+const SECONDS_IN_DAY = 86400;
+const SECONDS_TO_HOURS = 1 / 3600;
+const SECONDS_TO_MINS = 1 / 60;
+const TIME_HEIGHT = 40;
+const BOUNDARY = 200;
+
+
 
 
 

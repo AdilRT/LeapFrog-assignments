@@ -1,6 +1,8 @@
 class GoldFish extends Food{
-constructor(Xdifference,Ydifference){
+constructor(){
     super();
+    this.x =toss() == true ?RandomNumber(-can_world.width, 0 ):RandomNumber(can_world.width,can_world.width + 100);
+    this.y = RandomNumber(30,can_world.width/2);
     this.spriteWidth = GoldFishSpriteWidth;
     this.spriteHeight = GoldFishSpriteHeight;
     // this.x = canvas.width + 500;
@@ -13,9 +15,9 @@ constructor(Xdifference,Ydifference){
     // this.speed = Math.random()*0.1+0.1;
     this.health = 2;
     this.maxHealth = this.health;
-    this.angle = 0;
-    this.Xdifference = Xdifference;
-    this.Ydifference = Ydifference;
+    this.angle = 10;
+    // this.Xdifference = Xdifference;
+    // this.Ydifference = Ydifference;
 }
 
 update(){

@@ -1,6 +1,6 @@
 
 class GreenShark extends Enemy {
-    constructor() {
+    constructor(easyModeObject) {
       super();
       this.spriteWidth = GreenSharkSpriteWidth;
       this.spriteHeight = GreenSharkSpriteHeight;
@@ -13,9 +13,9 @@ class GreenShark extends Enemy {
       this.image_flipped.src = "images/enemies-damage/green-shark-flipped.png";
       this.vx = 5;
       // this.speed = Math.random()*0.1+0.1;
-      this.health = 100;
+      this.health = easyModeObject.GreenShark.health;
       this.maxHealth = this.health;
-      this.damage = 1;
+      this.damage = easyModeObject.GreenShark.damage;
     }
 
 

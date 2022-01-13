@@ -22,7 +22,8 @@ function handleBackground() {
   // console.log('handleBg',parallex);
   //draw underwater: game bg
   if(!parallex) {
-    ctx_world.drawImage(bg_game, 0, 0, can_world.width,can_world.height);
+    ctx_world.drawImage(bg_game,0, 0, can_world.width,can_world.height,);
+    
     // ctx.drawImage(bg_game,0,0, canvas.width, canvas.height);
 }  
   if(parallex){
@@ -35,7 +36,7 @@ function handleBackground() {
     ctx_world.drawImage(bg_boss, BG2.x2, BG2.y, BG2.width, BG2.height);
     bossPage();
     ctx.fillStyle = "gold";
-    ctx.font = "50px Orbitron";
+    ctx.font = "50px Odibee Sans";
     ctx.fillText("TIME TO FACE THE SEA MONSTER", 300, 200);
   }
   // WAVES

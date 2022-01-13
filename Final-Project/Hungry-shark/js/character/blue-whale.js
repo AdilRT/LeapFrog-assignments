@@ -1,5 +1,5 @@
 class BlueWhale extends Enemy {
-    constructor() {
+    constructor(easyModeObject) {
       super();
       this.spriteWidth = BlueWhaleSpriteWidth;
       this.spriteHeight = BlueWhaleSpriteHeight;
@@ -12,9 +12,8 @@ class BlueWhale extends Enemy {
       this.image_flipped.src = "images/enemies-damage/blue-whale-flipped.png";
       this.vx = 5;
       // this.speed = Math.random()*0.1+0.1;
-      this.health = 100;
-      this.maxHealth = this.health;
-      this.damage = 1;
+      this.health = easyModeObject.BlueWhale.health;
+      this.damage = easyModeObject.BlueWhale.damage;
     }
 
 

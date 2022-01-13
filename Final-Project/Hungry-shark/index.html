@@ -9,22 +9,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Open+Sans:ital@1&family=Orbitron&family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
     
 </head>
 <body>  
-    <button id="startBtn">START</button>
+    <!-- <button id="startBtn">START</button> -->
 
     <canvas id="viewport" width="640px" height="640px"></canvas>
     <canvas id="canvas1" width="640px" height="640px"></canvas>
 
-    <button id="restartBtn">RESTART</button>
-    <select name="difficulty" id="list" onchange="changeFunction(this)">
+    <!-- <button id="restartBtn">RESTART</button> -->
+     <!-- <select name="difficulty" id="list" onchange="changeFunction(this)"> 
         <option value="easy" selected>EASY</option>
         <option value="medium">MEDIUM</option>
         <option value="hard">HARD</option>
-    </select>
+    </select> -->
+    <!-- <button id="easyBtn">EASY</button> -->
+    <!-- <button id="normalBtn">NORMAL</button> -->
+    <!-- <button id="hardBtn">HARD</button> -->
 
 
 
@@ -34,16 +38,19 @@
 
     <script src="js/commons.js"></script>
     <script src="js/constants.js"></script>
+    <script src="js/gameModes.js"></script>
     <!-- utils -->
     <script src="js/utils/playerUtils.js"></script>
     <script src="js/utils/enemy-utils.js"></script>
     <script src="js/utils/food-utils.js"></script>
+    <script src="js/utils/gems-utils.js"></script>
     <!-- preloader -->
     <script src="js/preloader/audio-preloader.js"></script>
     <script src="js/preloader/image-preloader.js"></script>
     <script src="js/background.js"></script>
-    <!-- define player before enemies -->
+    <!-- Characters -->
     <script src="js/character/player.js"></script>
+    <script src="js/character/blood.js"></script>
     <script src="js/character/path.js"></script>
     <!-- <script src="js/character/flames.js"></script> -->
     <!-- enemies -->
@@ -60,9 +67,11 @@
     <!-- food -->
     <script src="js/character/food.js"></script>
     <script src="js/character/gold-fish.js"></script>
+    <script src="js/character/red-fish.js"></script>
     <!-- accessories -->
     <script src="js/character/bubbles.js"></script>
     <script src="js/character/accessories.js"></script>
+    <script src="js/character/gems.js"></script>
     <script src="js/game.js"></script>
 </body> 
 </html>

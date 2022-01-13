@@ -1,10 +1,7 @@
 //PALYER ANIMATION
 
 //loading image
-const playerImage = new Image();
-playerImage.src = 'images/player/shark-ss-transparent.png'; 
-const playerImageFlipped = new Image();
-playerImageFlipped.src = 'images/player/flipped.png'; 
+
 const PlayerspriteWidth =194;//1940/10;
 const PlayerspriteHeight = 543/6;//562/6
 
@@ -53,10 +50,7 @@ animationStates.forEach((state,index)=>{
 
 })
 //BITE
-const playerImageBite = new Image();
-playerImageBite.src = 'images/player/shark-biting.png'; 
-const playerImageBiteFlipped = new Image();
-playerImageBiteFlipped.src = 'images/player/shark-biting-flipped.png'; 
+
 
 const SharkBiteSpriteWidth =588/3;
 const SharkBiteSpriteHeight = 179/2;

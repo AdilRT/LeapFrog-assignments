@@ -1,7 +1,8 @@
 // enemyTypes = ['BlueWhale', "Spiky",'JellyFish','Crab','Piranha'];
-enemyTypes = ['Spiky','BlueShark','GreenShark'];
+// enemyTypes = ['GreenShark'];
 //brownfish,green shark,diff sizes crabs
 let damageDoneOnce = false;
+let gotdamageDoneOnce = false;
 
 class Enemy {
   constructor() {
@@ -53,71 +54,71 @@ class Enemy {
 //HANDLER:draw and update
 let enemyArray = [];
 function handleEnemies() {
-  const randomEnemy = this.enemyTypes[Math.floor(Math.random() * enemyTypes.length)];
-
-  // spawn freq
-  if (gameFrame % 50 == 0) {
-    if(randomEnemy=='JellyFish')enemyArray.push(new JellyFish());
-    if(randomEnemy=='BrownFish')enemyArray.push(new BrownFish());
-    if (randomEnemy == "Crab") enemyArray.push(new Crab());
-    if (randomEnemy == "BlueShark") enemyArray.push(new BlueShark());
-    if (randomEnemy == "GreenShark") enemyArray.push(new GreenShark());
-    enemyArray.sort(function (a, b) {
-      return a.y - b.y;
-    });
-  }
-  //spawn moderate
-  if (gameFrame % 50 == 0) {
-    if (randomEnemy == "BlueWhale") enemyArray.push(new BlueWhale());
-    if (randomEnemy == "Spiky") enemyArray.push(new SpikyFish());
-
-  }
-  // spawn rarely
-  if (gameFrame % 1000 == 0) {
-    const randomEnemy = this.enemyTypes[Math.floor(Math.random() * enemyTypes.length)];
-    if (randomEnemy == "Piranha") enemyArray.push(new Piranha());
-
-    enemyArray.sort(function (a, b) {
-      return a.y - b.y;
-    });
-  }
-    
+  // console.log(difficulty);
+  if(difficulty=='easy')easyMode(easyModeObject);
+  if(difficulty=='normal')normalMode(normalModeObject);
+  if(difficulty=='hard')hardMode(hardModeObject);
 
   for (let i = 0; i < enemyArray.length; i++) {
     enemyArray[i].update();
     enemyArray[i].draw();
 
     //fix this
-    if (enemyArray[i].y < 0 - enemyArray[i].radius || enemyArray[i].health<=0) {
+    if (enemyArray[i].y < 0 - enemyArray[i].radius ) {
       enemyArray.splice(i, 1);
-      score+=50;
-      i--; //destroying objects
+      i--;
     }
     //   checking collision
     else if (enemyArray[i].distance < enemyArray[i].radius + player.radius) {
       player.collision = true;
       console.log('collided');
-      // console.log('player health',player.health);
       // console.log('enemy health',i,enemyArray[i].health);
       // console.log('player health',player.health);
+      // SHOW TEXT
+      ctx.font = "30px Odibee Sans"; 
+      ctx.fillText("SCORE: " + score, 10, 30);
+      ctx.fillStyle = "green";
+      // blood
+      // sound
       sharkBite.play();
+
+      // enemy invinciblilty
       if(damageDoneOnce == false) {
-        player.health-= enemyArray[i].damage;
+      enemyArray[i].health -= player.damage;  
         damageDoneOnce = true;
+        //invincible time period
         setTimeout(()=>{
           damageDoneOnce =false ;
+        },500)
+      }
+      if(gotdamageDoneOnce == false) {
+      player.health-= enemyArray[i].damage;
+      gotdamageDoneOnce = true;
+        setTimeout(()=>{
+          gotdamageDoneOnce =false ;
         },5000)
       }
-   
-      enemyArray[i].health -= player.damage;
-      // enemyArray[i].x=player.x+500;
+      //roam
       enemyArray[i].roam = true;
 
-      if (enemyArray[i].counted == false) {
-        score++;
+      if (enemyArray[i].counted == false && enemyArray[i].health<=0) {
+        score+=50;
+        player.health += 5;
         enemyArray[i].counted = true;
+        enemyArray.splice(i, 1);
+        //play score up sound after enemies dies
+
       }
         i--;
       }
+      
+      if(player.collision==true){
+        handleBlood();
+        // ctx.font = "30px Orbitron";
+        // ctx.fillText('-'+ enemyArray[i].damage,canvas.width/2,canvas.height/2);
+}
+
   }
 }
+
+

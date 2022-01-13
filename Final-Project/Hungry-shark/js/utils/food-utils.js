@@ -6,5 +6,17 @@ let GoldFishStates = [
         frames:6,
     }
 ]
-spriteHandler(GoldFishStates,BlueWhaleSpriteWidth,BlueWhaleSpriteHeight,GoldFishAnimation);
+spriteHandler(GoldFishStates,GoldFishSpriteWidth,GoldFishSpriteHeight,GoldFishAnimation);
 
+
+
+
+// BLOOD
+let BloodAnimation = [];
+let BloodStates = [
+    {
+        name:'small',
+        frames:3,
+    }
+]
+spriteHandler(BloodStates,BloodSpriteWidth,BloodSpriteHeight,BloodAnimation);

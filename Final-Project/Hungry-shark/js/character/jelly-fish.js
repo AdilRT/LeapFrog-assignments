@@ -1,5 +1,5 @@
 class JellyFish extends Enemy {
-    constructor() {
+    constructor(easyModeObject) {
       super();
       this.spriteWidth = JellyFishSpriteWidth;
       this.spriteHeight = JellyFishSpriteHeight;
@@ -12,9 +12,9 @@ class JellyFish extends Enemy {
       this.vy = 1;
       this.distance;
       // this.speed = Math.random()*0.1+0.1;
-      this.health = 100;
-      this.maxHealth = this.health;
-      this.damage = 0.5;
+        this.health = easyModeObject.JellyFish.health;
+        this.damage = easyModeObject.JellyFish.damage;
+
     }
     update=()=> {
         this.y -= this.vy;

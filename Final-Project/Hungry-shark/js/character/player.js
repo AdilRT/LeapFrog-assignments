@@ -23,6 +23,7 @@ class Player {
     this.collision = false;
     // this.spriteWidth = 194; //633/10;//spritesheet/noofimage in 1 row
     // this.spriteHeight = 95; //183/6
+    // this.health = PLAYER_HEALTH;
     this.health = PLAYER_HEALTH;
     this.maxHealth = this.health;
     this.damage = 1;
@@ -54,12 +55,18 @@ class Player {
         if(mouse.x != ppos.x) {
             const dx = this.pos.x - mouse.x;
             this.pos.x -= dx / 30;
-  underwater.play();
+            underwater.play();
+            if (this.pos.x > can_world.width - this.radius) {
+              this.pos.x =  can_world.width - this.radius
+          }
 
         }
         if (mouse.y != ppos.y) {
             const dy = this.pos.y - mouse.y;
             this.pos.y -= dy / 30;
+            if (this.pos.y > can_world.height - this.radius) {
+              this.pos.y =  can_world.height - this.radius
+          }
             
         }
     }
@@ -96,11 +103,11 @@ class Player {
     // ctx.drawImage(playerImage, this.pos2.x, this.pos2.y);
     //DRAW PLAYER HITBOX
       ctx.clearRect(0, 0, canvas.width, canvas.height); /* Clear the whole player canvas (a canvas used to draw the character only */
-      ctx.fillStyle = "red";
-      ctx.beginPath();
-      ctx.arc(this.pos2.x, this.pos2.y, this.radius, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.closePath();
+      // ctx.fillStyle = "red";
+      // ctx.beginPath();
+      // ctx.arc(this.pos2.x, this.pos2.y, this.radius, 0, Math.PI * 2);
+      // ctx.fill();
+      // ctx.closePath();
 
     //ROTATING the Shark
     ctx.save(); //saing current canvas settings
@@ -147,6 +154,11 @@ class Player {
         SharkBiteSpriteHeight,
         10
       );
+
+      setTimeout(()=>{
+        this.collision = false;
+      },3000)
+
       // this.collision = false;
     } else if (mouse.x > this.pos.x && this.collision) {
       drawPlayer(
@@ -161,6 +173,10 @@ class Player {
         SharkBiteSpriteHeight,
         10
       );
+      setTimeout(()=>{
+        this.collision = false;
+      },2000)
+
       // this.collision = false;
     }
 
@@ -202,14 +218,14 @@ function drawPlayer(
 
 //playerHandler
 function handlePlayer() {
+  player.update();
+  player.draw();
+  checkScore();
   if(player.health<=0 ) {
     gameOver=true;
     overPage();
   }
-  player.update();
-  player.draw();
-  checkScore();
-
+  
   
 }
 // PREVIOSU
@@ -247,6 +263,7 @@ const mouse = {
 
 // EVENT LISTENERS for player movement
 canvas.addEventListener("mousemove", e => {
+  // console.log(mouse.x,mouse.y);
   const ppos = player.pos
   const ppos2 = player.pos2
   let dx = 0, dy = 0
@@ -269,7 +286,7 @@ canvas.addEventListener("mousemove", e => {
   }
 });
 
-document.addEventListener('mouseup', e => mouse.click = false)
+// document.addEventListener('mouseup', e => mouse.click = false)
 window.addEventListener("resize", function () {
   canvasPosition = can_world.getBoundingClientRect();
 });

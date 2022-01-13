@@ -1,5 +1,5 @@
 class Piranha extends Enemy {
-    constructor() {
+    constructor(easyModeObject) {
       super();
       // this.spriteWidth = PiranhaSpriteWidth;
       // this.spriteHeight = PiranhaSpriteHeight;
@@ -20,9 +20,9 @@ class Piranha extends Enemy {
       // this.image_left_flipped.src = "images/enemies-damage/piranha-dying.png";
       this.vx = 5;
       // this.speed = Math.random()*0.1+0.1;
-      this.health = 100;
+      this.health = easyModeObject.Piranha.health;
       this.maxHealth = this.health;
-      this.damage = 0.1;
+      this.damage = easyModeObject.Piranha.damage;
     }
     
 
@@ -36,7 +36,7 @@ class Piranha extends Enemy {
       //SHOWING HEALTH
       ctx_world.font = '20px Orbitron';
       ctx_world.fillStyle = "gold";
-      ctx_world.fillText(Math.floor(this.health),this.x,this.y);  
+      ctx_world.fillText(Math.floor(this.health),this.x-50,this.y-50);  
       //ROTATE
       ctx_world.save(); 
       ctx_world.translate(this.x, this.y);

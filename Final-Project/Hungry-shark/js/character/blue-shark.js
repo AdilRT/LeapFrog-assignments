@@ -1,6 +1,6 @@
 
 class BlueShark extends Enemy {
-    constructor() {
+    constructor(easyModeObject) {
       super();
       this.spriteWidth = BlueSharkSpriteWidth;
       this.spriteHeight = BlueSharkSpriteHeight;
@@ -12,10 +12,17 @@ class BlueShark extends Enemy {
       this.image.src = "images/enemies-damage/blue-shark.png";
       this.image_flipped.src = "images/enemies-damage/blue-shark-flipped.png";
       this.vx = 5;
-      // this.speed = Math.random()*0.1+0.1;
-      this.health = 100;
-      this.maxHealth = this.health;
-      this.damage = 1;
+      this.health = easyModeObject.BlueShark.health;
+      this.damage = easyModeObject.BlueShark.damage;
+// 
+      if(difficulty=='easy'){
+      }else if(difficulty == 'normal'){
+        this.health = normalModeObject.BlueShark.health;
+        this.damage = normalModeObject.BlueShark.damage;
+      }else if (difficulty == 'hard'){
+        this.health = hardModeObject.BlueShark.health;
+        this.damage = hardModeObject.BlueShark.damage;
+      }
     }
 
 

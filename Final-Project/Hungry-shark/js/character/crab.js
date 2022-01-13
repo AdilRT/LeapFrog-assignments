@@ -1,5 +1,5 @@
 class Crab extends Enemy {
-    constructor() {
+    constructor(easyModeObject) {
       super();
       this.spriteWidth = CrabSpriteWidth;
       this.spriteHeight = CrabSpriteHeight;
@@ -15,9 +15,9 @@ class Crab extends Enemy {
       this.vx = 1;
       this.distance;
       // this.speed = Math.random()*0.1+0.1;
-      this.health = 100;
+      this.health = easyModeObject.Crab.health;
       this.maxHealth = this.health;
-      this.damage = 0.5;
+      this.damage = easyModeObject.Crab.damage;
     }
     update=()=> {
       const dx = this.x - player.pos.x;

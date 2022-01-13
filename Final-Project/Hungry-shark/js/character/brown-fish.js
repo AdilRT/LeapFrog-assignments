@@ -1,5 +1,5 @@
 class BrownFish extends Enemy {
-    constructor() {
+    constructor(easyModeObject) {
       super();
       this.spriteWidth = BrownFishSpriteWidth;
       this.spriteHeight = BrownFishSpriteHeight;
@@ -10,9 +10,9 @@ class BrownFish extends Enemy {
       this.image_flipped.src = "images/enemies-damage/brown-fish-flipped.png";
       // this.vx = 5;
       // this.speed = Math.random()*0.1+0.1;
-      this.health = 100;
+      this.health = easyModeObject.BrownFish.health;
       this.maxHealth = this.health;
-
+      this.damage = easyModeObject.BrownFish.damage;
     }
 
 

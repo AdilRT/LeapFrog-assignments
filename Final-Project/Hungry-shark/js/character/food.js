@@ -1,10 +1,9 @@
-foodTypes = ['GoldFish'];
+// foodTypes = ['GoldFish','RedFish'];
+foodTypes = ['RedFish'];
 
 class Food {
   constructor() {
-    // this.x =toss() == true ?RandomNumber(-canvas.width, 0 ):RandomNumber(canvas.width,canvas.width + 100);
-    this.x = can_world.width;  
-    this.y = Math.random() * (can_world.height);
+    // this.x = can_world.width;  
     this.counted = false;
     this.image = new Image();
     this.image_flipped = new Image();
@@ -19,7 +18,6 @@ class Food {
     let theta = Math.atan2(dy, dx);
     this.angle = theta;
 
-    if(this.x<-100)this.x = can_world.width+300;
 
 
  
@@ -39,9 +37,8 @@ class Food {
 let foodArray =[]
 function handleFood(){
   //spawn freq
-  if (gameFrame % 50 == 0) {
+  if (gameFrame % 5 == 0) {
     const randomFood =this.foodTypes[Math.floor(Math.random() * foodTypes.length)];
-    // if (randomFood == "BlueWhale") enemyArray.push(new BlueWhale());
     //SORT
     foodArray.sort(function (a, b) {
       return a.y - b.y;
@@ -49,14 +46,22 @@ function handleFood(){
   }
     //spawn moderate
   // spawn rarely
-  if (gameFrame % 150 == 0) {
+  if (gameFrame % 350 == 0) {
     const randomFood = this.foodTypes[Math.floor(Math.random() * foodTypes.length)];
-    // if (randomFood == "GoldFish") {
-      for(i=1;i<=15;i++){
-        // foodArray.push(new GoldFish(i*25,i*25));
+    if (randomFood == "GoldFish") {
+      for(i=1;i<=5;i++){
         foodArray.push(new GoldFish());
       }
-    // }
+    }
+    for(i=1;i<=5;i++){
+      if (randomFood == "RedFish") {
+        foodArray.push(new RedFish("images/enemies-no-damage/red_fish_right.png","RightToLeft"));
+        foodArray.push(new RedFish("images/enemies-no-damage/blue-swim.png",'LeftToRight'));
+        foodArray.push(new RedFish("images/enemies-no-damage/pink-swim.png",'LeftToRight'));
+        foodArray.push(new RedFish("images/enemies-no-damage/yellow-swim.png",'LeftToRight'));
+      }
+    }
+    
     foodArray.sort(function (a, b) {
       return a.y - b.y;
     });
@@ -68,27 +73,33 @@ function handleFood(){
 
     //fix this
     // if (foodArray[i].x < 0 - foodArray[i].radius||foodArray[i].x > canvas.width+100||foodArray[i].x<-100) {
-    if (foodArray[i].x < 0 - foodArray[i].radius) {
+    if (foodArray[i].x < 0 - BOUNDARY || foodArray[i].x > can_world.width +BOUNDARY) {
       foodArray.splice(i, 1);
       i--; //destroying objects
     }
     //   checking collision
     else if (foodArray[i].distance < foodArray[i].radius + player.radius) {
       player.collision=true;
-      console.log('çollided');
-        sharkBite.play();
-      // player.health-= foodArray[i].damage;
-      foodArray[i].health -= player.damage  ;
-      // foodArray[i].x=player.x+500;
-      // foodArray[i].roam = true;
 
+      // console.log('çollided');
+
+        sharkBite.play();
+
+      foodArray[i].health -= player.damage  ;
       if (foodArray[i].counted == false) {
         score++;
+        player.health++;
+        // ctx.fillStyle = "green";
+        // ctx.font = "50px Orbitron";
+        // ctx.fillText("+1",100,100);
         foodArray[i].counted = true;
         foodArray.splice(i, 1);
+      
 
       }
         i--; 
       }
+      if(player.collision==true)handleBlood();
+
   }
 }
