@@ -129,7 +129,7 @@ easyModeObject ={
       damage:5
     },
     BlueWhale:{
-      health:25,
+      health:50,
       damage:6
     },
     BrownFish:{
@@ -141,7 +141,7 @@ easyModeObject ={
       damage:3
     },  
     GreenShark:{
-      health:20,
+      health:50,
       damage:5
     },  
     JellyFish:{
@@ -149,7 +149,7 @@ easyModeObject ={
       damage:3
     },  
     Piranha:{
-      health:20,
+      health:40,
       damage:3
     },  
     Spiky:{
@@ -163,11 +163,11 @@ easyModeObject ={
     modeSpawn:400,
     rareSpawn:500,
     BlueShark:{
-      health:600,
+      health:60,
       damage:7
     },
     BlueWhale:{
-      health:25,
+      health:60,
       damage:10
     },
     BrownFish:{
@@ -179,7 +179,7 @@ easyModeObject ={
       damage:10
     },  
     GreenShark:{
-      health:20,
+      health:60,
       damage:10
     },  
     JellyFish:{
@@ -187,7 +187,7 @@ easyModeObject ={
       damage:4
     },  
     Piranha:{
-      health:20,
+      health:40,
       damage:5
     },  
     Spiky:{
@@ -202,11 +202,11 @@ easyModeObject ={
     modeSpawn:500,
     rareSpawn:500,
     BlueShark:{
-      health:30,
+      health:70,
       damage:15
     },
     BlueWhale:{
-      health:30,
+      health:80,
       damage:15
     },
     BrownFish:{
@@ -218,15 +218,15 @@ easyModeObject ={
       damage:8
     },  
     GreenShark:{
-      health:20,
-      damage:315
+      health:70,
+      damage:55
     },  
     JellyFish:{
       health:5,
       damage:8
     },  
     Piranha:{
-      health:20,
+      health:50,
       damage:15
     },  
     Spiky:{
