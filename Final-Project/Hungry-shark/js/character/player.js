@@ -19,7 +19,7 @@ class Player {
     this.collision = false;
 
     this.health = PLAYER_HEALTH;
-    this.damage = 5;
+    this.damage = PLAYER_DAMAGE;
   }
 
   update = () => {
