@@ -182,6 +182,9 @@ let difficulty = 'easy';
 let timer = 0;
 let bossActive = true;
 let bossDefeated = false;
+let seconds=0
+let minutes=0
+let hours=0
 
 let btns = [easyBtn,normalBtn,hardBtn];
 for (let i = 0; i < btns.length; i++) {
@@ -199,7 +202,7 @@ for (let i = 0; i < btns.length; i++) {
 
 
 //CONSTANTS
-const PLAYER_HEALTH = 101;
+const PLAYER_HEALTH = 1;
 const PLAYER_DAMAGE = 5;
 
 

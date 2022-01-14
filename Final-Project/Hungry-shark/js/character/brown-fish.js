@@ -24,10 +24,10 @@ class BrownFish extends Enemy {
       ctx_world.rotate(this.angle);
       // drawing player fish
       if (mouse.x < this.x) {
-      drawCharacter(this.image, "left",BrownFishAnimation,this.spriteWidth,this.spriteHeight,-65,-30,this.spriteWidth,this.spriteHeight,STAGGERFRAME);
+      drawCharacter(this.image, "left",BrownFishAnimation,this.spriteWidth,this.spriteHeight,-65,-30,this.spriteWidth,this.spriteHeight,STAGGERFRAME10);
       } 
       else if(mouse.x> this.x) {
-      drawCharacter(this.image_flipped, "right",BrownFishAnimation,this.spriteWidth,this.spriteHeight,-65,-30,this.spriteWidth,this.spriteHeight,STAGGERFRAME);
+      drawCharacter(this.image_flipped, "right",BrownFishAnimation,this.spriteWidth,this.spriteHeight,-65,-30,this.spriteWidth,this.spriteHeight,STAGGERFRAME10);
       }
      
       ctx_world.restore();

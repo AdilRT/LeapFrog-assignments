@@ -6,7 +6,6 @@ class Bubble {
       this.speed = Math.random() * 5 + 1;
       this.distance;
       this.counted = false;
-      // this.sound = Math.random() <= 0.5 ? "sound1" : "sound2";
       this.angle = 0;
     }
   
@@ -14,9 +13,7 @@ class Bubble {
       const dx = this.x - player.pos.x;
       const dy = this.y - player.pos.y;
       this.distance = Math.sqrt(dx ** 2 + dy ** 2);
-      // this.x = Math.sin(this.angle * Math.PI/180)
-      // this.y = 10* Math.cos(this.angle * Math.PI/180)
-      // this.angle +=0.2;
+      
       this.y -= this.speed;
     }
   
