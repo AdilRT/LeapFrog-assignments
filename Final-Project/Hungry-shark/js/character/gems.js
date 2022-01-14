@@ -29,7 +29,6 @@ function handleGems(){
     if (gameFrame % 1000 == 0) {
       GemsArray.push(new Gems("images/gems/gems.png",'blue',GemsAnimation,GemsSpriteWidth,GemsSpriteHeight));
       GemsArray.push(new Gems("images/gems/shells-1.png",'one',Shells1Animation,Shells1SpriteWidth,Shells1SpriteHeight));
-    //   GemsArray.push(new Accessories("images/gems/gems2.png"));
     }
     for (let i = 0; i < GemsArray.length; i++) {
         GemsArray[i].update();
@@ -37,8 +36,6 @@ function handleGems(){
 
       //   checking collision
       if (GemsArray[i].distance < GemsArray[i].radius + player.radius) {
-      //   player.collision = true;
-        // console.log('collided');
         sharkBite.play();
         if (GemsArray[i].counted == false) {
         score+=100;

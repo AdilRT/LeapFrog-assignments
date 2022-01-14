@@ -3,8 +3,6 @@ class RedFish extends Food {
     super();
     this.x =toss() == true ?0:can_world.width;
     this.y = RandomNumber(0, can_world.height);
-    // this.x=can_world.width/2;
-    // this.y = can_world.height/2;
     this.radius = 35;
     this.image.src = img;
     this.vx = 3;
@@ -42,23 +40,13 @@ class RedFish extends Food {
   }
 
   draw = () => {
-    ctx_world.fillStyle = "black";
-    ctx_world.beginPath();
-    ctx_world.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx_world.fill();
-    ctx_world.closePath();
+ 
 
     //SHOWING HEALTH
     ctx_world.font = "10px Orbitron";
     ctx_world.fillStyle = "gold";
     ctx_world.fillText(Math.floor(this.health), this.x, this.y-40);
-    // drawing player fish
-    // if (mouse.x < this.x) {
-    // drawCharacter(this.image, "left",GoldFishAnimation,this.spriteWidth,this.spriteHeight,-65,-60,this.spriteWidth/2,this.spriteHeight/2,10);
-    // }
-    // else if(mouse.x> this.x) {
-    // drawCharacter(this.image_flipped, "left",BlueWhaleAnimation,this.spriteWidth,this.spriteHeight,-65,-60,this.spriteWidth/2,this.spriteHeight/2,10);
-    // }
+    
     ctx_world.drawImage(
       this.image,
       this.frameX * this.spriteWidth,

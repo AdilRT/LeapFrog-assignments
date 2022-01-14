@@ -6,15 +6,13 @@ class Boss{
     //   this.x =toss() == true ?RandomNumber(-can_world.width, 0 ):RandomNumber(can_world.width,can_world.width + 100);
     //   this.y = Math.random() * (can_world.height / 3);
     this.y=can_world.height/2;
-      this.radius = 100;
+      this.radius = BOSS_RADIUS;
       this.image = new Image();
       this.image_flipped = new Image();
       this.image.src = "images/boss/sea-dragon-left.png";
       this.image_flipped.src = "images/boss/sea-dragon-right.png";
-      this.vx = 5;
-      // this.speed = Math.random()*0.1+0.1;
-      this.health = 100;
-      this.damage = 1;
+      this.health = BOSS_HEALTH;
+      this.damage = BOSS_DAMAGE;
       this.angle = 0;
       this.counted = false;
 
@@ -32,16 +30,18 @@ class Boss{
             //   checking collision
       if (this.distance < this.radius + player.radius) {
         player.collision = true;
-        // console.log('player health',player.health);
-        // console.log('enemy health',i,this.health);
         sharkBite.play();
-  
+        if(this.health<=0){
+          gameOver = true;
+          bossDefeated = true;
+          overPage();
+        }
         if(bossActive == true) {
           player.health-= this.damage;
           bossActive = false;
           setTimeout(()=>{
             bossActive =true;
-          },RandomNumber(3000,5000))
+          },BOSS_PASSIVE_TIME)
         }
         if(damageDoneOnce == false) {
           this.health -= player.damage;  
@@ -49,7 +49,7 @@ class Boss{
             //invincible timeperiod
             setTimeout(()=>{
               damageDoneOnce =false ;
-            },1000)
+            },BOSS_INVICIBILITY_PERIOD)
           }  
         if (this.counted == false) {
           score++;
@@ -61,28 +61,17 @@ class Boss{
     
 
     draw = () => {
-      ctx_world.fillStyle = "black";
-      ctx_world.beginPath();
-      ctx_world.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx_world.fill();
-      ctx_world.closePath();
-
       //SHOWING HEALTH
-      ctx_world.font = '20px Orbitron';
-      ctx_world.fillStyle = "gold";
-      ctx_world.fillText(Math.floor(this.health),this.x,this.y-50);  
+      showHealth(this,this.x-40,this.y-50);
       //ROTATE
-      ctx_world.save(); 
-    //   ctx_world.translate(this.x, this.y);
-    //   ctx_world.rotate(this.angle);
-      // drawing player fish
-      if (mouse.x<this.x) {
-      drawCharacter(this.image, "right",BossAnimation,this.spriteWidth,this.spriteHeight,this.x-200,this.y-200,this.spriteWidth*3,this.spriteHeight*3,10);
+      // ctx_world.save(); 
+      if (mouse.x<this.x && bossDefeated == false) {
+      drawCharacter(this.image, "right",BossAnimation,this.spriteWidth,this.spriteHeight,this.x-200,this.y-200,this.spriteWidth*3,this.spriteHeight*3,STAGGERFRAME10);
       } 
-      else if(this.x<mouse.x) {
-      drawCharacter(this.image_flipped, "right",BossAnimation,this.spriteWidth,this.spriteHeight,this.x-200,this.y-200,this.spriteWidth*3,this.spriteHeight*3,10);
+      else if(this.x<mouse.x && bossDefeated == false) {
+      drawCharacter(this.image_flipped, "right",BossAnimation,this.spriteWidth,this.spriteHeight,this.x-200,this.y-200,this.spriteWidth*3,this.spriteHeight*3,STAGGERFRAME10);
       }
-      ctx_world.restore();
+      // ctx_world.restore();
     };
   
   

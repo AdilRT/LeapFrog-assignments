@@ -27,7 +27,6 @@ function PreLoader(){
         "images/enemies-damage/brown-fish.png",
         "images/enemies-damage/brown-fish-flipped.png",
         "images/enemies-damage/crab.png",
-        "images/enemies-damage/crab.png",
         // food
         "images/enemies-no-damage/red_fish_right.png",
         "images/enemies-no-damage/blue-swim.png",

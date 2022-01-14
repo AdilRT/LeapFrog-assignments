@@ -5,14 +5,12 @@ class SpikyFish extends Enemy {
     super();
     this.spriteWidth =SpikyFishSpriteWidth;
     this.spriteHeight = SpikyFishSpriteHeight;
-    // this.x = Math.random()* canvas.width;
     this.x =toss() == true ?RandomNumber(-can_world.width, 0 ):RandomNumber(can_world.width,can_world.width + 100);
     this.y = Math.random() * can_world.height;
     this.radius = 35;
     this.image.src = "images/enemies-damage/spiky-fish.png";
     this.image_flipped.src = "images/enemies-damage/spiky-fish.png";
     this.vx = 1;
-    // this.speed = Math.random()*0.1+0.1;
     this.health = easyModeObject.Spiky.health;
     this.maxHealth = this.health;
     this.damage = easyModeObject.Spiky.damage;

@@ -77,14 +77,6 @@ const health_pill = new Image();
 health_pill.src = 'images/gems/green_pill.png';
 let power_pill = new Image();
 power_pill.src = 'images/gems/power.png';
-// const startBtn = new Image();
-// startBtn.src = 'images/buttons/play.png';
-// const easyBtn = new Image();
-// easyBtn.src = 'images/buttons/easy.png';
-// const normalBtn = new Image();
-// normalBtn.src = 'images/buttons/normal.png';
-// const hardBtn = new Image();
-// hardBtn.src = 'images/buttons/hard.png';
 const fireSign = new Image();
 fireSign.src = 'images/boss/fire.png';
 const blood1 = new Image();
@@ -100,9 +92,16 @@ playerImageBiteFlipped.src = 'images/player/shark-biting-flipped.png';
 
 
 //AUDIO
-let sharkBite = new Audio('audio/player/shark-bite.mp3');
+let sharkBite = new Audio('audio/player/shark-bite.wav');
+let sharkBite2 = new Audio('audio/player/bite2.wav');
 let bubblePop = new Audio('audio/bubbles/bubble-pop.wav');
 let underwater = new Audio('audio/bg/underwater.mp3');
+let deadSound = new Audio('audio/player/death.wav');
+let healing = new Audio('audio/player/healing.wav');
+let power_up = new Audio('audio/player/power-up.wav');
+let sharkSpawnSound = new Audio('audio/shark/shark.wav');
+let piranha = new Audio('audio/shark/piranha.wav');
+let bossModeSound = new Audio('audio/bossMode/bossMode.wav');
 
 
 
@@ -182,6 +181,7 @@ let gameOver = false;
 let difficulty = 'easy';
 let timer = 0;
 let bossActive = true;
+let bossDefeated = false;
 
 let btns = [easyBtn,normalBtn,hardBtn];
 for (let i = 0; i < btns.length; i++) {
@@ -202,18 +202,33 @@ for (let i = 0; i < btns.length; i++) {
 const PLAYER_HEALTH = 100;
 
 
-const DAY = {
-    full: 80000
-  };
-  
+const TOTALTIME=80000
 const SECONDS_IN_DAY = 86400;
 const SECONDS_TO_HOURS = 1 / 3600;
 const SECONDS_TO_MINS = 1 / 60;
 const TIME_HEIGHT = 40;
 const BOUNDARY = 200;
 
+// sharks
+const RARE_ANIMALS_VERTICAL_SPAWN = RandomNumber(can_world.height/2,can_world.height);
+const SHARKS_RADIUS = 65;
+const SHARKS_XSPEED = RandomNumber(2,5);
+// whale
+const WHALE_RADIUS = 60;
+// boss
+const BOSS_RADIUS = 100;
+const BOSS_HEALTH = 1000;
+const BOSS_DAMAGE = 30;
+const BOSS_INVICIBILITY_PERIOD = 1000;
+const BOSS_PASSIVE_TIME = RandomNumber(3000,5000)
 
+const BROWN_FISH_RADIUS = 50;
 
+const CRAB_RADIUS = 50;
+const STAGGERFRAME10 = 10;
+const STAGGERFRAME30 = 30;
+const BUBBLES_RADIUS = 10;
+const WAVE_SPEED = 4;
 
 
 

@@ -1,7 +1,6 @@
 //blueshark,bluewhale,brownfish,crab,greenshark,jellyfish,piranha,spiky
 function easyMode(easyModeObject){
     enemyTypes = ['BlueShark','BlueWhale','BrownFish','Crab','GreenShark','JellyFish', 'Piranha',"Spiky"];
-    // enemyTypes = ['JellyFish']
     let randomEnemy = this.enemyTypes[Math.floor(Math.random() * enemyTypes.length)];
   
       // spawn freq
@@ -24,8 +23,15 @@ function easyMode(easyModeObject){
       // rare spawns
       if (gameFrame % easyModeObject.rareSpawn == 0) {
         const randomEnemy = this.enemyTypes[Math.floor(Math.random() * enemyTypes.length)];
-        if (randomEnemy == "Piranha") enemyArray.push(new Piranha(easyModeObject));
-        if (randomEnemy == "BlueShark") enemyArray.push(new BlueShark(easyModeObject));
+        if (randomEnemy == "Piranha"){
+          enemyArray.push(new Piranha(easyModeObject));
+          piranha.play();
+        } 
+        if (randomEnemy == "BlueShark") 
+        {
+          enemyArray.push(new BlueShark(easyModeObject));
+          sharkSpawnSound.play();
+        }
         if (randomEnemy == "BlueWhale") enemyArray.push(new BlueWhale(easyModeObject));
   
         enemyArray.sort(function (a, b) {
@@ -58,8 +64,15 @@ function easyMode(easyModeObject){
       // rare spawns
       if (gameFrame % normalModeObject.rareSpawn == 0) {
         const randomEnemy = this.enemyTypes[Math.floor(Math.random() * enemyTypes.length)];
-        if (randomEnemy == "Piranha") enemyArray.push(new Piranha(normalModeObject));
-        if (randomEnemy == "BlueShark") enemyArray.push(new BlueShark(normalModeObject));
+        if (randomEnemy == "Piranha") 
+        {
+          enemyArray.push(new Piranha(normalModeObject));
+          piranha.play();
+        }
+        if (randomEnemy == "BlueShark") {
+          enemyArray.push(new BlueShark(normalModeObject));
+          sharkSpawnSound.play();
+        }
         if (randomEnemy == "BlueWhale") enemyArray.push(new BlueWhale(normalModeObject));
   
         enemyArray.sort(function (a, b) {
@@ -69,7 +82,6 @@ function easyMode(easyModeObject){
   }
   function hardMode(hardModeObject){
     enemyTypes = ['BlueShark','BlueWhale','BrownFish','Crab','GreenShark','JellyFish', 'Piranha',"Spiky"];
-    // enemyTypes = ['JellyFish']
     let randomEnemy = this.enemyTypes[Math.floor(Math.random() * enemyTypes.length)];
   
       // spawn freq
@@ -92,8 +104,14 @@ function easyMode(easyModeObject){
       // rare spawns
       if (gameFrame % hardModeObject.rareSpawn == 0) {
         const randomEnemy = this.enemyTypes[Math.floor(Math.random() * enemyTypes.length)];
-        if (randomEnemy == "Piranha") enemyArray.push(new Piranha(hardModeObject));
-        if (randomEnemy == "BlueShark") enemyArray.push(new BlueShark(hardModeObject));
+        if (randomEnemy == "Piranha") {
+          enemyArray.push(new Piranha(hardModeObject));
+          piranha.play();
+        }
+        if (randomEnemy == "BlueShark") {
+          enemyArray.push(new BlueShark(hardModeObject));
+          sharkSpawnSound.play();
+        }
         if (randomEnemy == "BlueWhale") enemyArray.push(new BlueWhale(hardModeObject));
   
         enemyArray.sort(function (a, b) {
@@ -108,11 +126,11 @@ easyModeObject ={
     rareSpawn:2000,
     BlueShark:{
       health:50,
-      damage:3
+      damage:5
     },
     BlueWhale:{
       health:25,
-      damage:3
+      damage:6
     },
     BrownFish:{
       health:10,
@@ -124,7 +142,7 @@ easyModeObject ={
     },  
     GreenShark:{
       health:20,
-      damage:3
+      damage:5
     },  
     JellyFish:{
       health:5,
@@ -135,8 +153,8 @@ easyModeObject ={
       damage:3
     },  
     Spiky:{
-      health:15,
-      damage:3
+      health:5,
+      damage:1
     },  
   }
   
@@ -145,35 +163,35 @@ easyModeObject ={
     modeSpawn:400,
     rareSpawn:500,
     BlueShark:{
-      health:2000,
-      damage:3
+      health:600,
+      damage:7
     },
     BlueWhale:{
       health:25,
-      damage:3
+      damage:10
     },
     BrownFish:{
-      health:10,
-      damage:3
+      health:12,
+      damage:10
     },  
     Crab:{
-      health:5,
-      damage:3
+      health:7,
+      damage:10
     },  
     GreenShark:{
       health:20,
-      damage:3
+      damage:10
     },  
     JellyFish:{
       health:5,
-      damage:3
+      damage:4
     },  
     Piranha:{
       health:20,
-      damage:3
+      damage:5
     },  
     Spiky:{
-      health:15,
+      health:10,
       damage:3
     },  
   }
@@ -184,35 +202,35 @@ easyModeObject ={
     modeSpawn:500,
     rareSpawn:500,
     BlueShark:{
-      health:2,
-      damage:3
+      health:30,
+      damage:15
     },
     BlueWhale:{
-      health:2,
-      damage:3
+      health:30,
+      damage:15
     },
     BrownFish:{
-      health:1000,
-      damage:3
+      health:15,
+      damage:15
     },  
     Crab:{
-      health:5,
-      damage:3
+      health:10,
+      damage:8
     },  
     GreenShark:{
-      health:2,
-      damage:3
+      health:20,
+      damage:315
     },  
     JellyFish:{
       health:5,
-      damage:3
+      damage:8
     },  
     Piranha:{
       health:20,
-      damage:3
+      damage:15
     },  
     Spiky:{
-      health:15,
+      health:12,
       damage:3
     },  
   }

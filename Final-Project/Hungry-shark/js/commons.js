@@ -21,19 +21,18 @@ function RandomNumber(min, max) {
   }
 }
 
-function toss(){
-  if(Math.floor(Math.random() * 2) == 0){
-    return true; 
-    }
-    else{
+function toss() {
+  if (Math.floor(Math.random() * 2) == 0) {
+    return true;
+  } else {
     return false;
-    }
+  }
 }
 
 function handleGameStatus() {
   //show score
   ctx.fillStyle = "black";
-  ctx.font = "30px Odibee Sans"; 
+  ctx.font = "30px Odibee Sans";
   ctx.fillText("SCORE: " + score, 10, 30);
   ctx.fillStyle = "green";
   ctx.fillText("HEALTH: " + Math.floor(player.health), 220, 30);
@@ -49,64 +48,51 @@ function startPage() {
   ctx.fillStyle = "black";
   ctx.font = "100px Orbitron";
   ctx.drawImage(bg_startPage, 0, 0, canvas.clientWidth, canvas.height);
-  ctx.drawImage(logo,120, 10, 400, 200);
-  // ctx.drawImage(startBtn,canvas.width/2-50,canvas.height/2)
-  // ctx.drawImage(easyBtn,canvas.width/2-50,canvas.height/2+100)
-  // ctx.drawImage(normalBtn,canvas.width/2-50,canvas.height/2+150)
-  // ctx.drawImage(hardBtn,canvas.width/2-50,canvas.height/2+200)
+  ctx.drawImage(logo, 120, 10, 400, 200);
+
   //display
   startBtn.style.display = "block";
   restartBtn.style.display = "none";
-  easyBtn.style.display = 'block';
-  normalBtn.style.display = 'block';
-  hardBtn.style.display = 'block';
-  cave.style.display = 'none';
+  easyBtn.style.display = "block";
+  normalBtn.style.display = "block";
+  hardBtn.style.display = "block";
+  cave.style.display = "none";
   // select.style.display='block';
   gameOver = false;
+  bossModeSound.pause();
   reset();
-
-
-  // console.log('startPage',parallex);
-  // easyBtn.addEventListener('click',function(e){
-  //   difficulty= 'easy';
-  // })
-
-  // normalBtn.addEventListener('click',function(e){
-  //   difficulty= 'normal';
-  // })
-  // hardBtn.addEventListener('click',function(e){
-  //   difficulty= 'hard';
-  // })
 }
-
 
 let highScore = +localStorage.getItem("highScore") || 0;
 
 // GAMEOVER PAGE
 function overPage() {
   if (gameOver) {
-  resetTimer();
+    resetTimer();
+    underwater.pause();
+    bossModeSound.pause();
 
     ctx.drawImage(bg_startPage, 0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "gold";
-    console.log('gameover reached');
+    console.log("gameover reached");
     ctx.font = "30px Orbitron";
-    ctx.fillText("Time Alive",240, 50);
- 
+    ctx.fillText("Time Alive", 240, 50);
 
-    
     ctx.font = "60px Orbitron";
+
     ctx.fillText("GAME OVER", 100, 200);
+
     if (score > highScore) {
       highScore = score;
       localStorage.setItem("highScore", score);
       ctx.font = "30px Orbitron";
       ctx.fillText("Congrats! New Highscore: " + highScore, 240, 550);
-
-    }else{
-    ctx.font = "30px Orbitron";
+    } else {
+      ctx.font = "30px Orbitron";
       ctx.fillText("Score: " + score, 240, 550);
     }
+    ctx.fillText("bossde", 100, 200);
+
     parallex = false;
     bossMode = false;
     BG2 = {
@@ -119,67 +105,83 @@ function overPage() {
     reset();
     // console.log('overPage',parallex);
 
-    
     // if clicked reset the settings
     restartBtn.style.display = "block";
     restartBtn.addEventListener("click", function (e) {
       startPage();
     });
   }
-  // console.log(highScore);
 }
 
 // BOSS PAGE
-function bossPage(){
+function bossPage() {
   // ctx.drawImage(bg_startPage, 0, 0, canvas.clientWidth, canvas.height);
   enemyArray = [];
-  foodArray = []; 
+  foodArray = [];
   boss.update();
-  boss.draw(); 
+  boss.draw();
 }
 
-function reset(){
+function reset() {
   //reset playerPos,enemiesArray,score,player health
-  player.pos2.x = canvas.width/2;
-  player.pos2.y = canvas.height/2;
-  enemyArray = []
-  foodArray = []
+  player.pos2.x = canvas.width / 2;
+  player.pos2.y = canvas.height / 2;
+  enemyArray = [];
+  foodArray = [];
   score = 0;
   player.health = PLAYER_HEALTH;
 }
 
-function checkScore(){
-  if(score>2){
-    if(bossMode==false){
-      ctx_world.drawImage(cave,can_world.width-400,can_world.height-250,200,200)
-      if(RectCircleCollision()){
+function checkScore() {
+  if (score >= 50) {
+    if (bossMode == false) {
+      ctx_world.drawImage(
+        cave,
+        can_world.width - 400,
+        can_world.height - 250,
+        200,
+        200
+      );
+      if (RectCircleCollision()) {
+        bossModeSound.play();
         parallex = true;
         bossMode = true;
         bossPage();
       }
     }
-    if(bossMode==true)ctx_world.drawImage(cave,can_world.width-100,can_world.height-150,200,200)
+    if (bossMode == true)
+      ctx_world.drawImage(
+        cave,
+        can_world.width - 100,
+        can_world.height - 150,
+        200,
+        200
+      );
     //show cave
     // cave.style.display = 'block';
     // drop a pill
   }
 }
 
-
-function RectCircleCollision(){
+function RectCircleCollision() {
   let caveWidth = 200;
   let caveHeight = 200;
-  // let rect = cave.getBoundingClientRect();
-  let cavePosX=can_world.width-400;
-  let cavePosY =can_world.height-250;
+  let cavePosX = can_world.width - 400;
+  let cavePosY = can_world.height - 250;
 
-  var distX = Math.abs(player.pos.x - cavePosX-caveWidth/2);
-  var distY = Math.abs(player.pos.y - cavePosY-caveHeight/2);
+  var distX = Math.abs(player.pos.x - cavePosX - caveWidth / 2);
+  var distY = Math.abs(player.pos.y - cavePosY - caveHeight / 2);
 
-  if (distX > (caveWidth/2 + player.radius)|| distY > (caveHeight/2 + player.radius)) { return false; }
-  if (distX <= (caveWidth/2)||distY <= (caveHeight/2) ) { return true;} 
+  if (
+    distX > caveWidth / 2 + player.radius ||
+    distY > caveHeight / 2 + player.radius
+  ) {
+    return false;
+  }
+  if (distX <= caveWidth / 2 || distY <= caveHeight / 2) {
+    return true;
+  }
 }
-
 
 function createElement(ele, attrObj) {
   /* Create the new Element */
@@ -187,10 +189,10 @@ function createElement(ele, attrObj) {
 
   /* Do the following only if attrObj exists */
   if (attrObj) {
-      /* Loop through attrObj's properties to set the element's attributes */
-      for (var i in attrObj) {
-          element.setAttribute(i, attrObj[i]);
-      }
+    /* Loop through attrObj's properties to set the element's attributes */
+    for (var i in attrObj) {
+      element.setAttribute(i, attrObj[i]);
+    }
   }
 
   /* Return the new element */
@@ -227,28 +229,32 @@ function drawCharacter(
   );
 }
 
-
-
-// function changeFunction(selectedValue){
-//   let x= selectedValue.value;
-//   // let selectedValue = document.getElementById('list').value;
-//   return x;
-// }
-
-
 function showTimer() {
-  seconds = (gameFrame / DAY.full) * SECONDS_IN_DAY;
+  seconds = (gameFrame / TOTALTIME) * SECONDS_IN_DAY;
   hours = Math.floor(seconds * SECONDS_TO_HOURS);
   seconds = seconds - hours / SECONDS_TO_HOURS;
   minutes = Math.floor(seconds * SECONDS_TO_MINS);
   seconds = Math.floor(seconds - minutes / SECONDS_TO_MINS);
-  ctx.fillStyle = "black"
-  ctx.font = '20px Orbitron'
-  ctx.fillText(hours + ' : ' + minutes, 300, 70);
+  ctx.fillStyle = "black";
+  ctx.font = "25px Orbitron";
+  ctx.fillText(hours + " : " + minutes, 300, 70);
 }
 
-function resetTimer(){
-  minutes =0;
-  hours=0;
-  seconds= 0;
+function resetTimer() {
+  minutes = 0;
+  hours = 0;
+  seconds = 0;
+}
+
+// random spawns in either side
+function RandomSpawn() {
+  return toss() == true
+    ? RandomNumber(-100, 0)
+    : RandomNumber(can_world.width, can_world.width + 100);
+}
+
+function showHealth(obj, Xpos, Ypos) {
+  ctx_world.font = "20px Orbitron";
+  ctx_world.fillStyle = "gold";
+  ctx_world.fillText(Math.floor(obj.health), Xpos, Ypos);
 }

@@ -1,10 +1,8 @@
 class Piranha extends Enemy {
     constructor(easyModeObject) {
       super();
-      // this.spriteWidth = PiranhaSpriteWidth;
-      // this.spriteHeight = PiranhaSpriteHeight;
-      // this.x =toss() == true ?RandomNumber(-canvas.width, 0 ):RandomNumber(canvas.width,canvas.width + 100);
-      this.x =RandomNumber(-can_world.width/2, 0 )
+      
+      this.x =RandomSpawn()
       this.y = Math.random() * (can_world.height / 3);
       this.radius = 50;
       this.image_left = new Image();
@@ -27,11 +25,7 @@ class Piranha extends Enemy {
     
 
     draw = () => {
-      // ctx.fillStyle = "black";
-      // ctx.beginPath();
-      // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      // ctx.fill();
-      // ctx.closePath();
+ 
 
       //SHOWING HEALTH
       ctx_world.font = '20px Orbitron';
