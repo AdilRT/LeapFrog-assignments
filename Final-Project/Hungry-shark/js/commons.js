@@ -77,6 +77,7 @@ function overPage() {
     ctx.font = "30px Orbitron";
     ctx.fillText("Time Alive", 240, 50);
 
+
     ctx.font = "60px Orbitron";
 
     ctx.fillText("GAME OVER", 100, 200);
@@ -84,13 +85,12 @@ function overPage() {
     if (score > highScore) {
       highScore = score;
       localStorage.setItem("highScore", score);
-      ctx.font = "30px Orbitron";
-      ctx.fillText("Congrats! New Highscore: " + highScore, 240, 550);
+      ctx.font = "20px Orbitron";
+      ctx.fillText("Congrats! New Highscore: " + highScore, 50, 550);
     } else {
       ctx.font = "30px Orbitron";
       ctx.fillText("Score: " + score, 240, 550);
     }
-    ctx.fillText("bossde", 100, 200);
 
     parallex = false;
     bossMode = false;
