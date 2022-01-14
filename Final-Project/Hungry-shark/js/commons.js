@@ -74,7 +74,6 @@ function overPage() {
 
     ctx.drawImage(bg_startPage, 0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "gold";
-    console.log("gameover reached");
     ctx.font = "30px Orbitron";
     ctx.fillText("Time Alive", 240, 50);
 
@@ -103,8 +102,6 @@ function overPage() {
       height: canvas.height,
     };
     reset();
-    // console.log('overPage',parallex);
-
     // if clicked reset the settings
     restartBtn.style.display = "block";
     restartBtn.addEventListener("click", function (e) {

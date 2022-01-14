@@ -192,7 +192,7 @@ for (let i = 0; i < btns.length; i++) {
 
 
 //CONSTANTS
-const PLAYER_HEALTH = 1;
+const PLAYER_HEALTH = 101;
 const PLAYER_DAMAGE = 5;
 
 
