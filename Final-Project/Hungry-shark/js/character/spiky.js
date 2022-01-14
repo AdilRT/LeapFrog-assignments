@@ -28,11 +28,7 @@ class SpikyFish extends Enemy {
   }
 
   draw = () => {
-          ctx_world.fillStyle = "black";
-        ctx_world.beginPath();
-        ctx_world.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx_world.fill();
-        ctx_world.closePath();
+         
     // drawing player fish
     if (mouse.x < this.x) {
     drawCharacter(this.image, "left",SpikyFishAnimation,this.spriteWidth,this.spriteHeight,this.x-95,this.y-115,this.spriteWidth*2,this.spriteHeight*2,50);
