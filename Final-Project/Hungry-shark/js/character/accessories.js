@@ -57,7 +57,7 @@ function handleAccessories() {
             healing.play();
           }
           if (pillsArray[i].type == "powerType") {
-            player.damage = 5;
+            player.damage = 8;
             power_up.play();
           }
           pillsArray[i].counted = true;

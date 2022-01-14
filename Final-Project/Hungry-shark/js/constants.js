@@ -14,12 +14,7 @@ ctx.font = "50px Georgia";
 canvas.width = 640;
 canvas.height = 640;
 
-//get DOM elements
-// const startBtn = document.getElementById("startBtn");
-// const restartBtn = document.getElementById("restartBtn");
-// const easyBtn = document.getElementById("easyBtn");
-// const normalBtn = document.getElementById("normalBtn");
-// const hardBtn = document.getElementById("hardBtn");
+
 
 let startBtn = document.createElement('button');
 startBtn.setAttribute('id', 'startBtn');
@@ -47,12 +42,7 @@ let restartBtn = document.createElement('button');
 restartBtn.setAttribute('id', 'restartBtn');
 restartBtn.innerHTML = 'Restart';
 document.body.appendChild(restartBtn);
-// const select = document.getElementById("list");
-// const cave = document.getElementById("cave");
 
-//   SOUND
-//   const bubblePop1 = document.createElement('audio');
-//   bubblePop1.src = 'audio/Plog.ogg';
 
 //IMAGES
 const background = new Image();
@@ -202,7 +192,7 @@ for (let i = 0; i < btns.length; i++) {
 
 
 //CONSTANTS
-const PLAYER_HEALTH = 101;
+const PLAYER_HEALTH = 1;
 const PLAYER_DAMAGE = 5;
 
 
